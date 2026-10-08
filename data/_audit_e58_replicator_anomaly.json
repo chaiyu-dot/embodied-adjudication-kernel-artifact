@@ -1,0 +1,93 @@
+{
+  "experiment": "E58 第三方/盲复刻(L2/L4 纯数据)",
+  "independence_scope": "不 import 被审模块，只读 JSON（第三方）",
+  "checks": [
+    {
+      "name": "D1_n_conditions_consistent",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "D2_blind_spot_sum_consistent",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "D3_H58_2_blind_all_T_le_0p5",
+      "pass": true,
+      "detail": "max_T=0.50 n=30"
+    },
+    {
+      "name": "D4_H58_3_slow_false_alarm_lt_0p10",
+      "pass": true,
+      "detail": "rate=0.0000"
+    },
+    {
+      "name": "D5_H58_1_blind_exists",
+      "pass": true,
+      "detail": "n=30"
+    },
+    {
+      "name": "D6_by_T_3.0_Dok_nC_consistent",
+      "pass": true,
+      "detail": "by_T=0 recompute=0"
+    },
+    {
+      "name": "D6_by_T_1.5_Dok_nC_consistent",
+      "pass": true,
+      "detail": "by_T=0 recompute=0"
+    },
+    {
+      "name": "D6_by_T_0.8_Dok_nC_consistent",
+      "pass": true,
+      "detail": "by_T=0 recompute=0"
+    },
+    {
+      "name": "D6_by_T_0.5_Dok_nC_consistent",
+      "pass": true,
+      "detail": "by_T=20 recompute=20"
+    },
+    {
+      "name": "D6_by_T_0.35_Dok_nC_consistent",
+      "pass": true,
+      "detail": "by_T=10 recompute=10"
+    },
+    {
+      "name": "D6_by_T_0.2_Dok_nC_consistent",
+      "pass": true,
+      "detail": "by_T=0 recompute=0"
+    },
+    {
+      "name": "D7_verdict_self_consistent",
+      "pass": true,
+      "detail": ""
+    }
+  ],
+  "tamper": [
+    {
+      "name": "R1 篡改 H58-2=false → D3 必报",
+      "caught": true,
+      "detail": "期望捕获 ['D3']"
+    },
+    {
+      "name": "R2 篡改 blind_spot_vs_D=0 → D2/D5 必报",
+      "caught": true,
+      "detail": "期望捕获 ['D2', 'D5']"
+    },
+    {
+      "name": "R3 篡改 slow_false_alarm=0.99 → D4 必报",
+      "caught": true,
+      "detail": "期望捕获 ['D4']"
+    },
+    {
+      "name": "R4 篡改 verdict=false → D7 必报",
+      "caught": true,
+      "detail": "期望捕获 ['D7']"
+    }
+  ],
+  "n_pass": 12,
+  "n_total": 12,
+  "n_tamper_pass": 4,
+  "n_tamper_total": 4,
+  "replicator_pass": true
+}
