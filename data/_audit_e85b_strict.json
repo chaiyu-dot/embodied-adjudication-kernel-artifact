@@ -1,0 +1,72 @@
+{
+  "audit": "E85b L3 strict",
+  "checks": [
+    {
+      "n": 1,
+      "name": "S1 报告↔明细自洽（两设计逐档统计量由数据文件独立重放一致；verdict=all(H)）",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "n": 2,
+      "name": "S2 口径不变量（危险恒 0 / oracle 测量=0 / oracle 可行率=上限 / v1 gt 极差>0 而 v2=0）",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "n": 3,
+      "name": "S3 混淆因果：v1（条件流耦合）非单调、v2（解耦）单调 ⇒ 非单调归因于条件集不同",
+      "pass": true,
+      "detail": "v1 feasible=[0.2033, 0.2567, 0.2333, 0.2533, 0.3133]（非单调=True）｜ v2 feasible=[0.2, 0.21, 0.2167, 0.2467, 0.2567]（单调=True）"
+    },
+    {
+      "n": 4,
+      "name": "S4a 篡改 v2 某档测量次数 → S1 必报",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "n": 5,
+      "name": "S4b 让 oracle 档出现测量（0.01）→ S2 必报",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "n": 6,
+      "name": "S4c 把 v1 的 gt 摊平成与 v2 相同（抹掉条件流混淆这条证据）→「v1 gt 极差>0」必报",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "n": 7,
+      "name": "S4d 让某个 s>0 档的可行率**超过 oracle** → S2 的「oracle ≥ 所有 s>0 档」必报",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "n": 8,
+      "name": "S4e 翻转 H85b-4 → S1/S3 必报",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "n": 9,
+      "name": "S4f 未篡改 → S1/S2/S3 通过（阴性对照）",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "n": 10,
+      "name": "S5 幂等：两次重放一致",
+      "pass": true,
+      "detail": ""
+    }
+  ],
+  "findings": [
+    "独立重放复现两种设计；**条件流混淆的因果链被结构性检验**：v1（耦合）非单调、v2（解耦）单调。",
+    "★ 口径注记：本层复用仓库 `five_orders`，排除的是『报告数字被改 / 臂逻辑记错』；判据实现偏差由 E85b 的 L4（独立物理重写）承担。"
+  ],
+  "n_pass": 10,
+  "n_total": 10,
+  "audit_pass": true
+}
