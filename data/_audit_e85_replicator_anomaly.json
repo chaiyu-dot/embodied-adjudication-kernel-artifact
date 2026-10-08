@@ -1,0 +1,71 @@
+{
+  "audit": "E85 L2 replicator + anomaly injection",
+  "checks": [
+    {
+      "n": 1,
+      "name": "T1 第三方复算：派生序列/单调性/7 判据/口径不变量/点入口危险递减 全部自洽",
+      "pass": true,
+      "detail": "calls=[0.3, 0.24, 0.1233, 0.0533, 0.02] feas=[0.2033, 0.2567, 0.2333, 0.2533, 0.3133] dang=[0, 0, 0, 0, 0] rho(calls)=1.0000"
+    },
+    {
+      "n": 2,
+      "name": "T2a 把 s=1.0 的测量次数压到 0.05 → H85-1 必报",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "n": 3,
+      "name": "T2b 让某档 GATED 出现危险 → H85-3 与不变量必报",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "n": 4,
+      "name": "T2c 把 s=0.02 测量次数改成 0（把诚实 FAIL 悄悄改成 PASS）→ 判据重算必与报告不符",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "n": 5,
+      "name": "T2d 破坏可行率单调 → H85-2 必报",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "n": 6,
+      "name": "T2e 抹掉点入口在粗接口下的漏报 → H85-6 必报",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "n": 7,
+      "name": "T2f 把诚实 FAIL 全部翻成 PASS → verdict_pass≠all(H) 必报",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "n": 8,
+      "name": "T3 跨实验一致性：E85 的 s=1.0 档与 E84 同台架同臂，**方向**一致（n 不同故不逐位相等）",
+      "pass": true,
+      "detail": "E85 s=1.0 POINT=0.0967 GATED meas=0.3000 ｜ E84 POINT=0.0925 GATED meas=0.3625"
+    },
+    {
+      "n": 9,
+      "name": "T4 阴性对照：未篡改 → T1 通过",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "n": 10,
+      "name": "T5 幂等：两次读入结论一致",
+      "pass": true,
+      "detail": ""
+    }
+  ],
+  "findings": [
+    "E85 的派生序列/单调性/口径不变量/跨件方向一致性均有分辨力；包括『把诚实 FAIL 改成 PASS』在内的篡改均可被抓。"
+  ],
+  "n_pass": 10,
+  "n_total": 10,
+  "audit_pass": true
+}
