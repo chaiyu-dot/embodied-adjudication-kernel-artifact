@@ -1,0 +1,226 @@
+{
+  "audit": "_audit_e73_strict",
+  "experiment": "e73_velocity_spectrum_envelope",
+  "pass": 21,
+  "total": 21,
+  "verdict": true,
+  "audit_pass": true,
+  "n_pass": 21,
+  "n_total": 21,
+  "forward": [
+    {
+      "name": "F1a_structure",
+      "pass": true,
+      "detail": "missing=[]"
+    },
+    {
+      "name": "F1b_no_inf_nan",
+      "pass": true,
+      "detail": "非有限=[]"
+    },
+    {
+      "name": "F2a_closed_form_v",
+      "pass": true,
+      "detail": "max|v_dense - cap*sigma_max| = 2.50e-05"
+    },
+    {
+      "name": "F2b_stored_values_match_physics",
+      "pass": true,
+      "detail": "v_mis=0 a_mis=0 ad_mis=0 []"
+    },
+    {
+      "name": "F3_speed_cap_driven",
+      "pass": true,
+      "detail": "全部抽样方向 max_speed==QD_CAP 且 qd=cap 时刻力矩在限内"
+    },
+    {
+      "name": "F4_speed_primitive_feasible",
+      "pass": true,
+      "detail": "40 抽样 (q,u)：返回 s 处 |τ|≤τ_lim"
+    },
+    {
+      "name": "F5_speed_primitive_tight",
+      "pass": true,
+      "detail": "s_range=[4.000,4.000]（越限不可再放大）"
+    },
+    {
+      "name": "F6_feasibility_prefix_monotone",
+      "pass": true,
+      "detail": "可行集=[0,s*] 前缀（二分前提成立）"
+    },
+    {
+      "name": "F7_accel_primitive_ok",
+      "pass": true,
+      "detail": "feasible=True tight=True"
+    },
+    {
+      "name": "F8_realizability_bound",
+      "pass": true,
+      "detail": "qdd_ok=True diag<True feas=True active=True"
+    },
+    {
+      "name": "F9_path_geometry",
+      "pass": true,
+      "detail": "geo=True s单调=True"
+    },
+    {
+      "name": "F10_stats_consistent",
+      "pass": true,
+      "detail": "v=1.8948/2.7431/3.0461 a=56.514/71.926/87.8941"
+    },
+    {
+      "name": "F11_reproduce_closedform",
+      "pass": true,
+      "detail": "closed v=3.0463 indep a=66.1436 | report 3.0461/66.1436"
+    },
+    {
+      "name": "F12_jerk_consistent",
+      "pass": true,
+      "detail": "wn=7.758"
+    },
+    {
+      "name": "F13_honesty_consistent",
+      "pass": true,
+      "detail": "tq_only=8.24 vmax=3.05"
+    },
+    {
+      "name": "F14_determinism",
+      "pass": true,
+      "detail": "non-deterministic"
+    }
+  ],
+  "reverse": [
+    {
+      "name": "R1_tamper_cell_v_detected",
+      "pass": true,
+      "detail": "改单格 v_max→F2b 必报"
+    },
+    {
+      "name": "R2_tamper_geometry_detected",
+      "pass": true,
+      "detail": "破坏 fk 一致→F9 必报"
+    },
+    {
+      "name": "R3_inject_inf_detected",
+      "pass": true,
+      "detail": "注入 inf→F1b 必报"
+    },
+    {
+      "name": "R4_tamper_stats_detected",
+      "pass": true,
+      "detail": "改中位数→F10 必报"
+    },
+    {
+      "name": "R5_clean_passes",
+      "pass": true,
+      "detail": "clean=16/16"
+    }
+  ],
+  "checks": [
+    {
+      "name": "F1a_structure",
+      "pass": true,
+      "detail": "missing=[]"
+    },
+    {
+      "name": "F1b_no_inf_nan",
+      "pass": true,
+      "detail": "非有限=[]"
+    },
+    {
+      "name": "F2a_closed_form_v",
+      "pass": true,
+      "detail": "max|v_dense - cap*sigma_max| = 2.50e-05"
+    },
+    {
+      "name": "F2b_stored_values_match_physics",
+      "pass": true,
+      "detail": "v_mis=0 a_mis=0 ad_mis=0 []"
+    },
+    {
+      "name": "F3_speed_cap_driven",
+      "pass": true,
+      "detail": "全部抽样方向 max_speed==QD_CAP 且 qd=cap 时刻力矩在限内"
+    },
+    {
+      "name": "F4_speed_primitive_feasible",
+      "pass": true,
+      "detail": "40 抽样 (q,u)：返回 s 处 |τ|≤τ_lim"
+    },
+    {
+      "name": "F5_speed_primitive_tight",
+      "pass": true,
+      "detail": "s_range=[4.000,4.000]（越限不可再放大）"
+    },
+    {
+      "name": "F6_feasibility_prefix_monotone",
+      "pass": true,
+      "detail": "可行集=[0,s*] 前缀（二分前提成立）"
+    },
+    {
+      "name": "F7_accel_primitive_ok",
+      "pass": true,
+      "detail": "feasible=True tight=True"
+    },
+    {
+      "name": "F8_realizability_bound",
+      "pass": true,
+      "detail": "qdd_ok=True diag<True feas=True active=True"
+    },
+    {
+      "name": "F9_path_geometry",
+      "pass": true,
+      "detail": "geo=True s单调=True"
+    },
+    {
+      "name": "F10_stats_consistent",
+      "pass": true,
+      "detail": "v=1.8948/2.7431/3.0461 a=56.514/71.926/87.8941"
+    },
+    {
+      "name": "F11_reproduce_closedform",
+      "pass": true,
+      "detail": "closed v=3.0463 indep a=66.1436 | report 3.0461/66.1436"
+    },
+    {
+      "name": "F12_jerk_consistent",
+      "pass": true,
+      "detail": "wn=7.758"
+    },
+    {
+      "name": "F13_honesty_consistent",
+      "pass": true,
+      "detail": "tq_only=8.24 vmax=3.05"
+    },
+    {
+      "name": "F14_determinism",
+      "pass": true,
+      "detail": "non-deterministic"
+    },
+    {
+      "name": "R1_tamper_cell_v_detected",
+      "pass": true,
+      "detail": "改单格 v_max→F2b 必报"
+    },
+    {
+      "name": "R2_tamper_geometry_detected",
+      "pass": true,
+      "detail": "破坏 fk 一致→F9 必报"
+    },
+    {
+      "name": "R3_inject_inf_detected",
+      "pass": true,
+      "detail": "注入 inf→F1b 必报"
+    },
+    {
+      "name": "R4_tamper_stats_detected",
+      "pass": true,
+      "detail": "改中位数→F10 必报"
+    },
+    {
+      "name": "R5_clean_passes",
+      "pass": true,
+      "detail": "clean=16/16"
+    }
+  ]
+}
