@@ -1,0 +1,127 @@
+{
+  "checks": [
+    {
+      "check": "F1 报告含全部必需键",
+      "pass": true,
+      "detail": "缺失=[]"
+    },
+    {
+      "check": "F1b verdict_pass=True",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "F2 逐关节 ωn 独立重算一致",
+      "pass": true,
+      "detail": "hand=7.758153 impl=7.758153"
+    },
+    {
+      "check": "F2b E66 kp_max 复现",
+      "pass": true,
+      "detail": "kp=1.8000"
+    },
+    {
+      "check": "F2c E66.budget_gains 的 ωn 已修为**逐关节口径**（与手算一致）",
+      "pass": true,
+      "detail": "手算=7.758153 budget_gains=7.758153"
+    },
+    {
+      "check": "F2d 历史 bug 值得以保留（min kp ÷ mean M = 5.1619 ≠ 逐关节 7.7582）",
+      "pass": true,
+      "detail": "legacy=5.1619 correct=7.7582"
+    },
+    {
+      "check": "F3 判据式与实现逐条对应（head → kp → ωn）",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "F5 E58 脚本仍用假设 ωn=40（未被回填篡改）",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "F5b E58 原报告仍记 ωn=40（历史记录保持原样）",
+      "pass": true,
+      "detail": "E58 report ωn=40.0"
+    },
+    {
+      "check": "R1a ωn 对 |Δq| 单调不增",
+      "pass": true,
+      "detail": "13.17 7.61 5.38 3.80 2.69"
+    },
+    {
+      "check": "R1b ωn 对负载 mp 单调不增",
+      "pass": true,
+      "detail": "5.378 4.049 1.900 0.000"
+    },
+    {
+      "check": "R1c ωn 对前馈 τ_ff 单调不增",
+      "pass": true,
+      "detail": "7.758 6.939 0.000 0.000"
+    },
+    {
+      "check": "R2a Δq→0 时 ωn 有限（min_step 兜底，不发散）",
+      "pass": true,
+      "detail": "ωn(Δq=1e-9)=131.739"
+    },
+    {
+      "check": "R2b 前馈吃掉预算 → ωn=0（判不可达而非给负值）",
+      "pass": true,
+      "detail": "ωn=0.000"
+    },
+    {
+      "check": "R3a 逐条 budget ωn 全部 ≠ 40",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "R3b max(budget ωn) < 40（假设值确属不可达）",
+      "pass": true,
+      "detail": "max=8.436"
+    },
+    {
+      "check": "R3c E69 本体不硬编码 40.0 作为 ωn（只从 E58.OMEGA_N 读）",
+      "pass": true,
+      "detail": "hardcoded40=0"
+    },
+    {
+      "check": "R4a 标定网格存在 合格↔不合格 翻转（标定有信息量）",
+      "pass": true,
+      "detail": "n_ok=17 n_bad=14"
+    },
+    {
+      "check": "R4b 标定判据用 gate=False（否则越限统计同义反复）",
+      "pass": true,
+      "detail": "grid 中 demand 越限非零 = True"
+    },
+    {
+      "check": "R5 假设口径与预算口径逐条 margin 不同（回填真的生效）",
+      "pass": true,
+      "detail": "min|Δmargin|=7.759e-01"
+    },
+    {
+      "check": "R6a 无可行 k_omega 时必须给出结构性解释（finding_5 含反应时间地板）",
+      "pass": true,
+      "detail": "结构性地板：m_omega 绑定条件 ωn ≥ k_omega·2π·f_traj；m_tau 绑定 ωn ≥ k_margin·f_tra"
+    },
+    {
+      "check": "R6b 误报在 k_omega→0.02 后不再下降（存在结构性地板，非调参问题）",
+      "pass": true,
+      "detail": "FA(0.05)=0.25 FA(0.02)=0.25"
+    },
+    {
+      "check": "R7 两表分母口径不同已登记（V3=全体 slow；V3b=D_ok 子集）",
+      "pass": true,
+      "detail": "V3=0.941 V3b=0.900"
+    }
+  ],
+  "F4_caveats": [
+    "E69 V1/V2 台架：τ_lim=[5,1.8]，质量 0.6/0.35（=E66/E68 同一台架）",
+    "E69 V3 台架：τ_lim=[8,4]，质量随 load∈{0.5,1,2} 缩放（=E58 原始 bench，未改）",
+    "E69 frac=0.9；E58 k_omega=2.0 / k_margin=2.0 / T_s=0.001"
+  ],
+  "n_pass": 23,
+  "n_total": 23,
+  "audit_pass": true
+}
