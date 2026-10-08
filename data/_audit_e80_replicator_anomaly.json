@@ -1,0 +1,83 @@
+{
+  "experiment": "E80 第三方/盲复刻(L2/L4 纯数据)",
+  "independence_scope": "不 import 被审模块，只读 JSON（第三方）",
+  "checks": [
+    {
+      "name": "D1_bench_complete_and_sane",
+      "pass": true,
+      "detail": "models=3 n=8 g=9.81"
+    },
+    {
+      "name": "D2_rows_count_and_two_analytic_paths_agree",
+      "pass": true,
+      "detail": "n=24 two_analytic_ok=True"
+    },
+    {
+      "name": "D2b_stored_deviation_fields_selfconsistent",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "D3_max_abs_and_pairwise_recomputed_and_all_ok_consistent",
+      "pass": true,
+      "detail": "recomp=1.562e-08 stored=1.562e-08 tol=1e-07"
+    },
+    {
+      "name": "D4_falsification_witness_selfconsistent",
+      "pass": true,
+      "detail": "max_bad=2.575e-01 tol=1e-03 detected=True"
+    },
+    {
+      "name": "D5_ke_crosscheck_selfconsistent",
+      "pass": true,
+      "detail": "max_rel_dev=4.280e-16 tol=1e-12"
+    },
+    {
+      "name": "D6_criteria_and_verdict_selfconsistent",
+      "pass": true,
+      "detail": "C1=True C2=True C3=True verdict=True"
+    },
+    {
+      "name": "D7_bench_sha256_integrity_anchor",
+      "pass": true,
+      "detail": "stored=26d6f3d47c4cc1e1 recomp=26d6f3d47c4cc1e1"
+    }
+  ],
+  "tamper": [
+    {
+      "name": "R1 篡改 A.all_ok=False → D3 必报",
+      "caught": true,
+      "detail": "期望捕获 ['D3']"
+    },
+    {
+      "name": "R2 篡改 B.detected=False → D4 必报",
+      "caught": true,
+      "detail": "期望捕获 ['D4']"
+    },
+    {
+      "name": "R3 篡改 C.max_rel_dev=9.9 → D5 必报",
+      "caught": true,
+      "detail": "期望捕获 ['D5']"
+    },
+    {
+      "name": "R4 篡改第一行 tau_lag 数据 → D2b 必报",
+      "caught": true,
+      "detail": "期望捕获 ['D2b']"
+    },
+    {
+      "name": "R5 篡改 verdict_pass=False → D6 必报",
+      "caught": true,
+      "detail": "期望捕获 ['D6']"
+    },
+    {
+      "name": "R6 篡改 bench_sha256 → D7 必报",
+      "caught": true,
+      "detail": "期望捕获 ['D7']"
+    }
+  ],
+  "n_pass": 8,
+  "n_total": 8,
+  "n_tamper_pass": 6,
+  "n_tamper_total": 6,
+  "replicator_pass": true
+}
