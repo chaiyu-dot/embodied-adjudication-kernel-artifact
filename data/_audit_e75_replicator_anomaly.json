@@ -1,0 +1,55 @@
+{
+  "audit": "_audit_e75_replicator_anomaly",
+  "experiment": "e75_energy_margin_exact",
+  "pass": 9,
+  "total": 9,
+  "verdict": true,
+  "audit_pass": true,
+  "checks": [
+    {
+      "name": "T1_work_conjugacy_independent",
+      "pass": true,
+      "detail": "max|(W−D)−(ΔKE+ΔPE)|=1.000e-09"
+    },
+    {
+      "name": "T2_margin_independent",
+      "pass": true,
+      "detail": "m_E_exact/kinetic 逐行"
+    },
+    {
+      "name": "T3_band_independent",
+      "pass": true,
+      "detail": "band 逐行"
+    },
+    {
+      "name": "T4_ordinal_independent",
+      "pass": true,
+      "detail": "精确 1.000 动能 0.000"
+    },
+    {
+      "name": "T5_misband_independent",
+      "pass": true,
+      "detail": "误档 3 条"
+    },
+    {
+      "name": "T6_self_consistent_and_not_degraded",
+      "pass": true,
+      "detail": "inv=True verdict=True ocE=1.000 ocK=0.000"
+    },
+    {
+      "name": "T7_tamper_work_detected",
+      "pass": true,
+      "detail": "改 W → 功共轭残差重算必报"
+    },
+    {
+      "name": "T8_tamper_dEmech_detected",
+      "pass": true,
+      "detail": "改 dE_mech → m_E 重算必报"
+    },
+    {
+      "name": "T9_tamper_band_detected",
+      "pass": true,
+      "detail": "改存储 band_kinetic_only → 独立重算 band 与之不符（T3 类）必报"
+    }
+  ]
+}
