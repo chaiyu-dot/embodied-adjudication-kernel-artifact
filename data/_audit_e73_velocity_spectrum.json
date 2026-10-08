@@ -1,0 +1,196 @@
+{
+  "audit": "_audit_e73_velocity_spectrum",
+  "experiment": "e73_velocity_spectrum_envelope",
+  "pass": 18,
+  "total": 18,
+  "verdict": true,
+  "audit_pass": true,
+  "n_pass": 18,
+  "n_total": 18,
+  "forward": [
+    {
+      "name": "F1_structure",
+      "pass": true,
+      "detail": "missing=[]"
+    },
+    {
+      "name": "F2_polar_recompute",
+      "pass": true,
+      "detail": "polar mismatch"
+    },
+    {
+      "name": "F3_path_recompute",
+      "pass": true,
+      "detail": "n=161 unreach=0 jump_v=0.008/0.008 spot=True"
+    },
+    {
+      "name": "F4_reproduce_e67_independent",
+      "pass": true,
+      "detail": "indep v=3.0461 a=66.1436 | report v=3.0461 a=66.1436"
+    },
+    {
+      "name": "F5_realizability_bound",
+      "pass": true,
+      "detail": "diag=65.1131 max=87.8941 cap_ok=True"
+    },
+    {
+      "name": "F6_jerk_consistency",
+      "pass": true,
+      "detail": "wn=7.758 jerk_e67=513.152/513.152 jerk_max=681.896/681.896"
+    },
+    {
+      "name": "F7_calibration_honest",
+      "pass": true,
+      "detail": "bind=441|0|0 head_sing=True cap_all=True"
+    },
+    {
+      "name": "F8_stats_monotone",
+      "pass": true,
+      "detail": "v=1.8948/2.7431/3.0461 a=56.514/71.926/87.8941"
+    },
+    {
+      "name": "F9_determinism",
+      "pass": true,
+      "detail": "non-deterministic"
+    },
+    {
+      "name": "F10_invariants_self_consistent",
+      "pass": true,
+      "detail": "inv=True rep=True"
+    }
+  ],
+  "reverse": [
+    {
+      "name": "R1_tamper_polar_detected",
+      "pass": true,
+      "detail": "audit blind to polar tamper"
+    },
+    {
+      "name": "R2_clean_passes",
+      "pass": true,
+      "detail": "clean=10/10"
+    },
+    {
+      "name": "R3_tamper_repro_detected",
+      "pass": true,
+      "detail": "audit blind to repro tamper"
+    },
+    {
+      "name": "R4_tamper_binding_detected",
+      "pass": true,
+      "detail": "audit blind to binding tamper"
+    },
+    {
+      "name": "R5_tamper_monotone_detected",
+      "pass": true,
+      "detail": "audit blind to monotone tamper"
+    },
+    {
+      "name": "R6_nonfinite_to_none",
+      "pass": true,
+      "detail": "nonfinite not capped"
+    },
+    {
+      "name": "R7_bound_is_active",
+      "pass": true,
+      "detail": "capped<=uncapped=True nontrivial=True"
+    },
+    {
+      "name": "R8_coverage_structure",
+      "pass": true,
+      "detail": "audit blind to missing section"
+    }
+  ],
+  "checks": [
+    {
+      "name": "F1_structure",
+      "pass": true,
+      "detail": "missing=[]"
+    },
+    {
+      "name": "F2_polar_recompute",
+      "pass": true,
+      "detail": "polar mismatch"
+    },
+    {
+      "name": "F3_path_recompute",
+      "pass": true,
+      "detail": "n=161 unreach=0 jump_v=0.008/0.008 spot=True"
+    },
+    {
+      "name": "F4_reproduce_e67_independent",
+      "pass": true,
+      "detail": "indep v=3.0461 a=66.1436 | report v=3.0461 a=66.1436"
+    },
+    {
+      "name": "F5_realizability_bound",
+      "pass": true,
+      "detail": "diag=65.1131 max=87.8941 cap_ok=True"
+    },
+    {
+      "name": "F6_jerk_consistency",
+      "pass": true,
+      "detail": "wn=7.758 jerk_e67=513.152/513.152 jerk_max=681.896/681.896"
+    },
+    {
+      "name": "F7_calibration_honest",
+      "pass": true,
+      "detail": "bind=441|0|0 head_sing=True cap_all=True"
+    },
+    {
+      "name": "F8_stats_monotone",
+      "pass": true,
+      "detail": "v=1.8948/2.7431/3.0461 a=56.514/71.926/87.8941"
+    },
+    {
+      "name": "F9_determinism",
+      "pass": true,
+      "detail": "non-deterministic"
+    },
+    {
+      "name": "F10_invariants_self_consistent",
+      "pass": true,
+      "detail": "inv=True rep=True"
+    },
+    {
+      "name": "R1_tamper_polar_detected",
+      "pass": true,
+      "detail": "audit blind to polar tamper"
+    },
+    {
+      "name": "R2_clean_passes",
+      "pass": true,
+      "detail": "clean=10/10"
+    },
+    {
+      "name": "R3_tamper_repro_detected",
+      "pass": true,
+      "detail": "audit blind to repro tamper"
+    },
+    {
+      "name": "R4_tamper_binding_detected",
+      "pass": true,
+      "detail": "audit blind to binding tamper"
+    },
+    {
+      "name": "R5_tamper_monotone_detected",
+      "pass": true,
+      "detail": "audit blind to monotone tamper"
+    },
+    {
+      "name": "R6_nonfinite_to_none",
+      "pass": true,
+      "detail": "nonfinite not capped"
+    },
+    {
+      "name": "R7_bound_is_active",
+      "pass": true,
+      "detail": "capped<=uncapped=True nontrivial=True"
+    },
+    {
+      "name": "R8_coverage_structure",
+      "pass": true,
+      "detail": "audit blind to missing section"
+    }
+  ]
+}
