@@ -1,0 +1,73 @@
+{
+  "experiment": "E65 第三方/盲复刻(L2/L4 纯数据)",
+  "independence_scope": "不 import 被审模块，只读 JSON（逐臂统计重算 + 判据）",
+  "checks": [
+    {
+      "name": "D1_rows_shape",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "D2_unique_and_exec_consistency",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "D3_per_arm_stats_recompute",
+      "pass": true,
+      "detail": "4 arms match"
+    },
+    {
+      "name": "D4_selective_inapplicable_match",
+      "pass": true,
+      "detail": "v=0.000 inv=0.910"
+    },
+    {
+      "name": "D5_paired_diff_ci_recompute",
+      "pass": true,
+      "detail": "d1=[0.3071, 0.4086] d2=[0.3094, 0.411]"
+    },
+    {
+      "name": "D6_criteria_and_verdict_selfconsistent",
+      "pass": true,
+      "detail": "verdict=False"
+    },
+    {
+      "name": "D7_prereg_sha256_anchor",
+      "pass": true,
+      "detail": "673fa893dd4d8db4"
+    }
+  ],
+  "tamper": [
+    {
+      "name": "R1 篡改某行 exec → D2 必报",
+      "caught": true,
+      "detail": "期望捕获 ['D2']"
+    },
+    {
+      "name": "R2 篡改 G3_RETRY miss_count → D3 必报",
+      "caught": true,
+      "detail": "期望捕获 ['D3']"
+    },
+    {
+      "name": "R3 篡改 paired diff CI → D5 必报",
+      "caught": true,
+      "detail": "期望捕获 ['D5']"
+    },
+    {
+      "name": "R4 篡改 prereg_sha256 → D7 必报",
+      "caught": true,
+      "detail": "期望捕获 ['D7']"
+    },
+    {
+      "name": "R5 篡改 verdict_pass（原 False→True）→ D6 必报",
+      "caught": true,
+      "detail": "期望捕获 ['D6']"
+    }
+  ],
+  "n_pass": 7,
+  "n_total": 7,
+  "n_tamper_pass": 5,
+  "n_tamper_total": 5,
+  "replicator_pass": true
+}
