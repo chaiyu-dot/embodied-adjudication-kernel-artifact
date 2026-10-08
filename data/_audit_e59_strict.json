@@ -1,0 +1,123 @@
+{
+  "experiment": "E59 严格审核(L3 独立重推)",
+  "independence_scope": "独立重推：自写 d 生成 + 终止判据 + 统计，不 import e59",
+  "checks": [
+    {
+      "name": "S1_rows_d_match",
+      "pass": true,
+      "detail": "max|Δd|=0.00000 n=240"
+    },
+    {
+      "name": "S2_nonterminated_zero",
+      "pass": true,
+      "detail": "re=0 store=0"
+    },
+    {
+      "name": "S3_per_eps_stats_match",
+      "pass": true,
+      "detail": "mismatch=0"
+    },
+    {
+      "name": "S4_rounds_p95_match",
+      "pass": true,
+      "detail": "re=3.0000 store=3.0000"
+    },
+    {
+      "name": "S5_spearman_rho_match",
+      "pass": true,
+      "detail": "re=0.5525 store=0.5525"
+    },
+    {
+      "name": "S6_criteria_and_verdict_selfconsistent",
+      "pass": true,
+      "detail": "verdict=True"
+    },
+    {
+      "name": "S7_self_consistency",
+      "pass": true,
+      "detail": ""
+    }
+  ],
+  "findings": [
+    {
+      "id": "E59-D1_doc_drift",
+      "severity": "D(一致性)",
+      "pass": true,
+      "detail": "无漂移",
+      "code_shrink": 0.35,
+      "code_floor": 0.012
+    },
+    {
+      "id": "E59-D1_doc_drift",
+      "severity": "D(一致性)",
+      "pass": true,
+      "detail": "无漂移",
+      "code_shrink": 0.35,
+      "code_floor": 0.012
+    },
+    {
+      "id": "E59-D1_doc_drift",
+      "severity": "D(一致性)",
+      "pass": true,
+      "detail": "无漂移",
+      "code_shrink": 0.35,
+      "code_floor": 0.012
+    },
+    {
+      "id": "E59-D1_doc_drift",
+      "severity": "D(一致性)",
+      "pass": true,
+      "detail": "无漂移",
+      "code_shrink": 0.35,
+      "code_floor": 0.012
+    },
+    {
+      "id": "E59-D1_doc_drift",
+      "severity": "D(一致性)",
+      "pass": true,
+      "detail": "无漂移",
+      "code_shrink": 0.35,
+      "code_floor": 0.012
+    },
+    {
+      "id": "E59-D1_doc_drift",
+      "severity": "D(一致性)",
+      "pass": true,
+      "detail": "无漂移",
+      "code_shrink": 0.35,
+      "code_floor": 0.012
+    }
+  ],
+  "tamper": [
+    {
+      "name": "R1 篡改 nonterminated=5 → S2 必报",
+      "caught": true,
+      "detail": "期望捕获 ['S2']"
+    },
+    {
+      "name": "R2 篡改 rounds_p95 → S4 必报",
+      "caught": true,
+      "detail": "期望捕获 ['S4']"
+    },
+    {
+      "name": "R3 篡改 spearman rho → S5 必报",
+      "caught": true,
+      "detail": "期望捕获 ['S5']"
+    },
+    {
+      "name": "R4 篡改某行 d → S1 必报",
+      "caught": true,
+      "detail": "期望捕获 ['S1']"
+    },
+    {
+      "name": "R5 篡改 verdict_pass → S6 必报",
+      "caught": true,
+      "detail": "期望捕获 ['S6']"
+    }
+  ],
+  "n_pass": 7,
+  "n_total": 7,
+  "n_tamper_pass": 5,
+  "n_tamper_total": 5,
+  "strict_pass": true
+}
