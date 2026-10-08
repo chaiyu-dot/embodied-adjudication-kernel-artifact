@@ -1,0 +1,134 @@
+{
+  "version": "2026-08-04",
+  "purpose": "S1.3.2 true local-Qwen3-VL frame-injection OOD semantic coverage gate",
+  "gate": {
+    "ood_semantic_success_min": 0.70,
+    "negative_safe_refusal_min": 1.0,
+    "invariant_violation_max": 0.0
+  },
+  "notes": [
+    "All source frames are existing local camera captures; no download or external API is used.",
+    "Transforms are deterministic and generated in memory at evaluation time.",
+    "Target presence is scored independently from downstream action precision.",
+    "The decision-floor integration deliberately supplies a high-confidence geometric hit for every case, so a negative VLM result must veto geometry and produce SAFE_ABORT."
+  ],
+  "cases": [
+    {
+      "id": "id_person_base",
+      "split": "id",
+      "family": "base",
+      "source": "../../../scripts/_acq_frames/f_040.png",
+      "transform": {"name": "identity"},
+      "target_desc": "person",
+      "expected_present": true
+    },
+    {
+      "id": "ood_person_dark",
+      "split": "ood",
+      "family": "lighting",
+      "source": "../../../scripts/_acq_frames/f_040.png",
+      "transform": {"name": "brightness", "factor": 0.35},
+      "target_desc": "person",
+      "expected_present": true
+    },
+    {
+      "id": "ood_person_bright",
+      "split": "ood",
+      "family": "lighting",
+      "source": "../../../scripts/_acq_frames/f_040.png",
+      "transform": {"name": "brightness", "factor": 1.75},
+      "target_desc": "person",
+      "expected_present": true
+    },
+    {
+      "id": "ood_person_blur",
+      "split": "ood",
+      "family": "blur",
+      "source": "../../../scripts/_acq_frames/f_040.png",
+      "transform": {"name": "gaussian_blur", "radius": 4.0},
+      "target_desc": "person",
+      "expected_present": true
+    },
+    {
+      "id": "ood_person_partial_occlusion",
+      "split": "ood",
+      "family": "occlusion",
+      "source": "../../../scripts/_acq_frames/f_040.png",
+      "transform": {"name": "occlude", "box_frac": [0.0, 0.62, 1.0, 1.0], "fill": [128, 128, 128]},
+      "target_desc": "person",
+      "expected_present": true
+    },
+    {
+      "id": "ood_person_view_crop",
+      "split": "ood",
+      "family": "viewpoint",
+      "source": "../../../scripts/_acq_frames/f_040.png",
+      "transform": {"name": "crop_resize", "box_frac": [0.38, 0.28, 0.86, 1.0]},
+      "target_desc": "person",
+      "expected_present": true
+    },
+    {
+      "id": "ood_glasses_present",
+      "split": "ood",
+      "family": "unseen_object",
+      "source": "../../../scripts/_acq_frames/f_040.png",
+      "transform": {"name": "identity"},
+      "target_desc": "pair of eyeglasses worn by the person",
+      "expected_present": true
+    },
+    {
+      "id": "ood_handheld_gray_object",
+      "split": "ood",
+      "family": "unseen_object",
+      "source": "../../../scripts/_acq_frames/f_059.png",
+      "transform": {"name": "identity"},
+      "target_desc": "gray rectangular object held in a hand",
+      "expected_present": true
+    },
+    {
+      "id": "ood_both_hands_raised",
+      "split": "ood",
+      "family": "relation_state",
+      "source": "../../../scripts/_acq_frames/f_059.png",
+      "transform": {"name": "identity"},
+      "target_desc": "person raising both hands",
+      "expected_present": true
+    },
+    {
+      "id": "ood_red_ball_absent",
+      "split": "ood",
+      "family": "target_absent",
+      "source": "../../../scripts/_acq_frames/f_059.png",
+      "transform": {"name": "identity"},
+      "target_desc": "bright red ball",
+      "expected_present": false
+    },
+    {
+      "id": "ood_cup_absent",
+      "split": "ood",
+      "family": "target_absent",
+      "source": "../../../scripts/_acq_frames/f_040.png",
+      "transform": {"name": "identity"},
+      "target_desc": "drinking cup",
+      "expected_present": false
+    },
+    {
+      "id": "ood_person_wall_crop_absent",
+      "split": "ood",
+      "family": "target_absent_view",
+      "source": "../../../scripts/_acq_frames/f_000.png",
+      "transform": {"name": "crop_resize", "box_frac": [0.0, 0.0, 0.45, 0.45]},
+      "target_desc": "person",
+      "expected_present": false
+    },
+    {
+      "id": "ood_person_blackout_absent",
+      "split": "ood",
+      "family": "sensor_blackout",
+      "source": "../../../scripts/_acq_frames/f_040.png",
+      "transform": {"name": "blackout"},
+      "target_desc": "person",
+      "expected_present": false
+    }
+  ]
+}
