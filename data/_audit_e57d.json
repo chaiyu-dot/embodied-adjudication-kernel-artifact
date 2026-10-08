@@ -1,0 +1,38 @@
+{
+  "experiment": "E57d DeepSeek-family real-LLM alias paired benchmark audit (underlying verdict_pass=false, audited)",
+  "audit_role": "failure-audit",
+  "audit_date": "2026-09-23",
+  "audited_by": "blind-audit gap-fill (user directive: 补进去)",
+  "underlying_reports": [
+    "e57d_deepseek_complete_report.json",
+    "e57d_deepseek_complete_report_rerun.json",
+    "e57d_repl_1.json",
+    "e57d_rerun2.json"
+  ],
+  "data_dir": "期刊投稿_TMLR_2026-09-06/data",
+  "prereg_file": "e57d_deepseek_complete_prereg.json",
+  "underlying_verdict_pass": false,
+  "audit_integrity_pass": true,
+  "verdict_pass": false,
+  "checks": [
+    {"name": "report_files_present", "pass": true, "detail": "all 4 variant reports present in data_dir (complete, complete_rerun, repl1, rerun2)"},
+    {"name": "json_valid", "pass": true, "detail": "all 4 parsed without error (1.3-2.5 MB each)"},
+    {"name": "verdict_field_present", "pass": true, "detail": "verdict_pass field present in all 4"},
+    {"name": "verdict_self_consistent", "pass": true, "detail": "verdict_pass=false in all 4 matches preregistered_verdict false (H57d-6) in all 4"},
+    {"name": "honest_notes_present", "pass": true, "detail": "honest_notes present in all 4; cross-vendor non-generality declared"},
+    {"name": "failure_not_suppressed", "pass": true, "detail": "verdict_pass retained false across all 4 variants (no flipping to hide failure)"},
+    {"name": "prereg_linked", "pass": true, "detail": "prereg_file + prereg_sha256 + prereg_alignment present; same prereg across all 4"}
+  ],
+  "tamper": [
+    {"name": "no_posthoc_verdict_flip", "pass": true, "detail": "verdict_pass=false unchanged in all 4; replicate/fresh_sampling flags differ as expected (rep1=fresh, others=cached)"},
+    {"name": "no_internal_contradiction", "pass": true, "detail": "results.per_alias/by_tau/pooled/parse_rate self-consistent; diagnosis computed by independent adjudication core"}
+  ],
+  "findings": [
+    {"id": "E57d-H57d-6", "pass": false, "severity": "FAIL", "detail": "H57d-6_difficulty_dose_response FALSE in all 4 variants: difficulty dose-response hypothesis not supported"},
+    {"id": "E57d-F-scope", "pass": false, "severity": "F", "detail": "7 aliases share ONE vendor endpoint; weight independence unproven -> experiment does NOT claim cross-vendor generality, only 'robust effect within DeepSeek family, clustered by task'. Retained as honest limitation."}
+  ],
+  "failure_summary": "真实 LLM 调用（temperature=0，缓存可复现；bench 无视觉故用 LLM 非 VLM）。4 份变体（含 1 次 fresh replicate）结论一致：H57d-6 难度剂量-效应 FAIL。诚实声明不主张跨厂商普遍性。诊断数值由裁决核独立算出，非厂商自报。",
+  "scope": {"simulator_used": false, "gpu_used": false, "api_used": true, "provider": "deepseek", "method": "real_llm_alias_paired_benchmark"},
+  "n_pass": 7,
+  "n_total": 7
+}
