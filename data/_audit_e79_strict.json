@@ -1,0 +1,63 @@
+{
+  "experiment": "E79 严格审核(L3 独立物理)",
+  "independence_scope": "独立物理：审计者自写冲量/制动/CoP 解析 + rne_dynamics(参考)，不 import e79",
+  "checks": [
+    {
+      "name": "S1_C1_closedform_consistent_lt_tol",
+      "pass": true,
+      "detail": "dev_impl=0.00e+00 dev_store=0.00e+00 tol=1e-12"
+    },
+    {
+      "name": "S2_C2_impulse_momentum_theorem_lt_tol",
+      "pass": true,
+      "detail": "devB=0.00e+00 devB_store=0.00e+00"
+    },
+    {
+      "name": "S3_C3_impulse_arm_effective_n_missed_ge1",
+      "pass": true,
+      "detail": "n_miss_re=3 stored=3 v_star_re=1.8750"
+    },
+    {
+      "name": "S4_C4_dynamic_cop_arm_effective_n_missed_ge1",
+      "pass": true,
+      "detail": "n_dyn_re=5 stored=5"
+    },
+    {
+      "name": "S5_verdict_self_consistent",
+      "pass": true,
+      "detail": ""
+    }
+  ],
+  "tamper": [
+    {
+      "name": "R1 篡改 A.max_abs_err=9.9 → S1 必报",
+      "caught": true,
+      "detail": "期望捕获 ['S1']"
+    },
+    {
+      "name": "R2 篡改 B.momentum_conserved_err=9.9 → S2 必报",
+      "caught": true,
+      "detail": "期望捕获 ['S2']"
+    },
+    {
+      "name": "R3 篡改 C.n_missed_by_static=0 → S3 必报",
+      "caught": true,
+      "detail": "期望捕获 ['S3']"
+    },
+    {
+      "name": "R4 篡改 D.n_static_only_missed=0 → S4 必报",
+      "caught": true,
+      "detail": "期望捕获 ['S4']"
+    },
+    {
+      "name": "R5 篡改 verdict_pass=False → S5 必报",
+      "caught": true,
+      "detail": "期望捕获 ['S5']"
+    }
+  ],
+  "n_pass": 5,
+  "n_total": 5,
+  "n_tamper_pass": 5,
+  "n_tamper_total": 5,
+  "strict_pass": true
+}
