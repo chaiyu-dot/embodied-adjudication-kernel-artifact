@@ -1,0 +1,72 @@
+{
+  "audit": "E84 L3 strict",
+  "checks": [
+    {
+      "n": 1,
+      "name": "S1 报告↔明细自洽（四臂计数/比率 + binding + verdict=all(H)，由数据文件独立重放）",
+      "pass": true,
+      "detail": "mine GATED feas=0.1875 meas=0.3625 | store feas=0.1875 meas=0.3625"
+    },
+    {
+      "n": 2,
+      "name": "S2 口径不变量（gt 恒等 / 零测量臂 / 危险仅点入口 / 触发率≤1 / 门控<全测 / 可行率偏序）",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "n": 3,
+      "name": "S4 独立验证 H84-5：包裹层证书五阶齐全 + first_failing_order 有值",
+      "pass": true,
+      "detail": "present=['C', 'D', 'E', 'K', 'S'] first_failing=D"
+    },
+    {
+      "n": 4,
+      "name": "S5a 篡改 GATED 测量次数 → S1 必报",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "n": 5,
+      "name": "S5b 篡改 binding 分布 → S1 必报",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "n": 6,
+      "name": "S5c 让全测臂出现危险（计数+比率同步改）→ S2 必报",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "n": 7,
+      "name": "S5c' 只改危险计数而比率不动 → S2 的计数↔比率自洽检查必报",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "n": 8,
+      "name": "S5d 破坏可行率偏序 → S2 必报",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "n": 9,
+      "name": "S5e 翻转 H84-3 → S1 必报（verdict≠all(H)）",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "n": 10,
+      "name": "S6 幂等：两次重放结论一致",
+      "pass": true,
+      "detail": ""
+    }
+  ],
+  "findings": [
+    "独立重放（自写臂逻辑 + 仓库判据本体）与报告逐项一致；包裹层五阶在环（H84-5）独立复算通过。",
+    "★ 口径注记：本层重放**复用仓库的 five_orders**，故它排除的是『报告数字被手工修改 / 臂逻辑记错』，**不**排除判据实现本身的偏差（后者由 E84c 的 L4 独立物理重写 + E84b 的独立引擎承担）。"
+  ],
+  "n_pass": 10,
+  "n_total": 10,
+  "audit_pass": true
+}
