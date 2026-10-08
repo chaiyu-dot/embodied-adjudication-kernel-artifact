@@ -1,0 +1,150 @@
+{
+  "experiment": "E60 严格审核(L3 独立重推)",
+  "independence_scope": "独立重推：自写四域映射 + 分档 + Spearman，不 import e60；另做设计漂移检查",
+  "checks": [
+    {
+      "name": "S1_rows_mE_and_band_match",
+      "pass": true,
+      "detail": "max|Δm_E|=0.0000 band_mismatch=0"
+    },
+    {
+      "name": "S2_mean_pairwise_rho_match",
+      "pass": true,
+      "detail": "re=0.9896 store=0.9896"
+    },
+    {
+      "name": "S3_band_agreement_match",
+      "pass": true,
+      "detail": "re=0.8000 store=0.8000"
+    },
+    {
+      "name": "S4_criteria_and_verdict_selfconsistent",
+      "pass": true,
+      "detail": "verdict=True"
+    },
+    {
+      "name": "S5_self_consistency",
+      "pass": true,
+      "detail": ""
+    }
+  ],
+  "findings": [
+    {
+      "id": "E60-D1_doc_drift",
+      "severity": "D(一致性)",
+      "pass": true,
+      "detail": "无漂移",
+      "expect_code_form": {
+        "force": "1-u(1+0.03u)",
+        "energy": "1-u(1+0.05u)",
+        "semantic": "1-u^0.96"
+      }
+    },
+    {
+      "id": "E60-F1_near_tautology",
+      "severity": "F(设计充分性)",
+      "pass": false,
+      "detail": "四域无噪声系统性偏差上界仅 0.0451 ⇒ 跨域一致近平凡（噪声 σ=0.03 主导）",
+      "noise_free_spread_bound": 0.0451
+    },
+    {
+      "id": "E60-D1_doc_drift",
+      "severity": "D(一致性)",
+      "pass": true,
+      "detail": "无漂移",
+      "expect_code_form": {
+        "force": "1-u(1+0.03u)",
+        "energy": "1-u(1+0.05u)",
+        "semantic": "1-u^0.96"
+      }
+    },
+    {
+      "id": "E60-F1_near_tautology",
+      "severity": "F(设计充分性)",
+      "pass": false,
+      "detail": "四域无噪声系统性偏差上界仅 0.0451 ⇒ 跨域一致近平凡（噪声 σ=0.03 主导）",
+      "noise_free_spread_bound": 0.0451
+    },
+    {
+      "id": "E60-D1_doc_drift",
+      "severity": "D(一致性)",
+      "pass": true,
+      "detail": "无漂移",
+      "expect_code_form": {
+        "force": "1-u(1+0.03u)",
+        "energy": "1-u(1+0.05u)",
+        "semantic": "1-u^0.96"
+      }
+    },
+    {
+      "id": "E60-F1_near_tautology",
+      "severity": "F(设计充分性)",
+      "pass": false,
+      "detail": "四域无噪声系统性偏差上界仅 0.0451 ⇒ 跨域一致近平凡（噪声 σ=0.03 主导）",
+      "noise_free_spread_bound": 0.0451
+    },
+    {
+      "id": "E60-D1_doc_drift",
+      "severity": "D(一致性)",
+      "pass": true,
+      "detail": "无漂移",
+      "expect_code_form": {
+        "force": "1-u(1+0.03u)",
+        "energy": "1-u(1+0.05u)",
+        "semantic": "1-u^0.96"
+      }
+    },
+    {
+      "id": "E60-F1_near_tautology",
+      "severity": "F(设计充分性)",
+      "pass": false,
+      "detail": "四域无噪声系统性偏差上界仅 0.0451 ⇒ 跨域一致近平凡（噪声 σ=0.03 主导）",
+      "noise_free_spread_bound": 0.0451
+    },
+    {
+      "id": "E60-D1_doc_drift",
+      "severity": "D(一致性)",
+      "pass": true,
+      "detail": "无漂移",
+      "expect_code_form": {
+        "force": "1-u(1+0.03u)",
+        "energy": "1-u(1+0.05u)",
+        "semantic": "1-u^0.96"
+      }
+    },
+    {
+      "id": "E60-F1_near_tautology",
+      "severity": "F(设计充分性)",
+      "pass": false,
+      "detail": "四域无噪声系统性偏差上界仅 0.0451 ⇒ 跨域一致近平凡（噪声 σ=0.03 主导）",
+      "noise_free_spread_bound": 0.0451
+    }
+  ],
+  "tamper": [
+    {
+      "name": "R1 篡改某行 m_E distance → S1 必报",
+      "caught": true,
+      "detail": "期望捕获 ['S1']"
+    },
+    {
+      "name": "R2 篡改 mean_rho → S2 必报",
+      "caught": true,
+      "detail": "期望捕获 ['S2']"
+    },
+    {
+      "name": "R3 篡改 band_agreement_rate → S3 必报",
+      "caught": true,
+      "detail": "期望捕获 ['S3']"
+    },
+    {
+      "name": "R4 篡改 verdict_pass=False → S4 必报",
+      "caught": true,
+      "detail": "期望捕获 ['S4']"
+    }
+  ],
+  "n_pass": 5,
+  "n_total": 5,
+  "n_tamper_pass": 4,
+  "n_tamper_total": 4,
+  "strict_pass": true
+}
