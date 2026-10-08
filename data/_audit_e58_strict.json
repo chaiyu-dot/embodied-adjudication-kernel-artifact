@@ -1,0 +1,73 @@
+{
+  "experiment": "E58 严格审核(L3 独立物理)",
+  "independence_scope": "独立物理：审计者自写 C 阶闭式判据 + quintic + cf_peak/static，不 import e58/trackability",
+  "checks": [
+    {
+      "name": "S1_row_count_matches",
+      "pass": true,
+      "detail": "mine=270 report=270"
+    },
+    {
+      "name": "S2_C_ok_rowwise_match",
+      "pass": true,
+      "detail": "mismatch_rows=0"
+    },
+    {
+      "name": "S3_c_margin_rowwise_match",
+      "pass": true,
+      "detail": "max|Δc_margin|=0.0000"
+    },
+    {
+      "name": "S4_D_ok_rowwise_match",
+      "pass": true,
+      "detail": "mismatch_rows=0"
+    },
+    {
+      "name": "S5_blind_spot_count_matches",
+      "pass": true,
+      "detail": "mine=30 report=30"
+    },
+    {
+      "name": "S6_blind_spot_all_T_le_0p5",
+      "pass": true,
+      "detail": "max_T_in_blind=0.50"
+    },
+    {
+      "name": "S7_slow_false_alarm_lt_0p10",
+      "pass": true,
+      "detail": "rate=0.0000"
+    },
+    {
+      "name": "S8_verdict_self_consistent",
+      "pass": true,
+      "detail": ""
+    }
+  ],
+  "tamper": [
+    {
+      "name": "R1 篡改 H58-1=false → S8 必报",
+      "caught": true,
+      "detail": "期望捕获 ['S8']"
+    },
+    {
+      "name": "R2 篡改 blind_spot_vs_D=0 → S5 必报",
+      "caught": true,
+      "detail": "期望捕获 ['S5']"
+    },
+    {
+      "name": "R3 篡改 verdict=false → S8 必报",
+      "caught": true,
+      "detail": "期望捕获 ['S8']"
+    },
+    {
+      "name": "R4 翻转某行 C_ok → S2 必报",
+      "caught": true,
+      "detail": "期望捕获 ['S2']"
+    }
+  ],
+  "n_pass": 8,
+  "n_total": 8,
+  "n_tamper_pass": 4,
+  "n_tamper_total": 4,
+  "strict_pass": true
+}
