@@ -1,0 +1,161 @@
+{
+  "experiment": "E67 台架补全 正反双向审核",
+  "checks": [
+    {
+      "n": 1,
+      "name": "F1 报告五段齐全（A 速度谱 / B 双臂 / C 跟踪 / D 接触摩擦 / E 门控消融）+ 口径注",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "n": 2,
+      "name": "F2a 任务空间 IK 往返一致（400 随机构型，含两支；末端 ≤1e-12）",
+      "pass": true,
+      "detail": "max|Δp|=2.78e-16（其中另一分支 218 例 max|Δp|=2.78e-16）"
+    },
+    {
+      "n": 3,
+      "name": "F2b 关节空间往返仅对 ik 所选分支（q2<0）成立 → 已记录单分支局限",
+      "pass": true,
+      "detail": "同支 182 例 max|Δq|=2.22e-14 ｜ 另一支 218 例（预期不往返）"
+    },
+    {
+      "n": 4,
+      "name": "F3 A 段 v_max 独立重算一致（换算法/换实现；相对误差 <1e-3）",
+      "pass": true,
+      "detail": "报告=3.0461  独立=3.0460  q=[-1.8, -2.220446049250313e-16]"
+    },
+    {
+      "n": 5,
+      "name": "F4 A 段 jerk 上界 = ωn·a_max 且 ωn 与 budget_gains 复算一致（且标注为推得值）",
+      "pass": true,
+      "detail": "报告=513.152  复算=513.152（ωn=7.758）"
+    },
+    {
+      "n": 6,
+      "name": "F5 模型身份：E66/E67 的 τ=M·q̈+C+g 与**独立展开式**一致；且与 control_strategies 同源",
+      "pass": true,
+      "detail": "独立展开 max|Δτ|=2.22e-16 ｜ vs CS max|ΔM|=0.00e+00"
+    },
+    {
+      "n": 7,
+      "name": "F6 C 段 1.0 Hz 无前馈独立重算一致（rms/τmax executed/demand）",
+      "pass": true,
+      "detail": "重算 rms=0.05428 demand越限=25 ｜ 报告 rms=0.05428 demand越限=25"
+    },
+    {
+      "n": 8,
+      "name": "F7 D 段 μ=0.4 最大切向力独立重算一致，且锥利用 ≤1、Ft ≤ μ·Fn",
+      "pass": true,
+      "detail": "报告=2.2000 N 重算=2.2000 N ｜ 锥利用=1.0000"
+    },
+    {
+      "n": 9,
+      "name": "F8 E 段口径不变量全部成立（executed 恒 0、demand 存在、demand≥executed、结论一致）",
+      "pass": true,
+      "detail": "违反=无"
+    },
+    {
+      "n": 10,
+      "name": "F9 B 段「独立双末端到点 0.0000 m」不依赖门控（gate_off 也到点）",
+      "pass": true,
+      "detail": "gate_off errL=0.00000 errR=0.00000（此时 executed 越限 69 步、τmax=6.677）"
+    },
+    {
+      "n": 11,
+      "name": "F10 用户点名四项能力齐备且非空（速度谱 / 双臂 / 跟踪 / 接触摩擦）",
+      "pass": true,
+      "detail": "{'v_max_ee': 3.0461, 'a_max_ee': 66.1436, 'dual_arm_errL': 0.0, 'track_1cm_ff': 0.0563, 'friction_mu0.8': 4.0}"
+    },
+    {
+      "n": 12,
+      "name": "F11 双臂目标可行性标签与**所选分支**的限位判定一致",
+      "pass": true,
+      "detail": "{'L': {'chosen_in_limits': True, 'other_branch_in_limits': True, 'q_chosen': [0.8776, -1.0711]}, 'R': {'chosen_in_limits': True, 'other_branch_in_limits': True, 'q_chosen': [1.5603, -1.7277]}}"
+    },
+    {
+      "n": 13,
+      "name": "R1 越工作空间目标：ik 不假装成功（FK(ik(p)) ≠ p 明显偏离）",
+      "pass": true,
+      "detail": "|p|=1.20 (L1+L2=0.70) → 残差 0.5000 m"
+    },
+    {
+      "n": 14,
+      "name": "R2 门控消融对照非空（gate_off+激进增益确实越限）",
+      "pass": true,
+      "detail": "无门控 demand 越限合计 444 步"
+    },
+    {
+      "n": 15,
+      "name": "R3 executed 字段有分辨力（gate_on=0 但 gate_off>0，非永真）",
+      "pass": true,
+      "detail": "gate_on=0 ｜ gate_off=80"
+    },
+    {
+      "n": 16,
+      "name": "R4 摩擦物理单调性（μ↑ ⇒ Ft↑，且 Ft ≤ μ·Fn）",
+      "pass": true,
+      "detail": "{0.2: 1.18, 0.4: 2.2, 0.6: 3.1697, 0.8: 4.0}"
+    },
+    {
+      "n": 17,
+      "name": "R5 跟踪误差随频率单调增（0.2/0.5/1.0 Hz，无前馈）",
+      "pass": true,
+      "detail": "['0.01522', '0.03868', '0.05428']"
+    },
+    {
+      "n": 18,
+      "name": "R6 确定性（同参数两次运行结果逐字段一致）",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "n": 19,
+      "name": "R7 阳性对照：篡改 tau_max_demand ×0.5 必被抓住",
+      "pass": true,
+      "detail": "抓到 6 项，例：['budget|gate_on/G1_dual_arm_independent demand(3.338) < executed(5.000)', 'budget|gate_on/G2_track_1hz_ff demand(2.819) < executed(5.000)']"
+    },
+    {
+      "n": 20,
+      "name": "R8 阴性对照：未篡改报告 → 违反项为 0",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "n": 21,
+      "name": "R9 篡改结论布尔（翻转 gate_off_really_exceeds）必被抓住",
+      "pass": true,
+      "detail": "['结论 gate_off_really_exceeds 与明细不符']"
+    },
+    {
+      "n": 22,
+      "name": "R10 非有限值映射为 None 且报告文本无裸 NaN/Infinity（可移植 JSON）",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "n": 23,
+      "name": "R11 报告保留了「预算增益下 demand 亦已越限」这一事实（不被 executed=0 掩盖）",
+      "pass": true,
+      "detail": "budget|gate_on 双臂：demand 越限 82 步、τmax 需求 6.677 ／ 执行 5.000"
+    },
+    {
+      "n": 24,
+      "name": "R12 对称协同漂移≈0（平凡，已在 note 标注）｜非对称负载漂移非零（有效读数）",
+      "pass": true,
+      "detail": "对称=0.000000 m ｜ 非对称(+0.25kg)=0.012800 m"
+    }
+  ],
+  "findings": [
+    "★ 口径发现：E67 原报告只记 τmax（执行值，恒=5.0），把「预算增益下需求即已越限」这一事实藏住了；补齐 demand 口径后实测：双臂独立到点 demand 越限 82 步、需求 τmax=6.677（上限 5.0）；1.0 Hz 跟踪 demand 越限 12 步、τmax=5.639。",
+    "★ 结论稳健性：双臂独立到点 0.0000 m 在门控关闭时同样成立（gate_off 也 0.0），故该结论不依赖 clip 干预；被 clip 的 82/6000 步（1.4%）未改变末端结果。",
+    "★ 新发现：激进增益（ωn=40）下 1.0 Hz 跟踪 rms 由 41.6 mm 降到 1.66 mm（within_tol=True），代价是 405/6000 步处于饱和 → C 段报告的「最大可跟踪速度」是**保守增益下的值**，不是硬件物理上限；引用时必须写明口径。",
+    "A 段 jerk 上界随 ωn 修正由 341 → 513.15 m/s³（ωn 由 5.162 → 7.758，B2 修复的连带影响）。"
+  ],
+  "notes": [
+    "E67.ik 为单分支（elbow=-1）：对 q2>0 构型，FK/IK 在任务空间一致但关节角会跳到另一支。本台架所有参考均由该单支生成，`_target_feasible` 的可行性也只针对该支 —— 若另一支更优，当前实现不会选到（已知局限，未影响本轮结论）。"
+  ],
+  "n_pass": 24,
+  "n_total": 24,
+  "audit_pass": true
+}
