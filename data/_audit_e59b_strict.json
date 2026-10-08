@@ -1,0 +1,100 @@
+{
+  "experiment": "E59b 严格审核(L3 聚合自洽+审前提)",
+  "independence_scope": "不 import e59b；只读 JSON（报告未落 rows → 只做聚合自洽）",
+  "checks": [
+    {
+      "name": "S1_conservation",
+      "pass": true,
+      "detail": "dec=170 NA=70 nonterm=0 total=240"
+    },
+    {
+      "name": "S2_p95_within_rmax",
+      "pass": true,
+      "detail": "p95=5.0 rmax=12"
+    },
+    {
+      "name": "S3_coverage_in_spec_and_monotone",
+      "pass": true,
+      "detail": "cov=[1.0, 0.9607, 0.7783] mono=True"
+    },
+    {
+      "name": "S4_spearman_rounds_vs_rstar",
+      "pass": true,
+      "detail": "rho=0.5958 p=<1e-16"
+    },
+    {
+      "name": "S5_rounds_monotone_bins",
+      "pass": true,
+      "detail": "med=[1.0, 1.0, 2.0, 3.0]"
+    },
+    {
+      "name": "S6_criteria_verdict_selfconsistent",
+      "pass": true,
+      "detail": "verdict=False"
+    },
+    {
+      "name": "S7_prereg_alignment",
+      "pass": true,
+      "detail": "{'sha256_match': True, 'hypotheses_match': True}"
+    }
+  ],
+  "findings": [
+    {
+      "id": "E59b-D1_no_rows",
+      "severity": "D(覆盖/自足)",
+      "pass": true,
+      "detail": "报告未落盘逐行 rows（只聚合）→ 第三方无法逐项独立复算；建议落盘 rows（d、R*、rounds、coverage hit）以支持 L4 盲复刻。"
+    },
+    {
+      "id": "E59b-D1_no_rows",
+      "severity": "D(覆盖/自足)",
+      "pass": true,
+      "detail": "报告未落盘逐行 rows（只聚合）→ 第三方无法逐项独立复算；建议落盘 rows（d、R*、rounds、coverage hit）以支持 L4 盲复刻。"
+    },
+    {
+      "id": "E59b-D1_no_rows",
+      "severity": "D(覆盖/自足)",
+      "pass": true,
+      "detail": "报告未落盘逐行 rows（只聚合）→ 第三方无法逐项独立复算；建议落盘 rows（d、R*、rounds、coverage hit）以支持 L4 盲复刻。"
+    },
+    {
+      "id": "E59b-D1_no_rows",
+      "severity": "D(覆盖/自足)",
+      "pass": true,
+      "detail": "报告未落盘逐行 rows（只聚合）→ 第三方无法逐项独立复算；建议落盘 rows（d、R*、rounds、coverage hit）以支持 L4 盲复刻。"
+    },
+    {
+      "id": "E59b-D1_no_rows",
+      "severity": "D(覆盖/自足)",
+      "pass": true,
+      "detail": "报告未落盘逐行 rows（只聚合）→ 第三方无法逐项独立复算；建议落盘 rows（d、R*、rounds、coverage hit）以支持 L4 盲复刻。"
+    }
+  ],
+  "tamper": [
+    {
+      "name": "R1 篡改 n_decided 破坏守恒 → S1 必报",
+      "caught": true,
+      "detail": "期望捕获 ['S1']"
+    },
+    {
+      "name": "R2 篡改覆盖（0.8-1.25 → 0.5）→ S3 必报",
+      "caught": true,
+      "detail": "期望捕获 ['S3']"
+    },
+    {
+      "name": "R3 篡改 Spearman rho 负 → S4 必报",
+      "caught": true,
+      "detail": "期望捕获 ['S4']"
+    },
+    {
+      "name": "R4 篡改 verdict_pass → S6 必报",
+      "caught": true,
+      "detail": "期望捕获 ['S6']"
+    }
+  ],
+  "n_pass": 7,
+  "n_total": 7,
+  "n_tamper_pass": 4,
+  "n_tamper_total": 4,
+  "strict_pass": true
+}
