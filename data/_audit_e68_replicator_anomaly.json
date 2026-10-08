@@ -1,0 +1,103 @@
+{
+  "experiment": "E68 第三方/盲复刻(L2/L4 纯数据)",
+  "independence_scope": "不 import 被审模块，只读 JSON + bench 几何（第三方）",
+  "checks": [
+    {
+      "name": "D1_V0_ok_selfconsistent",
+      "pass": true,
+      "detail": "CS_vs_E66=0 CS_vs_RNE=8.88178e-16 ok=True"
+    },
+    {
+      "name": "D2_V0b_ok_selfconsistent",
+      "pass": true,
+      "detail": "g_ff=2.10054e-13 pred=0.00154839 ok=True"
+    },
+    {
+      "name": "D3_V1_ok_selfconsistent",
+      "pass": true,
+      "detail": "exec_all_zero=True ok=True"
+    },
+    {
+      "name": "D3b_aggressive_design_from_wn40",
+      "pass": true,
+      "detail": "kp_re=108.0861 kd_re=3.7830 stored={'kp': 108.0861, 'kd': 3.783}"
+    },
+    {
+      "name": "D4_budget_kp_from_taulim",
+      "pass": true,
+      "detail": "re=1.800000 stored=1.800000"
+    },
+    {
+      "name": "D4b_budget_kd_from_formula",
+      "pass": true,
+      "detail": "re=0.488190 stored=0.488190"
+    },
+    {
+      "name": "D4c_budget_wn_from_geometry",
+      "pass": true,
+      "detail": "re=7.7582 stored=7.7580"
+    },
+    {
+      "name": "D5_MPC_calibration",
+      "pass": true,
+      "detail": "qd_w=8.89e-05 rel_err=0.037 Np=20 Nc=5"
+    },
+    {
+      "name": "D6_V4_ok_selfconsistent",
+      "pass": true,
+      "detail": "feas_in_ok=True infeas_all_fail=True V4_ok=True"
+    },
+    {
+      "name": "D7_PD_G_ff_effective",
+      "pass": true,
+      "detail": "PD_G=9.20e-05 P=1.44e+00 PD=1.19e+00"
+    },
+    {
+      "name": "D7b_MPC_ss_zero",
+      "pass": true,
+      "detail": "MPC_ss=0.00e+00"
+    },
+    {
+      "name": "D8_verdict_self_consistent",
+      "pass": true,
+      "detail": "verdict_pass=True"
+    }
+  ],
+  "tamper": [
+    {
+      "name": "R1 篡改 V0 ok=false → D1 必报",
+      "caught": true,
+      "detail": "期望捕获 ['D1']"
+    },
+    {
+      "name": "R2 篡改 V1 PD_G executed_violation_steps=3 → D3 必报",
+      "caught": true,
+      "detail": "期望捕获 ['D3']"
+    },
+    {
+      "name": "R3 篡改 budget achievable_wn=99 → D4c 必报",
+      "caught": true,
+      "detail": "期望捕获 ['D4c']"
+    },
+    {
+      "name": "R4 篡改 MPC qd_w=0.5*q_w → D5 必报",
+      "caught": true,
+      "detail": "期望捕获 ['D5']"
+    },
+    {
+      "name": "R5 篡改 V4 feasible|informed|PD_G within_tol→false → D6 必报",
+      "caught": true,
+      "detail": "期望捕获 ['D6']"
+    },
+    {
+      "name": "R6 篡改 verdict_pass=false → D8 必报",
+      "caught": true,
+      "detail": "期望捕获 ['D8']"
+    }
+  ],
+  "n_pass": 12,
+  "n_total": 12,
+  "n_tamper_pass": 6,
+  "n_tamper_total": 6,
+  "replicator_pass": true
+}
