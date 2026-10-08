@@ -1,0 +1,68 @@
+{
+  "experiment": "E67 严格审核(L3 独立物理)",
+  "independence_scope": "独立物理：自写 FK/Jac/max_speed/accel + 摩擦锥；力矩用 rne_dynamics(参考)，不 import e67",
+  "checks": [
+    {
+      "name": "S1_A_vmax_ee_matches",
+      "pass": true,
+      "detail": "recomputed=3.0461 stored=3.0461"
+    },
+    {
+      "name": "S2_A_amax_ee_matches",
+      "pass": true,
+      "detail": "recomputed=66.1436 stored=66.1436"
+    },
+    {
+      "name": "S3_A_envelope_vmax_rowwise",
+      "pass": true,
+      "detail": "checked=49/49 max|Δv|=0.0000"
+    },
+    {
+      "name": "S4_A_bound_by_joint_speed_cap",
+      "pass": true,
+      "detail": "max_s_at_opt=4.0000 cap=4.0"
+    },
+    {
+      "name": "S5_D_friction_cone_matches",
+      "pass": true,
+      "detail": "max|ΔFt|=0.0000 bad=0"
+    },
+    {
+      "name": "S6_D_contact_feasibility_matches",
+      "pass": true,
+      "detail": "mismatch=0"
+    },
+    {
+      "name": "S7_A_binding_summary_nonempty",
+      "pass": true,
+      "detail": "{'joint_speed_cap': 49}"
+    }
+  ],
+  "tamper": [
+    {
+      "name": "R1 篡改 v_max_ee=99 → S1 必报",
+      "caught": true,
+      "detail": "期望捕获 ['S1']"
+    },
+    {
+      "name": "R2 篡改 a_max_ee=999 → S2 必报",
+      "caught": true,
+      "detail": "期望捕获 ['S2']"
+    },
+    {
+      "name": "R3 篡改 某格 envelope v_max → S3 必报",
+      "caught": true,
+      "detail": "期望捕获 ['S3']"
+    },
+    {
+      "name": "R4 篡改 D friction mu=0.2 Ft → S5 必报",
+      "caught": true,
+      "detail": "期望捕获 ['S5']"
+    }
+  ],
+  "n_pass": 7,
+  "n_total": 7,
+  "n_tamper_pass": 4,
+  "n_tamper_total": 4,
+  "strict_pass": true
+}
