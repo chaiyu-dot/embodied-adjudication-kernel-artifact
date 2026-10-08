@@ -1,0 +1,43 @@
+{
+  "experiment": "E58 正向审核(L1 同码重跑)",
+  "checks": [
+    {
+      "name": "L1_rerun_exit0",
+      "pass": true,
+      "detail": "rc=0"
+    },
+    {
+      "name": "L1_verdict_pass",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "L1_H58_1_blind_spot_exists",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "L1_H58_2_all_T_le_0p5",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "L1_H58_3_slow_false_alarm_lt_0p10",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "L1_blind_spot_nonzero",
+      "pass": true,
+      "detail": "30"
+    },
+    {
+      "name": "L1_slow_false_alarm_rate_small",
+      "pass": true,
+      "detail": "0.0"
+    }
+  ],
+  "n_pass": 7,
+  "n_total": 7,
+  "l1_pass": true
+}
