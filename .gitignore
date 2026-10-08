@@ -1,0 +1,5 @@
+# private / large artifacts never pushed
+*.zip
+__pycache__/
+*.log
+raw_orphan_json/
