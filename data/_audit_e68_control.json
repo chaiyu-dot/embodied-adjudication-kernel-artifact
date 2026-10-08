@@ -1,0 +1,170 @@
+{
+  "R7_boundary_scan": {
+    "0.80": {
+      "PD_G": 0.0,
+      "CT": 0.0,
+      "MPC": 0.0
+    },
+    "0.90": {
+      "PD_G": 0.0,
+      "CT": 0.0,
+      "MPC": 0.0
+    },
+    "1.00": {
+      "PD_G": 0.492626,
+      "CT": 2.291995,
+      "MPC": 0.25656
+    },
+    "1.05": {
+      "PD_G": 0.254636,
+      "CT": 2.08108,
+      "MPC": 0.272562
+    },
+    "1.10": {
+      "PD_G": 0.52857,
+      "CT": 2.127559,
+      "MPC": 0.479958
+    },
+    "1.20": {
+      "PD_G": 1.083532,
+      "CT": 2.24229,
+      "MPC": 0.89725
+    }
+  },
+  "R7_finding": "static_hold_limit 是**上确界**：τ_gravity = τ_lim 时零裕度，任何数值扰动都会让校正力矩越限被削 → 滑出。工程可用的可持边界 = 观测翻转区间下沿（此处 0.90× = 0.357 kg）。→ 支持论文的『判定需要准入裕度』主张。",
+  "checks": [
+    {
+      "check": "F1 报告含全部必需键",
+      "pass": true,
+      "detail": "缺失=[]"
+    },
+    {
+      "check": "F1b verdict_pass 为 True",
+      "pass": true,
+      "detail": "verdict=True"
+    },
+    {
+      "check": "F2 V0 独立重算 vs RNE < 1e-8",
+      "pass": true,
+      "detail": "max=8.882e-16"
+    },
+    {
+      "check": "F2b MPC 前馈独立重算 |τ−g|<1e-6",
+      "pass": true,
+      "detail": "|Δ|=2.10e-13"
+    },
+    {
+      "check": "F3 判据键与实现一一对应",
+      "pass": true,
+      "detail": "keys=['V0_model_consistency', 'V0b_mpc_consistency', 'V1_gate_invariant', 'V4_ok']"
+    },
+    {
+      "check": "F4 capability 全部标 source=design（不冒充实测）",
+      "pass": true,
+      "detail": "{'P': 'design', 'PD': 'design', 'PID': 'design', 'PD_G': 'design', 'CT': 'design', 'FO': 'design', 'MPC': 'design'}"
+    },
+    {
+      "check": "F4b 未收敛族不给出实测 ωn/ζ",
+      "pass": true,
+      "detail": "{'P': False, 'PD': False, 'PID': False, 'CT': False}"
+    },
+    {
+      "check": "F5 dt 全族一致",
+      "pass": true,
+      "detail": "dt={0.001}"
+    },
+    {
+      "check": "R1a act 只接受 mp_hat（无真实负载入口）",
+      "pass": true,
+      "detail": "['self', 'q', 'qd', 'r', 't', 'mp_hat']"
+    },
+    {
+      "check": "R1b 模块主体无 global·负载仅经 mp_hat 形参（不存为可变状态）",
+      "pass": true,
+      "detail": "global=[], self.mp_hat 赋值=0"
+    },
+    {
+      "check": "R1c 改变真实负载不改变控制器输出（无泄漏）",
+      "pass": true,
+      "detail": "[ 3.80808426 -0.65319779]"
+    },
+    {
+      "check": "F6 独立重算 MPC 阶跃与报告一致（ss_err/settling/rise/demand）",
+      "pass": true,
+      "detail": "重算 ss=0.00e+00 settle=1.018 rise=0.596 dv=0 ｜ 报告 ss=0.00e+00 settle=1.018 rise=0.596 dv=0"
+    },
+    {
+      "check": "R2 输出与绝对时间无关（无未来信息/时间作弊）",
+      "pass": true,
+      "detail": "Δ=0.00e+00"
+    },
+    {
+      "check": "R3a MPC(gate=True, τ_lim=0.05) 输出被 clip",
+      "pass": true,
+      "detail": "τ=[ 0.05 -0.05]"
+    },
+    {
+      "check": "R3b MPC gate=False 仍不越限（**输入约束内建于 QP** → 双保险，非绕过门控）",
+      "pass": true,
+      "detail": "τ=[ 0.05 -0.05]"
+    },
+    {
+      "check": "R3c 线性族外部门控是有效限制器（PD 无门控超限 / 有门控不超限）",
+      "pass": true,
+      "detail": "off=[ 64.852 -97.277] on=[ 5.  -1.8]"
+    },
+    {
+      "check": "R4 未收敛/未整定 → identifiable=False（不伪造 ωn/ζ）",
+      "pass": true,
+      "detail": "未收敛到 ±2%（稳态误差 0.800 rad）"
+    },
+    {
+      "check": "R5 gate 消融有效（无门控确实越限）",
+      "pass": true,
+      "detail": "{'PD': 103, 'CT': 97, 'MPC': 0}"
+    },
+    {
+      "check": "R5b 有门控执行值全族零越限",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "R5c 需求越限非全零（门控确实在承重，非同义反复）",
+      "pass": true,
+      "detail": "{'P': 2852, 'PD': 186, 'PID': 186, 'PD_G': 194, 'CT': 166, 'FO': 0, 'MPC': 0}"
+    },
+    {
+      "check": "R5d MPC 需求越限 = 0（输入约束内建于 QP，自带保护）",
+      "pass": true,
+      "detail": "MPC demand=0 demand_tau_max=4.851"
+    },
+    {
+      "check": "R6 V4 未使用 success_rate 混淆口径",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "R7 边界是力矩预算性质：≤0.9×mp_lim 全族可保持、≥1.10× 全族不可保持",
+      "pass": true,
+      "detail": "0.90×→{'PD_G': 0.0, 'CT': 0.0, 'MPC': 0.0} ; 1.10×→{'PD_G': 0.52857, 'CT': 2.127559, 'MPC': 0.479958}"
+    },
+    {
+      "check": "R7b static_hold_limit 修正后与实测翻转点吻合（0.9×可持、1.05×不可持）",
+      "pass": true,
+      "detail": "0.90×→0.00e+00 ; 1.05×→2.55e-01"
+    },
+    {
+      "check": "R7c 理论力矩边界处无裕度即不可靠（1.00× 已不可保持 → 边界须配裕度）",
+      "pass": true,
+      "detail": "1.00×→PD_G 4.926e-01 ; 结论：可用边界 = 0.9×mp_lim（观测翻转区间 0.90–1.00）"
+    }
+  ],
+  "n_pass": 25,
+  "n_total": 25,
+  "audit_pass": true,
+  "F5_caveats": [
+    "FO 用 (kp=3.0,kd=0.6,vmax=4.0)，非预算增益（其一阶速度外环结构不同）",
+    "MPC 用 Q/R 标定到预算静态刚度（误差 3.7%），非线性控制器无 kp/kd",
+    "P/PD/PID/PD_G/CT 用同一预算增益 kp=1.8000 kd=0.4882"
+  ]
+}
