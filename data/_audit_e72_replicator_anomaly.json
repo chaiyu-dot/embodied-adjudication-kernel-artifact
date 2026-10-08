@@ -1,0 +1,55 @@
+{
+  "audit": "_audit_e72_replicator_anomaly",
+  "experiment": "e72_friction_cone_verdict",
+  "pass": 9,
+  "total": 9,
+  "verdict": true,
+  "audit_pass": true,
+  "checks": [
+    {
+      "name": "T1_envelope_independent_recompute",
+      "pass": true,
+      "detail": "第三方独立实现 vs 报告包络不一致"
+    },
+    {
+      "name": "T2_tau_class_independent_recompute",
+      "pass": true,
+      "detail": "τ 分类重算不一致"
+    },
+    {
+      "name": "T3_slip_flip_and_NA_recompute",
+      "pass": true,
+      "detail": "lo=UNSAFE hi=SAFE na=NA"
+    },
+    {
+      "name": "T4_combination_table_recompute",
+      "pass": true,
+      "detail": "{'NA_x_SAFE': ('SAFE', 'SAFE'), 'NA_x_UNSAFE': ('UNSAFE', 'UNSAFE'), 'UNSAFE_x_SAFE': ('UNSAFE', 'UNSAFE'), 'SAFE_x_UNSAFE': ('UNSAFE', 'UNSAFE'), 'SAFE_x_SAFE': ('SAFE', 'SAFE')}"
+    },
+    {
+      "name": "T5_anomaly_input_fuzz_blackbox",
+      "pass": true,
+      "detail": "mu=0:UNSAFE/rho=None | Fn=0:NA | Fn<0:NA | q=pi:UNSAFE | F=100:UNSAFE | NaN:UNSAFE | mt@q=10:7.35"
+    },
+    {
+      "name": "T6_invariants_self_consistent_and_source_doc",
+      "pass": true,
+      "detail": "inv=True rep=True srcB=True srcC=True"
+    },
+    {
+      "name": "T8_tamper_envelope_detected",
+      "pass": true,
+      "detail": "改包络数值 → 独立重算必报"
+    },
+    {
+      "name": "T9_tamper_anchor_verdict_detected",
+      "pass": true,
+      "detail": "改 [8,5] 裁决为 SAFE（τ 不可行却称安全）→ 重算必报"
+    },
+    {
+      "name": "T10_tamper_combination_detected",
+      "pass": true,
+      "detail": "改组合 UNSAFE_x_SAFE → 独立重算必报"
+    }
+  ]
+}
