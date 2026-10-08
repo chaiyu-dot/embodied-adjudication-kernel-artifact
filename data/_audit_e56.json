@@ -1,0 +1,33 @@
+{
+  "experiment": "E56 judgement-order audit (underlying verdict_pass=false, audited)",
+  "audit_role": "failure-audit",
+  "audit_date": "2026-09-23",
+  "audited_by": "blind-audit gap-fill (user directive: 补进去)",
+  "underlying_reports": ["e56_judgement_order_report.json"],
+  "data_dir": "期刊投稿_TMLR_2026-09-06/data",
+  "prereg_file": "e56_judgement_order_prereg.json",
+  "underlying_verdict_pass": false,
+  "audit_integrity_pass": true,
+  "verdict_pass": false,
+  "checks": [
+    {"name": "report_file_present", "pass": true, "detail": "e56_judgement_order_report.json present in data_dir"},
+    {"name": "json_valid", "pass": true, "detail": "parsed without error (318 KB)"},
+    {"name": "verdict_field_present", "pass": true, "detail": "verdict_pass field present"},
+    {"name": "verdict_self_consistent", "pass": true, "detail": "verdict_pass=false matches preregistered_verdict false entries (H56-2, H56-3)"},
+    {"name": "honest_notes_present", "pass": true, "detail": "honest_notes + primary_vs_amended_note + amendment_1 present"},
+    {"name": "failure_not_suppressed", "pass": true, "detail": "verdict_pass retained false; not flipped to true to hide failure"},
+    {"name": "prereg_linked", "pass": true, "detail": "prereg_file referenced and aligns with verdict"}
+  ],
+  "tamper": [
+    {"name": "no_posthoc_verdict_flip", "pass": true, "detail": "verdict_pass=false unchanged; posthoc_verdict also reported, both retained"},
+    {"name": "no_internal_contradiction", "pass": true, "detail": "no n_pass/n_total or checks/tamper contradiction in source"}
+  ],
+  "findings": [
+    {"id": "E56-H56-2", "pass": false, "severity": "mis-specified", "detail": "H56-2_LK_torque_recall_le_0.10_and_kin_recall_ge_0.90 FALSE: 类别混杂 (category conflation); hypothesis mis-specified per amendment_1.reason"},
+    {"id": "E56-H56-3", "pass": false, "severity": "mis-specified", "detail": "H56-3_LS_torque_recall_T_invariant_and_GT_share_monotone FALSE: 类别混杂; hypothesis mis-specified"}
+  ],
+  "failure_summary": "判定层采样 101 点 vs 真值 401 点，且真值同时换了实现（力矩闭式、几何独立公式）。H56-2/H56-3 因类别混杂被判 mis-specified，PRIMARY 保留 FAIL 不修改；由 H56-6/H56-7 同一意图接替（见 hypothesis_status）。单形态、无实机、无 API。",
+  "scope": {"simulator_used": false, "gpu_used": false, "api_used": false, "method": "analytical_RNE_plus_geometric_clearance"},
+  "n_pass": 7,
+  "n_total": 7
+}
