@@ -1,0 +1,102 @@
+{
+  "audit": "_audit_e76_strict",
+  "checks": [
+    {
+      "n": 1,
+      "name": "S1_drift_within_limit_le_1cm",
+      "pass": true,
+      "detail": "重算 max drift=0.007329 ≤ 0.010"
+    },
+    {
+      "n": 2,
+      "name": "S2_drift_monotone_in_load",
+      "pass": true,
+      "detail": "monotone=True"
+    },
+    {
+      "n": 3,
+      "name": "S3_internal_decoupling_identity",
+      "pass": true,
+      "detail": "‖GᵀW_int‖=6.94e-18 orth=0.00e+00 α=2.22e-16（且存储四项==重算）"
+    },
+    {
+      "n": 4,
+      "name": "S4_danger_zero_within_limit",
+      "pass": true,
+      "detail": "within-limit 场景全 0"
+    },
+    {
+      "n": 5,
+      "name": "S5_static_limit_premise",
+      "pass": true,
+      "detail": "mp=1.0 越限步=4266"
+    },
+    {
+      "n": 6,
+      "name": "S6_internal_counted_in_demand",
+      "pass": true,
+      "detail": "k_int=0 越限=0；k_int=20 越限=5000"
+    },
+    {
+      "n": 7,
+      "name": "S9_stored_max_drift_equals_recompute",
+      "pass": true,
+      "detail": "重算 0.007329 报告 0.007329"
+    },
+    {
+      "n": 8,
+      "name": "S10_stored_C_rows_equal_recompute",
+      "pass": true,
+      "detail": "逐行一致"
+    },
+    {
+      "n": 9,
+      "name": "S7_verdict_self_consistent",
+      "pass": true,
+      "detail": "重算 True 报告 True"
+    },
+    {
+      "n": 10,
+      "name": "S8_data_file_self_contained",
+      "pass": true,
+      "detail": "missing=[]"
+    }
+  ],
+  "tamper": [
+    {
+      "n": 21,
+      "name": "R1 改 A 段上限内漂移 → S9 必报（存储量==重算）",
+      "caught": true
+    },
+    {
+      "n": 32,
+      "name": "R2 改 B 段 ‖GᵀW_int‖ → S3 必报",
+      "caught": true
+    },
+    {
+      "n": 43,
+      "name": "R3 改 C 段越限步 → S10 必报（存储==重算）",
+      "caught": true
+    },
+    {
+      "n": 54,
+      "name": "R4 翻转 verdict_pass → S7 必报",
+      "caught": true
+    },
+    {
+      "n": 65,
+      "name": "R5 把 B 段 α-不变误差改大 → S3 必报",
+      "caught": true
+    }
+  ],
+  "findings": [
+    "★ 严格审核：10 条前提成立、5 条篡改全被捕获。",
+    "  关键前提 S3：内力解耦是闭式恒等（GᵀW_int≡0 且与运动分量正交、α 不改变运动）。",
+    "  S5/S6：静态上限 0.357kg 是硬边界（超限饱和），内力已计入需求口径（防漏报）。"
+  ],
+  "n_pass": 10,
+  "n_total": 10,
+  "n_tamper_pass": 5,
+  "n_tamper_total": 5,
+  "strict_pass": true
+}
