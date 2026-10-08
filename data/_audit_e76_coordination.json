@@ -1,0 +1,99 @@
+{
+  "audit": "_audit_e76_coordination",
+  "checks": [
+    {
+      "n": 1,
+      "name": "F1_structure",
+      "pass": true,
+      "detail": "missing=[]"
+    },
+    {
+      "n": 2,
+      "name": "F2_A_crosscheck_with_E67_dual_sim",
+      "pass": true,
+      "detail": "5 行一致"
+    },
+    {
+      "n": 3,
+      "name": "F3_B_algebra_recompute",
+      "pass": true,
+      "detail": "‖GᵀW_int‖=6.94e-18 orth=0.00e+00 α=2.22e-16"
+    },
+    {
+      "n": 4,
+      "name": "F4_C_danger_zero_recompute",
+      "pass": true,
+      "detail": "within-limit 场景 demand 越限重算一致"
+    },
+    {
+      "n": 5,
+      "name": "F5_invariants_self_consistent",
+      "pass": true,
+      "detail": "inv=True rep=True"
+    },
+    {
+      "n": 6,
+      "name": "F6_determinism",
+      "pass": true,
+      "detail": "same input same output"
+    },
+    {
+      "n": 7,
+      "name": "F7_static_limit_premise",
+      "pass": true,
+      "detail": "mp=1.0 越限步=4266（超静态上限 0.357kg → 饱和）"
+    },
+    {
+      "n": 8,
+      "name": "F2b_A_max_drift_equals_recompute",
+      "pass": true,
+      "detail": "重算 0.007329 报告 0.007329"
+    },
+    {
+      "n": 9,
+      "name": "F8_internal_counted_in_demand",
+      "pass": true,
+      "detail": "k_int=0 越限=0；k_int=20 越限=5000（内力确被计入 demand）"
+    }
+  ],
+  "tamper": [
+    {
+      "n": 19,
+      "name": "R1 改 A 段 E67 交叉漂移 → F2 必报",
+      "caught": true
+    },
+    {
+      "n": 29,
+      "name": "R2 改 B 段 ‖GᵀW_int‖ → F3 必报",
+      "caught": true
+    },
+    {
+      "n": 39,
+      "name": "R3 改 B 段正交项 → F3 必报",
+      "caught": true
+    },
+    {
+      "n": 49,
+      "name": "R4 改 C 段越限步 → F4 必报",
+      "caught": true
+    },
+    {
+      "n": 59,
+      "name": "R5 翻转 verdict_pass → F5 必报",
+      "caught": true
+    },
+    {
+      "n": 69,
+      "name": "R6 改 A max drift → F2b 必报",
+      "caught": true
+    }
+  ],
+  "findings": [
+    "★ 作者双向审核：正向 9/9 + 篡改 6/6。"
+  ],
+  "n_pass": 9,
+  "n_total": 9,
+  "n_tamper_pass": 6,
+  "n_tamper_total": 6,
+  "audit_pass": true
+}
