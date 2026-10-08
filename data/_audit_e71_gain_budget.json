@@ -1,0 +1,116 @@
+{
+  "experiment": "E71 增益预算化优化 正反双向审核",
+  "checks": [
+    {
+      "n": 1,
+      "name": "F1 报告三段齐全（A 轨迹预算 / B 能力曲线 / C 一致性）+ verdict 字段",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "n": 2,
+      "name": "F2 A 段 before 独立重算一致（需求越限步数 / 需求 τmax 逐关节）",
+      "pass": true,
+      "detail": "重算 越限=82 τmax=6.6766 逐关节[6.6766, 3.4833] ｜ 报告 越限=82 τmax=6.6766 逐关节[6.6766, 3.4833]"
+    },
+    {
+      "n": 3,
+      "name": "F3 轨迹预算化增益独立重算一致（α / ratio_after / peak_after）",
+      "pass": true,
+      "detail": "重算 α=0.3972 ratio_after=1.0000 peak_after=[4.5, 1.0733] ｜ 报告 α=0.3972 ratio_after=1.0000 peak_after=[4.5, 1.0733]"
+    },
+    {
+      "n": 4,
+      "name": "F4 A 段 after 独立重算一致（需求越限=0 / 需求 τmax / 端点误差≤1cm）",
+      "pass": true,
+      "detail": "重算 越限=0 τmax=4.5000 errL=0.00024 errR=0.00012 ｜ 报告 越限=0 τmax=4.5000 errL=0.00024 errR=0.00012"
+    },
+    {
+      "n": 5,
+      "name": "F5 B 段 wn=40@1.0Hz 独立重算一致（rms / sat_frac=越限步÷n / within_tol）",
+      "pass": true,
+      "detail": "重算 rms=0.001890 sat=0.0682 tol=True ｜ 报告 rms=0.001890 sat=0.0682 tol=True"
+    },
+    {
+      "n": 6,
+      "name": "F6 C1/C2/C3 与 A/B 数据重算一致 + verdict 自洽",
+      "pass": true,
+      "detail": "违反=无"
+    },
+    {
+      "n": 7,
+      "name": "F7 B 段边界自洽；且报告注明「无饱和可作主张 / 饱和不作主张」",
+      "pass": true,
+      "detail": "boundary_any=2.00 boundary_unsat=None（报告 any=2.00 unsat=None）"
+    },
+    {
+      "n": 8,
+      "name": "F8 B 段每行标增益口径（wn_rad_s 存在 + design 引带宽，非裸硬件上限）",
+      "pass": true,
+      "detail": "wn_rad_s 存在=True ｜ design 含带宽标记=True"
+    },
+    {
+      "n": 9,
+      "name": "R1 阴性对照：未篡改报告 → 违反项为 0",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "n": 10,
+      "name": "R2 阳性对照：篡改 after 越限步数 0→100 必被抓住",
+      "pass": true,
+      "detail": "抓到 2 项，例：['C3 布尔与数据不符', 'verdict_pass 与 C1∧C2∧C3 不符']"
+    },
+    {
+      "n": 11,
+      "name": "R3 阳性对照：翻转 verdict_pass 必被抓住",
+      "pass": true,
+      "detail": "['verdict_pass 与 C1∧C2∧C3 不符']"
+    },
+    {
+      "n": 12,
+      "name": "R4 越限是真实需求（非门控产物）：gate_off 后 demand 仍越限；gate_on 执行=0 证明门控承重",
+      "pass": true,
+      "detail": "gate_on demand 越限=82（执行=0，承重）｜ gate_off demand 越限=69（执行=69，无 clip）"
+    },
+    {
+      "n": 13,
+      "name": "R5 确定性（同参数两次预算化 α 一致）",
+      "pass": true,
+      "detail": "α_a=0.397235 α_b=0.397235"
+    },
+    {
+      "n": 14,
+      "name": "R6 边界健全性：零承压→α=1；千倍承压→α<<1",
+      "pass": true,
+      "detail": "零承压 α=1.0000 ｜ 千倍承压 α=0.0001"
+    },
+    {
+      "n": 15,
+      "name": "R7 C4/C5 弱单调独立重算成立（rms 随增益↓、sat 随增益↑）",
+      "pass": true,
+      "detail": "频率=['0.20Hz', '0.50Hz', '1.00Hz', '2.00Hz']"
+    },
+    {
+      "n": 16,
+      "name": "R8 非有限值→None 且报告文本无裸 NaN/Infinity（可移植 JSON）",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "n": 17,
+      "name": "R9 刚度代价诚实报告（α<1 ⇒ ωn_after<ωn_before；且端点误差≤1cm 不因缩放退化出容差）",
+      "pass": true,
+      "detail": "α=0.3972 ωn 4.209→2.653 ｜ errL=0.00024 errR=0.00012（容差 0.01 m）"
+    }
+  ],
+  "findings": [
+    "★ 核心修复成立：目标点预算增益下双臂独立到点 **需求越限 82 步、τmax 6.677 > 5.0**；轨迹预算化增益（α=0.3972，二分为闭环仿真实测峰值）将需求越限 **82→0**、τmax→4.5（=0.9·τ_lim，绑定关节），代价是带宽 ↓（ωn 4.209→2.653）：固定 6s 末残差 0.24/0.12 mm，仍远优于 1cm 任务容差。",
+    "★ 口径发现：before 的 82 步越限是**门控前需求**（预 clip），gate_off 后 demand 仍越限（R4 证明），故不能用「门控吸收了」来掩盖——这正是 E67 E 段暴露的根因：budget_gains 只约束目标位形静态力矩。",
+    "★ 新发现：B 段「无饱和可达」边界 = None——在 1cm 跟踪容差下，达到容差所需的最低增益（wn=6@0.2Hz）sat_frac≈1.07% 略超 1% 阈值。即 **1cm 跟踪容差与零饱和不可同时零裕度满足**，须接受边际饱和或放宽容差；该读数**不作能力主张**，只作设计参考。",
+    "★ 能力数值纪律落地：B 段每行标注 wn 增益口径（非硬件上限）；饱和运行（无裕度、有热/磨损代价）单列。"
+  ],
+  "n_pass": 17,
+  "n_total": 17,
+  "audit_pass": true
+}
