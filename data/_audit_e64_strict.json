@@ -1,0 +1,63 @@
+{
+  "experiment": "E64 严格审核(L3 纯JSON自洽+物理等价)",
+  "independence_scope": "不 import e64；只读 JSON + 独立核物理等价（rne_dynamics 参考）",
+  "checks": [
+    {
+      "name": "S1_measures_and_Dp50_recompute",
+      "pass": true,
+      "detail": "n_keys=8"
+    },
+    {
+      "name": "S2_H64_recompute",
+      "pass": true,
+      "detail": "mono=True vf=True verdict=True"
+    },
+    {
+      "name": "S3_meets_and_speedup_recompute",
+      "pass": true,
+      "detail": "meets=False"
+    },
+    {
+      "name": "S4_self_consistency",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "S5_tex_table_matches_measures",
+      "pass": true,
+      "detail": "tex_rows=8 mismatch=0"
+    },
+    {
+      "name": "S6_loop_vs_vector_physics_equivalent",
+      "pass": true,
+      "detail": "max|Δ|=(8.88e-16,1.67e-16)"
+    }
+  ],
+  "tamper": [
+    {
+      "name": "R1 篡改 D_loop_101 p50 打破单调 → S2 必报",
+      "caught": true,
+      "detail": "期望捕获 ['S1', 'S2']"
+    },
+    {
+      "name": "R2 篡改 H64-1 → S2 必报",
+      "caught": true,
+      "detail": "期望捕获 ['S2']"
+    },
+    {
+      "name": "R3 篡改 speedup → S3 必报",
+      "caught": true,
+      "detail": "期望捕获 ['S3']"
+    },
+    {
+      "name": "R4 篡改 verdict_pass → S2 必报",
+      "caught": true,
+      "detail": "期望捕获 ['S2']"
+    }
+  ],
+  "n_pass": 6,
+  "n_total": 6,
+  "n_tamper_pass": 4,
+  "n_tamper_total": 4,
+  "strict_pass": true
+}
