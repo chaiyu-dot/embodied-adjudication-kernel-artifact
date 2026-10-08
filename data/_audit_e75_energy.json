@@ -1,0 +1,105 @@
+{
+  "audit": "_audit_e75_energy",
+  "checks": [
+    {
+      "n": 1,
+      "name": "F1_structure",
+      "pass": true,
+      "detail": "missing=[]"
+    },
+    {
+      "n": 2,
+      "name": "F2_A_work_conjugacy_recompute",
+      "pass": true,
+      "detail": "重算 max|resid|=2.120e-10 报告 2.120e-10"
+    },
+    {
+      "n": 3,
+      "name": "F3_B_margin_recompute",
+      "pass": true,
+      "detail": "m_E/band 逐行重算"
+    },
+    {
+      "n": 4,
+      "name": "F4_ordinal_recompute",
+      "pass": true,
+      "detail": "重算 1.0000 报告 1.0000"
+    },
+    {
+      "n": 5,
+      "name": "F5_misband_recompute",
+      "pass": true,
+      "detail": "重算 3 报告 3"
+    },
+    {
+      "n": 6,
+      "name": "F5b_misband_detail_recompute",
+      "pass": true,
+      "detail": "逐行明细 一致"
+    },
+    {
+      "n": 7,
+      "name": "F6_invariants_self_consistent",
+      "pass": true,
+      "detail": "inv=True rep=True"
+    },
+    {
+      "n": 8,
+      "name": "F7_band_口径一致",
+      "pass": true,
+      "detail": "e_order_band ≡ margin_to_band"
+    },
+    {
+      "n": 9,
+      "name": "F8_determinism",
+      "pass": true,
+      "detail": "same input same output"
+    },
+    {
+      "n": 10,
+      "name": "F9_exact_vs_kinetic_divergence_real",
+      "pass": true,
+      "detail": "PE 主导 5 行，其中 exact 显著更保守=True"
+    }
+  ],
+  "findings": [
+    "★ 作者双向审核：正向 10/10 + 篡改 6/6。"
+  ],
+  "tamper": [
+    {
+      "n": 21,
+      "name": "R1 改 A 段残差 → F2 必报",
+      "caught": true
+    },
+    {
+      "n": 32,
+      "name": "R2 改 B 段 m_E_exact → F3 必报",
+      "caught": true
+    },
+    {
+      "n": 43,
+      "name": "R3 改 e_avail → F3 必报",
+      "caught": true
+    },
+    {
+      "n": 54,
+      "name": "R4 改误档行 band_kinetic_only（loose→medium，计数不变）→ F5b 必报",
+      "caught": true
+    },
+    {
+      "n": 65,
+      "name": "R5 翻转 verdict_pass → F6 必报",
+      "caught": true
+    },
+    {
+      "n": 76,
+      "name": "R6 改 max_abs_residual → F2 必报",
+      "caught": true
+    }
+  ],
+  "n_pass": 10,
+  "n_total": 10,
+  "n_tamper_pass": 6,
+  "n_tamper_total": 6,
+  "audit_pass": true
+}
