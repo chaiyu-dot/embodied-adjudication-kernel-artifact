@@ -1,0 +1,90 @@
+{
+  "audit": "_audit_e75_strict",
+  "checks": [
+    {
+      "n": 1,
+      "name": "S1_work_conjugacy_identity_no_dissipation",
+      "pass": true,
+      "detail": "B_VISC=0 → max|W−ΔKE−ΔPE|=1.00e-09"
+    },
+    {
+      "n": 2,
+      "name": "S2_divergence_real",
+      "pass": true,
+      "detail": "PE 主导 5 行，其中 exact 显著更保守 5 行"
+    },
+    {
+      "n": 3,
+      "name": "S3_demand_order_well_defined",
+      "pass": true,
+      "detail": "ΔPE 序列严格递增=True [2.998, 4.037, 5.077, 6.376, 7.676]"
+    },
+    {
+      "n": 4,
+      "name": "S4_stored_raw_equals_recompute",
+      "pass": true,
+      "detail": "5 行 dPE/KE_peak/m_E 全一致"
+    },
+    {
+      "n": 5,
+      "name": "S5_misband_direction_correct",
+      "pass": true,
+      "detail": "误档 3 条，方向全为 exact 更保守=True"
+    },
+    {
+      "n": 6,
+      "name": "S6_verdict_self_consistent",
+      "pass": true,
+      "detail": "重算 True 报告 True"
+    },
+    {
+      "n": 7,
+      "name": "S7_A_no_divergence_and_residual",
+      "pass": true,
+      "detail": "max|resid|=2.120e-10 diverged=False"
+    },
+    {
+      "n": 8,
+      "name": "S8_data_file_self_contained",
+      "pass": true,
+      "detail": "missing=[]"
+    }
+  ],
+  "tamper": [
+    {
+      "n": 17,
+      "name": "R1 改 B 行 dPE → S4 必报",
+      "caught": true
+    },
+    {
+      "n": 26,
+      "name": "R2 改 B 行 KE_peak → S4 必报",
+      "caught": true
+    },
+    {
+      "n": 35,
+      "name": "R3 改 m_E_exact → S4 必报",
+      "caught": true
+    },
+    {
+      "n": 44,
+      "name": "R4 把误档方向翻反（kinetic 更保守）→ S5 必报",
+      "caught": true
+    },
+    {
+      "n": 53,
+      "name": "R5 翻转 verdict_pass → S6 必报",
+      "caught": true
+    }
+  ],
+  "findings": [
+    "★ 严格审核（审前提）：8 条前提成立，5 条篡改全被捕获。",
+    "  关键前提 S1：无耗散时 W=ΔKE+ΔPE 硬重算恒等 → 精确核就是功共轭，不是拟合。",
+    "  S2 分歧真实：PE 主导场景 exact 显著更保守（漏 PE 会误判安全）。"
+  ],
+  "n_pass": 8,
+  "n_total": 8,
+  "n_tamper_pass": 5,
+  "n_tamper_total": 5,
+  "strict_pass": true
+}
