@@ -1,0 +1,83 @@
+{
+  "experiment": "E60 第三方/盲复刻(L2/L4 纯数据)",
+  "independence_scope": "不 import 被审模块，只读 JSON",
+  "checks": [
+    {
+      "name": "D1_design_sane",
+      "pass": true,
+      "detail": "n_levels=30"
+    },
+    {
+      "name": "D2_rows_count_and_sorted",
+      "pass": true,
+      "detail": "n=30"
+    },
+    {
+      "name": "D3_band_valid_and_consistent_flag",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "D4_band_agreement_rate_recompute",
+      "pass": true,
+      "detail": "re=0.8000 store=0.8000"
+    },
+    {
+      "name": "D4b_n_consistent_recompute",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "D5_pairwise_rho_recompute",
+      "pass": true,
+      "detail": "mismatch=0"
+    },
+    {
+      "name": "D6_mean_rho_selfconsistent",
+      "pass": true,
+      "detail": "re=0.9896 store=0.9896"
+    },
+    {
+      "name": "D7_criteria_and_verdict_selfconsistent",
+      "pass": true,
+      "detail": "verdict=True"
+    },
+    {
+      "name": "D8_self_consistency",
+      "pass": true,
+      "detail": ""
+    }
+  ],
+  "tamper": [
+    {
+      "name": "R1 篡改 consistent 标记 → D3 必报",
+      "caught": true,
+      "detail": "期望捕获 ['D3']"
+    },
+    {
+      "name": "R2 篡改 band_agreement_rate → D4 必报",
+      "caught": true,
+      "detail": "期望捕获 ['D4']"
+    },
+    {
+      "name": "R3 篡改某 pairwise_rho → D5 必报",
+      "caught": true,
+      "detail": "期望捕获 ['D5']"
+    },
+    {
+      "name": "R4 篡改某行 m_E → D5 必报",
+      "caught": true,
+      "detail": "期望捕获 ['D5']"
+    },
+    {
+      "name": "R5 篡改 verdict_pass=False → D7 必报",
+      "caught": true,
+      "detail": "期望捕获 ['D7']"
+    }
+  ],
+  "n_pass": 9,
+  "n_total": 9,
+  "n_tamper_pass": 5,
+  "n_tamper_total": 5,
+  "replicator_pass": true
+}
