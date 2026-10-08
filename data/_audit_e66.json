@@ -1,0 +1,64 @@
+{
+  "experiment": "E66 正向审核(L1 同码重跑)",
+  "independence_scope": "同码重跑（最低独立性）",
+  "checks": [
+    {
+      "name": "L1_rerun_exit0",
+      "pass": true,
+      "detail": "rc=0"
+    },
+    {
+      "name": "L1_verdict_pass",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "L1_V1_MCg_ok",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "L1_V2_gate_ok",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "L1_V3_energy_ok",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "L1_achievable_wn_7p758",
+      "pass": true,
+      "detail": "7.758"
+    },
+    {
+      "name": "L1_static_payload_0p397",
+      "pass": true,
+      "detail": "0.3972"
+    },
+    {
+      "name": "L1_energy_residual_lt_1e8",
+      "pass": true,
+      "detail": "-2.12e-10"
+    },
+    {
+      "name": "L1_gate_PD_exec_tau_max_eq_lim",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "L1_gate_PD_demand_violation_nonzero",
+      "pass": true,
+      "detail": "186"
+    },
+    {
+      "name": "L1_gate_CT_demand_violation_nonzero",
+      "pass": true,
+      "detail": "3870"
+    }
+  ],
+  "n_pass": 11,
+  "n_total": 11,
+  "l1_pass": true
+}
