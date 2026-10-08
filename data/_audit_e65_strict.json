@@ -1,0 +1,63 @@
+{
+  "experiment": "E65 严格审核(L3 独立重推)",
+  "independence_scope": "独立重推：按声明规则自写对象生成 + 四臂 + 统计，不 import e65",
+  "checks": [
+    {
+      "name": "S1_objects_match",
+      "pass": true,
+      "detail": "n_invalid=167(store 167) n_over=421(store 421)"
+    },
+    {
+      "name": "S2_per_arm_stats_match_independent_rerun",
+      "pass": true,
+      "detail": "4 arms all match"
+    },
+    {
+      "name": "S3_wilson95_match",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "S4_preregistered_verdict_selfconsistent",
+      "pass": true,
+      "detail": "verdict=False"
+    },
+    {
+      "name": "S5_prereg_sha256_anchor",
+      "pass": true,
+      "detail": "673fa893dd4d8db4"
+    }
+  ],
+  "tamper": [
+    {
+      "name": "R1 篡改 G3_RETRY miss_count → S2 必报",
+      "caught": true,
+      "detail": "期望捕获 ['S2']"
+    },
+    {
+      "name": "R2 篡改 G4_OURS miss_rate=0.99 → S2 必报",
+      "caught": true,
+      "detail": "期望捕获 ['S2']"
+    },
+    {
+      "name": "R3 篡改 self_consistency.n_invalid → S1 必报",
+      "caught": true,
+      "detail": "期望捕获 ['S1']"
+    },
+    {
+      "name": "R4 篡改 verdict_pass=True（原为 False）→ S4 必报",
+      "caught": true,
+      "detail": "期望捕获 ['S4']"
+    },
+    {
+      "name": "R5 篡改 prereg_sha256 → S5 必报",
+      "caught": true,
+      "detail": "期望捕获 ['S5']"
+    }
+  ],
+  "n_pass": 5,
+  "n_total": 5,
+  "n_tamper_pass": 5,
+  "n_tamper_total": 5,
+  "strict_pass": true
+}
