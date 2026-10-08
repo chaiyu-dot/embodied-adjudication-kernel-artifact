@@ -1,0 +1,73 @@
+{
+  "experiment": "E80 严格审核(L3 独立物理)",
+  "independence_scope": "独立物理：审计者自写 M/C/g + rne_dynamics(参考) + lagrange_dynamics(第四范式)，不 import e80",
+  "checks": [
+    {
+      "name": "S1_auditor_MCg_vs_RNE_lt_1e8_and_vs_Lagrange_lt_1e7",
+      "pass": true,
+      "detail": "aud-vs-rne=3.55e-15 aud-vs-lag=1.56e-08"
+    },
+    {
+      "name": "S2_stored_tau_reproducible_lt_1e6",
+      "pass": true,
+      "detail": "max|recomputed-stored|=2.00e-10"
+    },
+    {
+      "name": "S3_max_abs_recomputed_eq_stored_and_lt_tolC1",
+      "pass": true,
+      "detail": "recomp=1.562e-08 stored=1.562e-08 tol=1e-07"
+    },
+    {
+      "name": "S4_truncation_signature_rne_cf_tiny_lag_1e8",
+      "pass": true,
+      "detail": "rne_vs_cf=1.78e-15 rne_vs_lag=1.56e-08"
+    },
+    {
+      "name": "S5_C2_falsification_recomputed_and_stored_consistent",
+      "pass": true,
+      "detail": "recomp=2.575e-01 stored=2.575e-01"
+    },
+    {
+      "name": "S6_C3_ke_crosscheck_recomputed_and_stored_consistent",
+      "pass": true,
+      "detail": "recomp=4.279e-16 stored=4.280e-16 tol=1e-12"
+    },
+    {
+      "name": "S7_verdict_self_consistent",
+      "pass": true,
+      "detail": ""
+    }
+  ],
+  "tamper": [
+    {
+      "name": "R1 篡改 A.max_abs=9.9 → S3 必报",
+      "caught": true,
+      "detail": "期望捕获 ['S3']"
+    },
+    {
+      "name": "R2 篡改 B.detected=False → S5 必报",
+      "caught": true,
+      "detail": "期望捕获 ['S5']"
+    },
+    {
+      "name": "R3 篡改 C.all_ok=False → S6 必报",
+      "caught": true,
+      "detail": "期望捕获 ['S6']"
+    },
+    {
+      "name": "R4 篡改 verdict_pass=False → S7 必报",
+      "caught": true,
+      "detail": "期望捕获 ['S7']"
+    },
+    {
+      "name": "R5 篡改第一行 tau_lag 数据 → S2 必报",
+      "caught": true,
+      "detail": "期望捕获 ['S2']"
+    }
+  ],
+  "n_pass": 7,
+  "n_total": 7,
+  "n_tamper_pass": 5,
+  "n_tamper_total": 5,
+  "strict_pass": true
+}
