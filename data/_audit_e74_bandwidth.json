@@ -1,0 +1,306 @@
+{
+  "audit": "_audit_e74_bandwidth",
+  "experiment": "e74_tracking_bandwidth_curve",
+  "pass": 29,
+  "total": 29,
+  "verdict": true,
+  "audit_pass": true,
+  "n_pass": 29,
+  "n_total": 29,
+  "forward": [
+    {
+      "name": "F1a_structure",
+      "pass": true,
+      "detail": "missing=[]"
+    },
+    {
+      "name": "F1b_no_inf_nan",
+      "pass": true,
+      "detail": "非有限=[]"
+    },
+    {
+      "name": "F2_analytic_and_ratio_recompute",
+      "pass": true,
+      "detail": "bad=[] | ratio_mean=0.819 spread=0.0021 n_trusted=3"
+    },
+    {
+      "name": "F3_boundaries_recompute_per_cell",
+      "pass": true,
+      "detail": "反例=0 []"
+    },
+    {
+      "name": "F4_boundary_ordering_monotone",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "name": "F5_e67c_anchor_recompute",
+      "pass": true,
+      "detail": "pass0.2=True fail0.5=True"
+    },
+    {
+      "name": "F11_E_section_present_selfcheck",
+      "pass": true,
+      "detail": "probes=3 match=True exercised=True diff=0.0"
+    },
+    {
+      "name": "F12_E_per_joint_selfconsistent",
+      "pass": true,
+      "detail": "反例=[]"
+    },
+    {
+      "name": "F13_amplitude_section_consistent",
+      "pass": true,
+      "detail": "反例=[]"
+    },
+    {
+      "name": "F14_controller_family_section_consistent",
+      "pass": true,
+      "detail": "反例=[]"
+    },
+    {
+      "name": "F6_alpha_derate_relation",
+      "pass": true,
+      "detail": "sqrt(alpha)=0.6302 expected=0.6302 rel_dev=0.0012"
+    },
+    {
+      "name": "F7_calibration_honest",
+      "pass": true,
+      "detail": "caveats=6"
+    },
+    {
+      "name": "F8_invariants_self_consistent",
+      "pass": true,
+      "detail": "verdict=True"
+    },
+    {
+      "name": "F9_determinism",
+      "pass": true,
+      "detail": "non-deterministic"
+    },
+    {
+      "name": "F10_spec_self_contained",
+      "pass": true,
+      "detail": "missing=[]"
+    }
+  ],
+  "reverse": [
+    {
+      "name": "R1_tamper_rms_detected",
+      "pass": true,
+      "detail": "改 rms 行→F3 必报"
+    },
+    {
+      "name": "R2_tamper_boundary_detected",
+      "pass": true,
+      "detail": "改边界→F3 必报"
+    },
+    {
+      "name": "R3_tamper_analytic_detected",
+      "pass": true,
+      "detail": "改解析值→F2 必报"
+    },
+    {
+      "name": "R4_inject_inf_detected",
+      "pass": true,
+      "detail": "注入 inf→F1b 必报"
+    },
+    {
+      "name": "R5_flip_verdict_detected",
+      "pass": true,
+      "detail": "翻转 verdict→F8 必报"
+    },
+    {
+      "name": "R6_missing_spec_detected",
+      "pass": true,
+      "detail": "删规格→F10 必报"
+    },
+    {
+      "name": "R7_clean_passes",
+      "pass": true,
+      "detail": "clean=15/15"
+    },
+    {
+      "name": "R8_nonfinite_to_none",
+      "pass": true,
+      "detail": "nonfinite not capped"
+    },
+    {
+      "name": "R9_tamper_E_perjoint_detected",
+      "pass": true,
+      "detail": "改逐关节越限步数→F12 必报"
+    },
+    {
+      "name": "R10_tamper_E_exercised_detected",
+      "pass": true,
+      "detail": "翻 joint1_limit_exercised→F11 必报"
+    },
+    {
+      "name": "R11_tamper_E_mp_spec_detected",
+      "pass": true,
+      "detail": "改 bench.payload.mp→F12 必报"
+    },
+    {
+      "name": "R12_tamper_F_rows_detected",
+      "pass": true,
+      "detail": "改 F 段 rms 行→F13 必报"
+    },
+    {
+      "name": "R13_tamper_F_ampspec_detected",
+      "pass": true,
+      "detail": "改 bench.amp_sweep→F13 必报"
+    },
+    {
+      "name": "R14_tamper_G_family_detected",
+      "pass": true,
+      "detail": "改 PD_G 带宽→F14 必报"
+    }
+  ],
+  "checks": [
+    {
+      "name": "F1a_structure",
+      "pass": true,
+      "detail": "missing=[]"
+    },
+    {
+      "name": "F1b_no_inf_nan",
+      "pass": true,
+      "detail": "非有限=[]"
+    },
+    {
+      "name": "F2_analytic_and_ratio_recompute",
+      "pass": true,
+      "detail": "bad=[] | ratio_mean=0.819 spread=0.0021 n_trusted=3"
+    },
+    {
+      "name": "F3_boundaries_recompute_per_cell",
+      "pass": true,
+      "detail": "反例=0 []"
+    },
+    {
+      "name": "F4_boundary_ordering_monotone",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "name": "F5_e67c_anchor_recompute",
+      "pass": true,
+      "detail": "pass0.2=True fail0.5=True"
+    },
+    {
+      "name": "F11_E_section_present_selfcheck",
+      "pass": true,
+      "detail": "probes=3 match=True exercised=True diff=0.0"
+    },
+    {
+      "name": "F12_E_per_joint_selfconsistent",
+      "pass": true,
+      "detail": "反例=[]"
+    },
+    {
+      "name": "F13_amplitude_section_consistent",
+      "pass": true,
+      "detail": "反例=[]"
+    },
+    {
+      "name": "F14_controller_family_section_consistent",
+      "pass": true,
+      "detail": "反例=[]"
+    },
+    {
+      "name": "F6_alpha_derate_relation",
+      "pass": true,
+      "detail": "sqrt(alpha)=0.6302 expected=0.6302 rel_dev=0.0012"
+    },
+    {
+      "name": "F7_calibration_honest",
+      "pass": true,
+      "detail": "caveats=6"
+    },
+    {
+      "name": "F8_invariants_self_consistent",
+      "pass": true,
+      "detail": "verdict=True"
+    },
+    {
+      "name": "F9_determinism",
+      "pass": true,
+      "detail": "non-deterministic"
+    },
+    {
+      "name": "F10_spec_self_contained",
+      "pass": true,
+      "detail": "missing=[]"
+    },
+    {
+      "name": "R1_tamper_rms_detected",
+      "pass": true,
+      "detail": "改 rms 行→F3 必报"
+    },
+    {
+      "name": "R2_tamper_boundary_detected",
+      "pass": true,
+      "detail": "改边界→F3 必报"
+    },
+    {
+      "name": "R3_tamper_analytic_detected",
+      "pass": true,
+      "detail": "改解析值→F2 必报"
+    },
+    {
+      "name": "R4_inject_inf_detected",
+      "pass": true,
+      "detail": "注入 inf→F1b 必报"
+    },
+    {
+      "name": "R5_flip_verdict_detected",
+      "pass": true,
+      "detail": "翻转 verdict→F8 必报"
+    },
+    {
+      "name": "R6_missing_spec_detected",
+      "pass": true,
+      "detail": "删规格→F10 必报"
+    },
+    {
+      "name": "R7_clean_passes",
+      "pass": true,
+      "detail": "clean=15/15"
+    },
+    {
+      "name": "R8_nonfinite_to_none",
+      "pass": true,
+      "detail": "nonfinite not capped"
+    },
+    {
+      "name": "R9_tamper_E_perjoint_detected",
+      "pass": true,
+      "detail": "改逐关节越限步数→F12 必报"
+    },
+    {
+      "name": "R10_tamper_E_exercised_detected",
+      "pass": true,
+      "detail": "翻 joint1_limit_exercised→F11 必报"
+    },
+    {
+      "name": "R11_tamper_E_mp_spec_detected",
+      "pass": true,
+      "detail": "改 bench.payload.mp→F12 必报"
+    },
+    {
+      "name": "R12_tamper_F_rows_detected",
+      "pass": true,
+      "detail": "改 F 段 rms 行→F13 必报"
+    },
+    {
+      "name": "R13_tamper_F_ampspec_detected",
+      "pass": true,
+      "detail": "改 bench.amp_sweep→F13 必报"
+    },
+    {
+      "name": "R14_tamper_G_family_detected",
+      "pass": true,
+      "detail": "改 PD_G 带宽→F14 必报"
+    }
+  ]
+}
