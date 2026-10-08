@@ -1,0 +1,58 @@
+{
+  "experiment": "E65b 严格审核(L3 独立重推)",
+  "independence_scope": "独立重推：按 prereg bench 自写对象/四臂/统计，不 import e65/e65b",
+  "checks": [
+    {
+      "name": "S1_objects_match",
+      "pass": true,
+      "detail": "ninval=317 store=317 nover=630 store=630"
+    },
+    {
+      "name": "S2_per_arm_stats_match_independent_rerun",
+      "pass": true,
+      "detail": "4 arms match"
+    },
+    {
+      "name": "S3_ci_and_criteria_and_verdict",
+      "pass": true,
+      "detail": "ci=[0.4305, 0.5135] verdict=True"
+    },
+    {
+      "name": "S4_prereg_sha256_anchor",
+      "pass": true,
+      "detail": "bc2deb051cbc14dc"
+    }
+  ],
+  "tamper": [
+    {
+      "name": "R1 篡改 G4_OURS miss_rate → S2 必报",
+      "caught": true,
+      "detail": "期望捕获 ['S2']"
+    },
+    {
+      "name": "R2 篡改 n_invalid → S1 必报",
+      "caught": true,
+      "detail": "期望捕获 ['S1']"
+    },
+    {
+      "name": "R3 篡改 CI → S3 必报",
+      "caught": true,
+      "detail": "期望捕获 ['S3']"
+    },
+    {
+      "name": "R4 篡改 verdict_pass → S3 必报",
+      "caught": true,
+      "detail": "期望捕获 ['S3']"
+    },
+    {
+      "name": "R5 篡改 prereg_sha256 → S4 必报",
+      "caught": true,
+      "detail": "期望捕获 ['S4']"
+    }
+  ],
+  "n_pass": 4,
+  "n_total": 4,
+  "n_tamper_pass": 5,
+  "n_tamper_total": 5,
+  "strict_pass": true
+}
