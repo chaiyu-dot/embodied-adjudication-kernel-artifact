@@ -1,0 +1,73 @@
+{
+  "experiment": "E69 第三方/盲复刻(L2/L4 纯数据)",
+  "independence_scope": "不 import 被审模块，只读 JSON（第三方）",
+  "checks": [
+    {
+      "name": "D1_V0_ok_selfconsistent",
+      "pass": true,
+      "detail": "E66_wn=7.7582 E69_wn=7.7582 ok=True"
+    },
+    {
+      "name": "D2_V1_curve_selfconsistent",
+      "pass": true,
+      "detail": "min=1.469 med=5.269 max=13.769 x=7.59"
+    },
+    {
+      "name": "D3_V2_formula_conservative",
+      "pass": true,
+      "detail": "wn_ratio=1.272 kp_ratio=0.717"
+    },
+    {
+      "name": "D4_V3_blindspot_logic",
+      "pass": true,
+      "detail": "assumed=30 budget=102"
+    },
+    {
+      "name": "D5_V3b_recommendation",
+      "pass": true,
+      "detail": "rec=None"
+    },
+    {
+      "name": "D6_V4_cites_V2",
+      "pass": true,
+      "detail": "V4 finding_4 references kp=2.5119 wn=6.098"
+    },
+    {
+      "name": "D7_verdict_self_consistent",
+      "pass": true,
+      "detail": "verdict_pass=True"
+    }
+  ],
+  "tamper": [
+    {
+      "name": "R1 篡改 V0 ok=false → D1 必报",
+      "caught": true,
+      "detail": "期望捕获 ['D1']"
+    },
+    {
+      "name": "R2 篡改 V1 all_below_assumed=false → D2 必报",
+      "caught": true,
+      "detail": "期望捕获 ['D2']"
+    },
+    {
+      "name": "R3 篡改 V2 empirical_kp=0.5 → D3 必报",
+      "caught": true,
+      "detail": "期望捕获 ['D3']"
+    },
+    {
+      "name": "R4 篡改 V3 budget blind=0 → D4 必报",
+      "caught": true,
+      "detail": "期望捕获 ['D4']"
+    },
+    {
+      "name": "R5 篡改 verdict_pass=false → D7 必报",
+      "caught": true,
+      "detail": "期望捕获 ['D7']"
+    }
+  ],
+  "n_pass": 7,
+  "n_total": 7,
+  "n_tamper_pass": 5,
+  "n_tamper_total": 5,
+  "replicator_pass": true
+}
