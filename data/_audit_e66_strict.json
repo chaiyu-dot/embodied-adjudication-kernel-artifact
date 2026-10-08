@@ -1,0 +1,103 @@
+{
+  "experiment": "E66 严格审核(L3 独立物理)",
+  "independence_scope": "独立物理：审计者自写 M/C/g + rne_dynamics(参考) + lagrange_dynamics(第四范式)，不 import e66",
+  "checks": [
+    {
+      "name": "S1_V1_triple_consistency_MCg_vs_RNE_lt_1e8",
+      "pass": true,
+      "detail": "aud-vs-rne=8.88e-16 lag-vs-rne=8.29e-09 aud-vs-lag=8.29e-09"
+    },
+    {
+      "name": "S2_V1_flag_matches_recomputed",
+      "pass": true,
+      "detail": "8.881784197001252e-16"
+    },
+    {
+      "name": "S3_C2_achievable_wn_matches",
+      "pass": true,
+      "detail": "recomputed=7.7582 stored=7.7580"
+    },
+    {
+      "name": "S4_C2_kp_matches",
+      "pass": true,
+      "detail": "recomputed=1.800000 stored=1.800000"
+    },
+    {
+      "name": "S5_C2_kd_matches",
+      "pass": true,
+      "detail": "recomputed=0.488190 stored=0.488190"
+    },
+    {
+      "name": "S6_C2_assumed_wn_infeasible",
+      "pass": true,
+      "detail": "ratio=5.16"
+    },
+    {
+      "name": "S7_static_payload_limit_matches",
+      "pass": true,
+      "detail": "recomputed=0.3972 stored=0.3972"
+    },
+    {
+      "name": "S8_V3_closure_identity",
+      "pass": true,
+      "detail": "W-D-ΔKE-ΔPE=-1.00e-09 stored_resid=-2.12e-10"
+    },
+    {
+      "name": "S9_V3_dKE_near_zero",
+      "pass": true,
+      "detail": "dKE=1.00e-09"
+    },
+    {
+      "name": "S10_V2_executed_within_lim",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "S11_V2_demand_violation_nonzero_falsifiable",
+      "pass": true,
+      "detail": "PD=186 CT=3870"
+    },
+    {
+      "name": "S12_verdict_self_consistent",
+      "pass": true,
+      "detail": ""
+    }
+  ],
+  "tamper": [
+    {
+      "name": "R1 篡改 V1 ok=false → S2 必报",
+      "caught": true,
+      "detail": "期望捕获 ['S2']"
+    },
+    {
+      "name": "R2 篡改 achievable_wn=99 → S3 必报",
+      "caught": true,
+      "detail": "期望捕获 ['S3']"
+    },
+    {
+      "name": "R3 篡改 static_payload=9.0 → S7 必报",
+      "caught": true,
+      "detail": "期望捕获 ['S7']"
+    },
+    {
+      "name": "R4 篡改 energy residual=1.0 → S8 必报",
+      "caught": true,
+      "detail": "期望捕获 ['S8']"
+    },
+    {
+      "name": "R5 篡改 gate demand_violation_steps=0 → S11 必报",
+      "caught": true,
+      "detail": "期望捕获 ['S11']"
+    },
+    {
+      "name": "R6 篡改 verdict_pass=false → S12 必报",
+      "caught": true,
+      "detail": "期望捕获 ['S12']"
+    }
+  ],
+  "n_pass": 12,
+  "n_total": 12,
+  "n_tamper_pass": 6,
+  "n_tamper_total": 6,
+  "strict_pass": true
+}
