@@ -1,0 +1,113 @@
+{
+  "audit": "_audit_e72_strict",
+  "checks": [
+    {
+      "n": 1,
+      "name": "S1_three_valued_complete",
+      "pass": true,
+      "detail": "observed values=['NA', 'SAFE', 'UNSAFE']"
+    },
+    {
+      "n": 2,
+      "name": "S2_double_constraint_independence",
+      "pass": true,
+      "detail": "τ可行但滑移: F=[3,5]@μ0.2 feasible=True value=UNSAFE(ρ=3.00) ｜ τ不可行: feasible=False value=UNSAFE"
+    },
+    {
+      "n": 3,
+      "name": "S3_NA_short_honest",
+      "pass": true,
+      "detail": "NA=NA tag=⊘"
+    },
+    {
+      "n": 4,
+      "name": "S4_source_doc_complete",
+      "pass": true,
+      "detail": "anchor sources=['bench_e67D'] C.source_doc_ok=True"
+    },
+    {
+      "n": 5,
+      "name": "S5_nonfinite_capped",
+      "pass": true,
+      "detail": "μ=0 → value=UNSAFE ρ=None（None=未泄漏 inf）"
+    },
+    {
+      "n": 6,
+      "name": "S6_feasibility_both_directions",
+      "pass": true,
+      "detail": "F=[0.0, 5.0] exp=True act=True F=[3.0, 5.0] exp=True act=True F=[8.0, 5.0] exp=False act=False F=[15.0, 5.0] exp=False act=False"
+    },
+    {
+      "n": 7,
+      "name": "S7_rho_eq_1_safe",
+      "pass": true,
+      "detail": "ρ=1.000000 value=SAFE"
+    },
+    {
+      "n": 8,
+      "name": "S8_verdict_self_consistent",
+      "pass": true,
+      "detail": "重算=True 报告=True"
+    },
+    {
+      "n": 9,
+      "name": "S9_envelope_regime_premise",
+      "pass": true,
+      "detail": "util(0.6)=0.9968(τ受限) util(0.8)=1.0000(锥受限)"
+    },
+    {
+      "n": 10,
+      "name": "S10_stored_booleans_equal_recompute",
+      "pass": true,
+      "detail": "env_recompute=True combo_recompute=True"
+    },
+    {
+      "n": 11,
+      "name": "S11_stored_anchor_verdict_equal_recompute",
+      "pass": true,
+      "detail": "4 锚点 value/feasible/rho/tau 全一致"
+    }
+  ],
+  "tamper": [
+    {
+      "n": 23,
+      "name": "R1 改包络 μ=0.2 max_tangential=9.99 → S10 必报",
+      "caught": true,
+      "detail": "期望捕获 ['S10']"
+    },
+    {
+      "n": 35,
+      "name": "R2 改 [8,5] 裁决为 SAFE → S11 必报（τ 不可行却称 SAFE）",
+      "caught": true,
+      "detail": "期望捕获 ['S11']"
+    },
+    {
+      "n": 47,
+      "name": "R3 改组合 UNSAFE_x_SAFE 值为 SAFE → S10 必报",
+      "caught": true,
+      "detail": "期望捕获 ['S10']"
+    },
+    {
+      "n": 59,
+      "name": "R4 抹掉锚点 source → S4 必报",
+      "caught": true,
+      "detail": "期望捕获 ['S4']"
+    },
+    {
+      "n": 71,
+      "name": "R5 翻转 verdict_pass=False → S8 必报",
+      "caught": true,
+      "detail": "期望捕获 ['S8']"
+    }
+  ],
+  "findings": [
+    "★ 严格审核（审前提）：E72 结论成立所需的 10 条前提全部成立，5 条篡改全部被对应判据捕获。",
+    "  关键前提 S2：双约束独立性成立——F=[3,5]@μ0.2 τ 可行(feasible=True)但滑移→UNSAFE，F=[8,5] τ 不可行(feasible=False)→UNSAFE ⇒「τ 可行 ≠ 不滑」两约束互不冗余。",
+    "  S6 补足作者审核的单向缺口：期望可行⇔可行 **且** 期望不可行⇔不可行（双向）。"
+  ],
+  "n_pass": 11,
+  "n_total": 11,
+  "n_tamper_pass": 5,
+  "n_tamper_total": 5,
+  "strict_pass": true
+}
