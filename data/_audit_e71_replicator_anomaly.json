@@ -1,0 +1,90 @@
+{
+  "experiment": "E71 第三方复刻者排查（纯数据、零作者模块）",
+  "checks": [
+    {
+      "n": 1,
+      "name": "T1 报告三段 + frac/tau_lim 顶层 + verdict 字段齐全",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "n": 2,
+      "name": "T2 C1–C5 布尔 / B 段边界 / verdict 与原始字段重算完全一致（无自述造假）",
+      "pass": true,
+      "detail": "违反=无"
+    },
+    {
+      "n": 3,
+      "name": "T3 before 确失败（越限>0 且 τmax>预算上限）—— 预算化必要性成立",
+      "pass": true,
+      "detail": "越限=82 τmax=6.6766 预算max=4.5000"
+    },
+    {
+      "n": 4,
+      "name": "T4 after 确修复（越限=0 且 端点误差≤1cm）—— 精度未被刚度代价牺牲",
+      "pass": true,
+      "detail": "越限=0 errL=0.00024 errR=0.00012"
+    },
+    {
+      "n": 5,
+      "name": "T5 无饱和边界诚实：无 within_tol∧unsaturated 格 且 boundary_unsaturated_hz=None",
+      "pass": true,
+      "detail": "within_tol∧unsaturated 格数=0 边界=None"
+    },
+    {
+      "n": 6,
+      "name": "T6 B 段每行带 wn 增益口径 + design/note 注明饱和不作为能力主张",
+      "pass": true,
+      "detail": "wn_rad_s=True design带宽标记=True note口径=True"
+    },
+    {
+      "n": 7,
+      "name": "T7 刚度代价诚实（α<1 ⇒ ωn_after<ωn_before；√α·ωn_b≈ωn_a）",
+      "pass": true,
+      "detail": "α=0.3972 ωn 4.209→2.653 ｜ √α·ωn_b=2.6529"
+    },
+    {
+      "n": 8,
+      "name": "T8 越限口径是门控前需求（executed=0 ≠ demand>0，未用门控掩盖）",
+      "pass": true,
+      "detail": "before exec=0 demand=82 ｜ after exec=0 demand=0"
+    }
+  ],
+  "tamper": [
+    {
+      "n": 9,
+      "name": "T9 翻转 verdict_pass → T2 必报",
+      "caught": true,
+      "detail": "期望 T2 重算 verdict 不符"
+    },
+    {
+      "n": 10,
+      "name": "T10 篡改 after 越限步 0→100 → T2/T4 必报",
+      "caught": true,
+      "detail": "期望 T2 重算 C3 不符 / T4 失败"
+    },
+    {
+      "n": 11,
+      "name": "T11 篡改 boundary_unsaturated_hz 2.0 → T2/T5 必报",
+      "caught": true,
+      "detail": "期望 T2 边界不符 / T5 失败"
+    },
+    {
+      "n": 12,
+      "name": "T12 篡改 α=1.1>1 → T2/T7 必报",
+      "caught": true,
+      "detail": "期望 T2 重算 C1 不符 / T7 失败"
+    },
+    {
+      "n": 13,
+      "name": "T13 翻转绑定边界 within_tol 格 → T2 必报",
+      "caught": true,
+      "detail": "期望 T2 重算 boundary_any 不符"
+    }
+  ],
+  "n_pass": 8,
+  "n_total": 8,
+  "n_tamper_pass": 5,
+  "n_tamper_total": 5,
+  "thirdparty_pass": true
+}
