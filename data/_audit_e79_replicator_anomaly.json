@@ -1,0 +1,78 @@
+{
+  "experiment": "E79 第三方/盲复刻(L2/L4 纯数据)",
+  "independence_scope": "不 import 被审模块，只读 JSON（第三方）",
+  "checks": [
+    {
+      "name": "D1_bench_complete_and_sane",
+      "pass": true,
+      "detail": "m=2 v=3.0461 a=8 dt=0.005 e=0.2 F=900"
+    },
+    {
+      "name": "D2_A_closedform_stored_eq_analytic",
+      "pass": true,
+      "detail": "max_dev=2.50e-11"
+    },
+    {
+      "name": "D3_B_impulse_momentum_witnesses_zero_and_closure",
+      "pass": true,
+      "detail": "max_dev=0.00e+00"
+    },
+    {
+      "name": "D4_C_verdict_coupling_selfconsistent",
+      "pass": true,
+      "detail": "n_miss_re=3 stored=3 v_star=1.8750"
+    },
+    {
+      "name": "D5_D_cop_selfconsistent",
+      "pass": true,
+      "detail": "n_dyn_re=5 stored=5"
+    },
+    {
+      "name": "D6_criteria_and_verdict_selfconsistent",
+      "pass": true,
+      "detail": "verdict=True"
+    },
+    {
+      "name": "D7_bench_sha256_integrity_anchor",
+      "pass": true,
+      "detail": "stored=5d9a639cdda19729 recomp=5d9a639cdda19729"
+    }
+  ],
+  "tamper": [
+    {
+      "name": "R1 篡改 A.max_abs_err=9.9 → D2 必报",
+      "caught": true,
+      "detail": "期望捕获 ['D2']"
+    },
+    {
+      "name": "R2 篡改 B.momentum_conserved_err=9.9 → D3 必报",
+      "caught": true,
+      "detail": "期望捕获 ['D3']"
+    },
+    {
+      "name": "R3 篡改 C.n_missed_by_static=0 → D4 必报",
+      "caught": true,
+      "detail": "期望捕获 ['D4']"
+    },
+    {
+      "name": "R4 篡改 D.n_static_only_missed=0 → D5 必报",
+      "caught": true,
+      "detail": "期望捕获 ['D5']"
+    },
+    {
+      "name": "R5 篡改 verdict_pass=False → D6 必报",
+      "caught": true,
+      "detail": "期望捕获 ['D6']"
+    },
+    {
+      "name": "R6 篡改 bench_sha256 → D7 必报",
+      "caught": true,
+      "detail": "期望捕获 ['D7']"
+    }
+  ],
+  "n_pass": 7,
+  "n_total": 7,
+  "n_tamper_pass": 6,
+  "n_tamper_total": 6,
+  "replicator_pass": true
+}
