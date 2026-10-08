@@ -1,0 +1,72 @@
+{
+  "audit": "E84b L3 strict",
+  "checks": [
+    {
+      "n": 1,
+      "name": "S1 报告↔声明自洽（sharing_removed 含 S/D、still_shared 含 E、模型类边界声明完整、verdict=all(H)）",
+      "pass": true,
+      "detail": "removed=['S (static torque)', 'D (trajectory peak torque)'] still_shared=['E (energy margin): no third-party counterpart', 'K/C: mass-independent, precomputed']"
+    },
+    {
+      "n": 2,
+      "name": "S2 装载自检独立复算（重建 BulletPlant.verify() 与报告一致）",
+      "pass": true,
+      "detail": "mine={'max_mass_err_kg': 3.483e-07, 'max_izz_err_kgm2': 7.4e-09, 'max_com_err_m': 1.409e-07, 'pass': True}"
+    },
+    {
+      "n": 3,
+      "name": "S3 跨引擎误差独立复算（小样本重跑，与报告同量级且 pass 一致）",
+      "pass": true,
+      "detail": "mine max=3.288e-06 ｜ store max=5.022e-06 | tol=1.000e-03"
+    },
+    {
+      "n": 4,
+      "name": "S4 臂层与真值来源无关：feasible / measure / analytic-GT 危险率与 E84 报告逐位相等",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "n": 5,
+      "name": "S5 负对照（关键）：不打惯量补丁的 Bullet 与解析核误差**远超**阈值 → 跨引擎检查对同参前提敏感",
+      "pass": true,
+      "detail": "no-patch max=1.374e-01 ｜ tol=1.000e-03（比值 137×）"
+    },
+    {
+      "n": 6,
+      "name": "S6a 把 sharing_removed 里的 S/D 拿掉 → S1 必报（夸大独立性）",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "n": 7,
+      "name": "S6b 抹掉'模型类仍共享'的边界声明 → S1 必报",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "n": 8,
+      "name": "S6c 翻转 H84b-3 → S1 必报（verdict≠all(H)）",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "n": 9,
+      "name": "S6d 未篡改 → S1 通过（阴性对照）",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "n": 10,
+      "name": "S6e 幂等：两次读入结论一致",
+      "pass": true,
+      "detail": ""
+    }
+  ],
+  "findings": [
+    "装载同参自检与跨引擎一致性可被独立复算；**负对照（不打惯量补丁）误差远超阈值**，证明该检查对'同参前提'有真实分辨力。",
+    "声明完整性（sharing_removed/still_shared/model_class_still_shared）被结构性检查，防止夸大独立性。"
+  ],
+  "n_pass": 10,
+  "n_total": 10,
+  "audit_pass": true
+}
