@@ -1,0 +1,98 @@
+{
+  "experiment": "E69 严格审核(L3 独立物理)",
+  "independence_scope": "独立物理：自写 mass_matrix/gravity_vec/载荷惯量 + E69 验收配方，不 import e69/CS/trackability/e58",
+  "checks": [
+    {
+      "name": "S1_V0_ok_selfconsistent",
+      "pass": true,
+      "detail": "E66_wn=7.7582 E69_wn=7.7582 kp_match=True ok=True"
+    },
+    {
+      "name": "S2_V0_recipe_recomputed_at_QREF",
+      "pass": true,
+      "detail": "recomputed=7.7582 stored=7.7582"
+    },
+    {
+      "name": "S3_V1_all48_rows_recomputed",
+      "pass": true,
+      "detail": "max|Δwn|=0.0000 n=48"
+    },
+    {
+      "name": "S3b_V1_aggregate_matches",
+      "pass": true,
+      "detail": "re_min=1.4686 re_med=5.2691 re_max=13.7690 stored=1.4686/5.2691/13.7690"
+    },
+    {
+      "name": "S3c_V1_all_below_assumed40",
+      "pass": true,
+      "detail": "max_recomputed=13.7690 assumed=40"
+    },
+    {
+      "name": "S4_V2_empirical_wn_selfconsistent",
+      "pass": true,
+      "detail": "emp_wn_re=6.0978 stored=6.0978 form_wn_re=7.7582 stored=7.7582 ratio=1.272"
+    },
+    {
+      "name": "S4b_formula_conservative_not_optimistic",
+      "pass": true,
+      "detail": "wn_ratio=1.272 kp_ratio=0.717"
+    },
+    {
+      "name": "S5_V3_blindspot_logic",
+      "pass": true,
+      "detail": "assumed=30 budget=102"
+    },
+    {
+      "name": "S5b_V3_H58_3_flips_real_bandwidth",
+      "pass": true,
+      "detail": "assumed_PASS=True budget_FAIL=False"
+    },
+    {
+      "name": "S6_V3b_recommendation_consistent",
+      "pass": true,
+      "detail": "rec=None all_fa>=0.10=True"
+    },
+    {
+      "name": "S7_V4_finding4_matches_V2",
+      "pass": true,
+      "detail": "V4 cites kp=2.5119 wn=6.098"
+    },
+    {
+      "name": "S8_verdict_self_consistent",
+      "pass": true,
+      "detail": "verdict_pass=True"
+    }
+  ],
+  "tamper": [
+    {
+      "name": "R1 篡改 V0 ok=false → S1 必报",
+      "caught": true,
+      "detail": "期望捕获 ['S1']"
+    },
+    {
+      "name": "R2 篡改 V1 一行 wn=99 → S3c 必报",
+      "caught": true,
+      "detail": "期望捕获 ['S3', 'S3c']"
+    },
+    {
+      "name": "R3 篡改 V2 empirical_kp=0.5 → S4 必报",
+      "caught": true,
+      "detail": "期望捕获 ['S4']"
+    },
+    {
+      "name": "R4 篡改 V3 budget blind=0 → S5 必报",
+      "caught": true,
+      "detail": "期望捕获 ['S5']"
+    },
+    {
+      "name": "R5 篡改 verdict_pass=false → S8 必报",
+      "caught": true,
+      "detail": "期望捕获 ['S8']"
+    }
+  ],
+  "n_pass": 12,
+  "n_total": 12,
+  "n_tamper_pass": 5,
+  "n_tamper_total": 5,
+  "strict_pass": true
+}
