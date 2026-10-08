@@ -1,0 +1,55 @@
+{
+  "audit": "_audit_e76_replicator_anomaly",
+  "experiment": "e76_dualarm_coordination",
+  "pass": 9,
+  "total": 9,
+  "verdict": true,
+  "audit_pass": true,
+  "checks": [
+    {
+      "name": "T1_internal_force_algebra_independent",
+      "pass": true,
+      "detail": "‖GᵀW_int‖=6.94e-18 orth=0.00e+00 α=2.22e-16"
+    },
+    {
+      "name": "T2_static_limit_boundary_consistent",
+      "pass": true,
+      "detail": "上限内 3 行漂移≤1cm；超限 2 行越限>0"
+    },
+    {
+      "name": "T3_drift_monotone_in_load",
+      "pass": true,
+      "detail": "drift=[0.0, 0.004, 0.0073, 0.8444, 1.1338]"
+    },
+    {
+      "name": "T4_danger_zero_within_limit",
+      "pass": true,
+      "detail": "C 段 3 行越限==0"
+    },
+    {
+      "name": "T5_verdict_self_consistent",
+      "pass": true,
+      "detail": "inv=True verdict=True"
+    },
+    {
+      "name": "T6_static_hold_limit_declared",
+      "pass": true,
+      "detail": "limit=0.3567 kg"
+    },
+    {
+      "name": "T7_tamper_internal_detected",
+      "pass": true,
+      "detail": "改 ‖GᵀW_int‖ → 独立重算必报"
+    },
+    {
+      "name": "T8_tamper_over_limit_detected",
+      "pass": true,
+      "detail": "抹超限行越限 → T2 类必报"
+    },
+    {
+      "name": "T9_tamper_verdict_detected",
+      "pass": true,
+      "detail": "翻转 verdict → T5 类必报"
+    }
+  ]
+}
