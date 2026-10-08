@@ -1,0 +1,72 @@
+{
+  "audit": "E85 L3 strict",
+  "checks": [
+    {
+      "n": 1,
+      "name": "S1 报告↔明细自洽（逐档×逐臂统计量由数据文件独立重放一致；verdict=all(H)）",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "n": 2,
+      "name": "S2 口径不变量（GATED 危险恒 0；trigger ≤ calls ≤ 3×trigger；点入口危险随档递减）",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "n": 3,
+      "name": "S3 诚实 FAIL 保真（H85-2/4/5 必为 False 且披露『判据设计失误』，不得被美化）",
+      "pass": true,
+      "detail": "H85-2=False H85-4=False H85-5=False verdict=False"
+    },
+    {
+      "n": 4,
+      "name": "S4a 篡改某档测量次数 → S1 必报",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "n": 5,
+      "name": "S4b 让 GATED 出现危险 → S2 必报",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "n": 6,
+      "name": "S4c 把诚实 FAIL 翻转 → S3 必报（且 verdict≠all(H)）",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "n": 7,
+      "name": "S4d 删掉『判据设计失误』披露 → S3 必报",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "n": 8,
+      "name": "S4e 抹掉点入口在粗接口的漏报 → S2 必报",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "n": 9,
+      "name": "S4f 未篡改 → S1/S2/S3 通过（阴性对照）",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "n": 10,
+      "name": "S5 幂等：两次重放一致",
+      "pass": true,
+      "detail": ""
+    }
+  ],
+  "findings": [
+    "独立重放与报告逐档逐臂一致；**三条诚实 FAIL 被结构性锁定**（翻转或删除披露都会被抓）。",
+    "★ 口径注记：本层重放复用仓库的 `five_orders`，故它排除的是『报告数字被手工修改 / 臂逻辑记错』，不排除判据实现本身偏差（由 E85 的 L4 独立物理重写承担）。"
+  ],
+  "n_pass": 10,
+  "n_total": 10,
+  "audit_pass": true
+}
