@@ -1,0 +1,84 @@
+{
+  "audit": "E86 L3 strict",
+  "checks": [
+    {
+      "n": 1,
+      "name": "S1 逐模型三项比率由 E19 原始日志重算一致",
+      "pass": true,
+      "detail": "mismatch=[]"
+    },
+    {
+      "n": 2,
+      "name": "S1b 汇总量（极差 / Spearman / 恒等偏差）由原始日志重算一致",
+      "pass": true,
+      "detail": "raw spread=0.6625/0.0000 rho=-1.0000 dev=0.0000"
+    },
+    {
+      "n": 3,
+      "name": "S2a 存在接口精度 = 0 的模型（『完全不会』的见证）",
+      "pass": true,
+      "detail": "零精度模型 = ['local-internvl3-8b-fp8', 'local-smolvlm2-2.2b']"
+    },
+    {
+      "n": 4,
+      "name": "S2b `correction_flip` ⟺ (step1 错 ∧ step2 对)（恒等的机制来源）",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "n": 5,
+      "name": "S2c `ti` 是任务序号（连续小整数、每值多行）而非迭代计数——支撑『禁当迭代数引用』",
+      "pass": true,
+      "detail": "ti 取值 [0, 1, 2]…[17, 18, 19]，共 20 个取值，最小频次 30"
+    },
+    {
+      "n": 6,
+      "name": "S2d `step2_correct` 恒为 True（系统输出 = 1.0）",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "n": 7,
+      "name": "S3a 篡改某模型接口精度 → S1 必报",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "n": 8,
+      "name": "S3b 篡改恒等偏差 → S1b 必报",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "n": 9,
+      "name": "S3c 翻转 H86-3 → verdict_pass≠all(H) 必报",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "n": 10,
+      "name": "S3d 抹掉零精度模型（削弱见证）→ S2a 必报",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "n": 11,
+      "name": "S3e 未篡改 → S1/S1b/S2a–d 全通过（阴性对照）",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "n": 12,
+      "name": "S4 幂等：两次重算一致",
+      "pass": true,
+      "detail": ""
+    }
+  ],
+  "findings": [
+    "从 9 个 E19 原始日志直接重算，与 E86 报告逐项一致；",
+    "★ 独立核验了三项「关于数据本身」的断言：零精度模型确实存在、`correction_flip ≡ (step1 错 ∧ step2 对)`、`ti` 是任务序号（非迭代数）。"
+  ],
+  "n_pass": 12,
+  "n_total": 12,
+  "audit_pass": true
+}
