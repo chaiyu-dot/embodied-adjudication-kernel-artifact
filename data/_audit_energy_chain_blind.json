@@ -1,0 +1,81 @@
+{
+  "audit": "audit_energy_chain_blind",
+  "checks": [
+    {
+      "n": 1,
+      "name": "S1_KE_five_sources_agree",
+      "pass": true,
+      "detail": "相对偏差 {'e57d_geom': 1.43e-16, 'rne_dynamics': 8.33e-16, 'energy_kernel': 8.33e-16, 'half_qdMqd': 7.03e-16}（几何=e57d=rne=energy_kernel=½q̇ᵀMq̇）"
+    },
+    {
+      "n": 2,
+      "name": "S2_PE_four_sources_agree",
+      "pass": true,
+      "detail": "相对偏差 {'e57d_geom': 0.0, 'e66': 0.0, 'energy_kernel': 0.0}"
+    },
+    {
+      "n": 3,
+      "name": "S3_work_conjugacy_residual_lt_1e-8",
+      "pass": true,
+      "detail": "max|残差|=2.120e-10"
+    },
+    {
+      "n": 4,
+      "name": "S4_E75_ordinal_and_misband_recompute",
+      "pass": true,
+      "detail": "序数重算 1.000（报告 1.000）｜ 误档重算 3（报告 3）"
+    },
+    {
+      "n": 5,
+      "name": "S5_E60_ordinal_rho_ge_0.90_and_band_rate_matches",
+      "pass": true,
+      "detail": "复算 ρ_mean=0.9896（报告 0.9896）｜ band 一致率=0.80（报告 0.80）｜ 交叉核对不符=无"
+    },
+    {
+      "n": 6,
+      "name": "S6_band_definition_consistent",
+      "pass": true,
+      "detail": "margin_to_band ≡ e_order_band"
+    }
+  ],
+  "tamper": [
+    {
+      "n": 7,
+      "name": "R1 改 E75 行 0 m_E_exact 破坏序数 → 必报",
+      "caught": true
+    },
+    {
+      "n": 8,
+      "name": "R2 改 E75 行 3 band_exact → 存储 band 与重算不符必报",
+      "caught": true
+    },
+    {
+      "n": 9,
+      "name": "R3 改 E75 行 2 m_E_kinetic_only（loose→unsafe，消除一处误档）→ 必报",
+      "caught": true
+    }
+  ],
+  "findings": [
+    "★ 能量链跨模块一致性审核（非隔离盲审）：以**独立几何 KE/PE** 为基准，S1/S2/S3 独立交叉对拍一致。",
+    "  KE 五源（几何/e57d/rne_dynamics/energy_kernel/½q̇ᵀMq̇）相对偏差 < 1e-12；PE 四源一致。",
+    "  功共轭残差 < 1e-8；E75 序数/误档、E60 跨域一致率由**报告 + 生成代码**复算（S4/S5 属自洽，非独立）。"
+  ],
+  "n_pass": 6,
+  "n_total": 6,
+  "n_tamper_pass": 3,
+  "n_tamper_total": 3,
+  "audit_pass": true,
+  "independence_scope": {
+    "independent": [
+      "S1_KE_five_sources_agree",
+      "S2_PE_four_sources_agree",
+      "S3_work_conjugacy_residual_lt_1e-8"
+    ],
+    "self_consistency_not_independent": [
+      "S4_E75_ordinal_and_misband_recompute",
+      "S5_E60_ordinal_rho_ge_0.90_and_band_rate_matches",
+      "S6_band_definition_consistent"
+    ],
+    "note": "本审核 import 全部被审模块（非隔离）；S4 读 E75 报告、S5 调 E60 自身函数 ⇒ 自洽复算。几何 KE 基准另经 COM-Jacobian 第 6 源独立复核（相对偏差 6.0e-16）。"
+  }
+}
