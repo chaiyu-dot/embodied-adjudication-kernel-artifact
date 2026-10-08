@@ -1,0 +1,73 @@
+{
+  "experiment": "E70 第三方/盲复刻(L2/L4 纯数据)",
+  "independence_scope": "不 import 被审模块，只读 JSON（第三方）",
+  "checks": [
+    {
+      "name": "D1_V1_paired_ok",
+      "pass": true,
+      "detail": "coarse_only=0 resid_only=45 coarse=0.000 resid=0.938"
+    },
+    {
+      "name": "D2_V2_exec_zero",
+      "pass": true,
+      "detail": "exec=0 demand=1119"
+    },
+    {
+      "name": "D3_V3_inadmissible_reject",
+      "pass": true,
+      "detail": "reach=0.000 status={'budget_exhausted': 6, 'reject': 9}"
+    },
+    {
+      "name": "D4_V4_clamp_fails",
+      "pass": true,
+      "detail": "clamp_reach=0.000"
+    },
+    {
+      "name": "D5_V5_kmax_no_improvement",
+      "pass": true,
+      "detail": "kmax16=0.938 resid8=0.938"
+    },
+    {
+      "name": "D6_residual_curve",
+      "pass": true,
+      "detail": "first=0.2550 coarse=0.2550 last=0.0077"
+    },
+    {
+      "name": "D7_verdict_self_consistent",
+      "pass": true,
+      "detail": "verdict_pass=True"
+    }
+  ],
+  "tamper": [
+    {
+      "name": "R1 篡改 V1 ok=false → D1 必报",
+      "caught": true,
+      "detail": "期望捕获 ['D1']"
+    },
+    {
+      "name": "R2 篡改 V2 exec=5 → D2 必报",
+      "caught": true,
+      "detail": "期望捕获 ['D2']"
+    },
+    {
+      "name": "R3 篡改 SET_B resid reach=0.5 → D3 必报",
+      "caught": true,
+      "detail": "期望捕获 ['D3']"
+    },
+    {
+      "name": "R4 篡改 SET_B clamp reach=0.5 → D4 必报",
+      "caught": true,
+      "detail": "期望捕获 ['D4']"
+    },
+    {
+      "name": "R5 篡改 verdict_pass=false → D7 必报",
+      "caught": true,
+      "detail": "期望捕获 ['D7']"
+    }
+  ],
+  "n_pass": 7,
+  "n_total": 7,
+  "n_tamper_pass": 5,
+  "n_tamper_total": 5,
+  "replicator_pass": true
+}
