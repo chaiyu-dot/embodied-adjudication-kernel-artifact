@@ -1,0 +1,88 @@
+{
+  "checks": [
+    {
+      "check": "F1 报告含全部必需键",
+      "pass": true,
+      "detail": "缺失=[]"
+    },
+    {
+      "check": "F1b verdict_pass=True",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "F2 独立重算 6 单元（COARSE 误差 / RESID 误差与迭代数均有限）",
+      "pass": true,
+      "detail": "样例 [(0.4907, 0.0005, 7), (0.2827, 0.0018, 5), (0.4756, 0.0023, 7)]"
+    },
+    {
+      "check": "F2b RESID 误差显著小于 COARSE（逐单元）",
+      "pass": true,
+      "detail": "ratio 中位=0.0038"
+    },
+    {
+      "check": "F2c 全量重算 SET_A（48×2 臂）与报告汇总一致",
+      "pass": true,
+      "detail": "coarse 重算=(0.0, 0.255, 1.0) 报告=(0.0, 0.255, 1.0) ｜ resid 重算=(0.9375, 0.0043, 5.0) 报告=(0.9375, 0.0043, 5.0)"
+    },
+    {
+      "check": "F3 判据式与实现逐条对应（TOL / K_MAX / 线搜索 / 牛顿步）",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "F5 SET_A 全部目标在限位内有 IK 解（修 46%% 无解缺陷）",
+      "pass": true,
+      "detail": "48/48"
+    },
+    {
+      "check": "R1 SET_A 目标均在可达环内且有限位内解",
+      "pass": true,
+      "detail": "n=48"
+    },
+    {
+      "check": "R2 SET_B 中存在**确实被夹取**的目标（CLAMP 对照非空）",
+      "pass": true,
+      "detail": "被夹=7/22 ｜ kinds={'outside_annulus': 10, 'joint_limit_violating': 5}"
+    },
+    {
+      "check": "R3a 内环只接收 q_ref（不接收 goal）",
+      "pass": true,
+      "detail": "ctrl, q_ref, q0, T=T_MOVE, dt=CS.DT"
+    },
+    {
+      "check": "R3b 误差由**实际 q** 计算（FK(q_end)/FK(q_cur)）",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "R4 exec 越限 = 0（构造保证）且 demand 越限 > 0（门控在承重）",
+      "pass": true,
+      "detail": "exec=0 demand=1119"
+    },
+    {
+      "check": "R5 配对：仅 RESID 到点 >0 且 仅 COARSE 到点 =0",
+      "pass": true,
+      "detail": "{'n': 48, 'coarse_only': 0, 'resid_only': 45, 'coarse_rate': 0.0, 'resid_rate': 0.9375, 'V1_ok': True}"
+    },
+    {
+      "check": "R6 残差曲线前 3 步严格下降（外环有效）",
+      "pass": true,
+      "detail": "0.2550 → 0.1305 → 0.0388 → 0.0145"
+    },
+    {
+      "check": "R7 SET_B：到点 ≤0.10 且状态 ∈ {reject, budget_exhausted}（不夹取、不假装成功）",
+      "pass": true,
+      "detail": "到点=0.0000 状态={'budget_exhausted': 6, 'reject': 9}"
+    }
+  ],
+  "F4_caveats": [
+    "容差 TOL=0.010 m（E57/Tier 从未定义过，本件显式定义）",
+    "迭代预算 K_MAX=8（另有 V5 敏感性到 16）",
+    "内环 = PD+重力前馈（预算增益；MPC 为可插拔替代，E68 已测）",
+    "粗提案 = IK × U(0.30,0.80)，按实测 LLM 误差带（0.2–0.6 m）标定"
+  ],
+  "n_pass": 15,
+  "n_total": 15,
+  "audit_pass": true
+}
