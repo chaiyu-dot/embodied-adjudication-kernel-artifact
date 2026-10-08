@@ -1,0 +1,66 @@
+{
+  "audit": "_audit_e74_replicator_anomaly",
+  "experiment": "e74_tracking_bandwidth_curve",
+  "pass": 10,
+  "total": 10,
+  "verdict": true,
+  "audit_pass": true,
+  "n_pass": 10,
+  "n_total": 10,
+  "repo_modules_loaded_at_T1_T3": [],
+  "repo_modules_loaded_after_fuzz": [
+    "planning"
+  ],
+  "checks": [
+    {
+      "name": "T1_analytic_bw_independent",
+      "pass": true,
+      "detail": "bad=[]"
+    },
+    {
+      "name": "T2_boundaries_independent",
+      "pass": true,
+      "detail": "反例=0 []"
+    },
+    {
+      "name": "T3_f3db_crossing_independent",
+      "pass": true,
+      "detail": "反例=[]"
+    },
+    {
+      "name": "T4_blackbox_fuzz",
+      "pass": true,
+      "detail": "notes=[]"
+    },
+    {
+      "name": "T8_E_section_consistent_and_activated",
+      "pass": true,
+      "detail": "反例=[] | 关节1(峰值,越限)=[(3.6481, 2637), (3.305, 2434), (3.5004, 2152)]"
+    },
+    {
+      "name": "T9_F_amplitude_section_independent",
+      "pass": true,
+      "detail": "反例=[] | 对amp非增=True"
+    },
+    {
+      "name": "T10_G_controller_family_independent",
+      "pass": true,
+      "detail": "反例=[] | 有caveat=True"
+    },
+    {
+      "name": "T5_self_consistent_and_honest",
+      "pass": true,
+      "detail": "honest=True inv=True"
+    },
+    {
+      "name": "T6_no_inf_nan",
+      "pass": true,
+      "detail": "非有限=[]"
+    },
+    {
+      "name": "T7_e67c_anchor_independent",
+      "pass": true,
+      "detail": "0.2(1cm)=True 0.5(1cm)=False 0.5(2cm)=True"
+    }
+  ]
+}
