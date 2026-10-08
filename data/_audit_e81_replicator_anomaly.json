@@ -1,0 +1,78 @@
+{
+  "experiment": "E81 第三方/盲复刻(L2/L4 纯数据)",
+  "independence_scope": "不 import 被审模块，只读 JSON（第三方）+ E73/E79 外部交叉",
+  "checks": [
+    {
+      "name": "D1_bench_complete_and_sane",
+      "pass": true,
+      "detail": "taulim=[5.0, 1.8] g=9.81 m=2.0 e=0.2"
+    },
+    {
+      "name": "D2_A_kinematic_matches_E73",
+      "pass": true,
+      "detail": "stored=2.9573 e73=2.9573"
+    },
+    {
+      "name": "D3_B_impulse_selfconsistent",
+      "pass": true,
+      "detail": "recomp=1.875000 stored=1.875000 e79=1.875000 err=0.00e+00"
+    },
+    {
+      "name": "D4_C_coriolis_selfconsistent",
+      "pass": true,
+      "detail": "v_cor=2.1330 nvalid=1040"
+    },
+    {
+      "name": "D5_dynamic_cap_and_binding",
+      "pass": true,
+      "detail": "recomp=1.8750 stored=1.8750 bind=impulse"
+    },
+    {
+      "name": "D6_criteria_and_verdict_selfconsistent",
+      "pass": true,
+      "detail": "C1=True C2=True C3=True verdict=True"
+    },
+    {
+      "name": "D7_bench_sha256_integrity_anchor",
+      "pass": true,
+      "detail": "stored=fe621e8ca1065cc1 recomp=fe621e8ca1065cc1"
+    }
+  ],
+  "tamper": [
+    {
+      "name": "R1 篡改 A v_kinematic=9.9 → D2 必报",
+      "caught": true,
+      "detail": "期望捕获 ['D2']"
+    },
+    {
+      "name": "R2 篡改 B v_impulse=9.9 → D3 必报",
+      "caught": true,
+      "detail": "期望捕获 ['D3']"
+    },
+    {
+      "name": "R3 篡改 C n_valid_configs_dirs=0 → D4 必报",
+      "caught": true,
+      "detail": "期望捕获 ['D4']"
+    },
+    {
+      "name": "R4 篡改 v_dynamic_cap=9.9 → D5 必报",
+      "caught": true,
+      "detail": "期望捕获 ['D5']"
+    },
+    {
+      "name": "R5 篡改 verdict_pass=False → D6 必报",
+      "caught": true,
+      "detail": "期望捕获 ['D6']"
+    },
+    {
+      "name": "R6 篡改 bench_sha256 → D7 必报",
+      "caught": true,
+      "detail": "期望捕获 ['D7']"
+    }
+  ],
+  "n_pass": 7,
+  "n_total": 7,
+  "n_tamper_pass": 6,
+  "n_tamper_total": 6,
+  "replicator_pass": true
+}
