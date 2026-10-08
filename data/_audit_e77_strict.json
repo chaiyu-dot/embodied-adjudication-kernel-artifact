@@ -1,0 +1,109 @@
+{
+  "audit": "_audit_e77_strict",
+  "checks": [
+    {
+      "n": 1,
+      "name": "S1_interface_contracts",
+      "pass": true,
+      "detail": "三族经同一门控输出有界=True"
+    },
+    {
+      "n": 2,
+      "name": "S2_danger_zero_executed",
+      "pass": true,
+      "detail": "全部新族 x 场景 executed 越限=0"
+    },
+    {
+      "n": 3,
+      "name": "S3_ss_bounded_nominal",
+      "pass": true,
+      "detail": "标称 ss={'FLC': 6.4e-05, 'IMP': 0.000121, 'LRN': 9.2e-05} ≤ 0.050"
+    },
+    {
+      "n": 4,
+      "name": "S4_deterministic",
+      "pass": true,
+      "detail": "同输入同输出"
+    },
+    {
+      "n": 5,
+      "name": "S5_gate_load_bearing",
+      "pass": true,
+      "detail": "gate-off 执行越限={'FLC': 9, 'IMP': 0, 'LRN': 10} ⇒ 门控承重"
+    },
+    {
+      "n": 6,
+      "name": "S6_verdict_self_consistent",
+      "pass": true,
+      "detail": "重算 True 报告 True"
+    },
+    {
+      "n": 7,
+      "name": "S7_data_file_self_contained",
+      "pass": true,
+      "detail": "missing=[]"
+    },
+    {
+      "n": 8,
+      "name": "S8_stored_equals_recompute",
+      "pass": true,
+      "detail": "逐格一致"
+    },
+    {
+      "n": 9,
+      "name": "S9_stored_D_equals_recompute",
+      "pass": true,
+      "detail": "deterministic=True/True gate_load=True/True abl={'FLC': 9, 'IMP': 0, 'LRN': 10}/{'FLC': 9, 'IMP': 0, 'LRN': 10}"
+    },
+    {
+      "n": 10,
+      "name": "S10_executed_criterion_unfalsifiable_witness",
+      "pass": true,
+      "detail": "定义性：探针门控前越限 3/4、clip 后越限 0/4（恒 0）；仿真：敌意控制器(1e6 N·m) gate=ON → executed=0 demand=1000/1000 τmax_exec=5.00 ⇒ C2(执行值)不可证伪，安全证据只能来自门控关断消融"
+    },
+    {
+      "n": 11,
+      "name": "S11_gate_load_bearing_robust",
+      "pass": true,
+      "detail": "stress gate-off 越限={'FLC': 9, 'IMP': 0, 'LRN': 10}（≥2 族>0）；IMP 更严参考[2.8,-2.8]/0.3s gate-off 越限=1 ⇒ IMP 在本 stress 的 0 是**场景所限**、非固有安全"
+    }
+  ],
+  "tamper": [
+    {
+      "n": 23,
+      "name": "R1 改 A 段指标 → S8 必报",
+      "caught": true
+    },
+    {
+      "n": 35,
+      "name": "R2 改 C 段 ss_bounded → S8/S3 必报",
+      "caught": true
+    },
+    {
+      "n": 47,
+      "name": "R3 抹掉门控承重标记 → S9 必报（存储==重算）",
+      "caught": true
+    },
+    {
+      "n": 59,
+      "name": "R4 翻转 verdict_pass → S6 必报",
+      "caught": true
+    },
+    {
+      "n": 71,
+      "name": "R5 抹掉 B 段接口 all_ok → S1 必报",
+      "caught": true
+    }
+  ],
+  "findings": [
+    "★ 严格审核：11 条前提成立、5 条篡改全被捕获。",
+    "  ★ 口径更正：C2「执行值越限=0」由门控 clip **保证**、不可证伪（S10 用恒 1e6 N·m 敌意控制器见证）。",
+    "  安全证据=门控**关断**消融：stress 下 FLC/LRN 越限、IMP 0（S11 证其为场景所限，更严参考下 IMP 亦越限）。",
+    "  S8/S9：报告存储量与独立重算逐格一致（A/C/D 段）。"
+  ],
+  "n_pass": 11,
+  "n_total": 11,
+  "n_tamper_pass": 5,
+  "n_tamper_total": 5,
+  "strict_pass": true
+}
