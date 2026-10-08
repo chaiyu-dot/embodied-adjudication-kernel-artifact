@@ -1,0 +1,63 @@
+{
+  "experiment": "E60b 严格审核(L3 独立重推 + L5 隔离)",
+  "independence_scope": "独立重推：自写单调域/负控/Spearman，不 import e60b",
+  "checks": [
+    {
+      "name": "S0_isolation_e60b_not_imported",
+      "pass": true,
+      "detail": "sys.modules 含 e60b=False"
+    },
+    {
+      "name": "S1_theorem_check_sigma0_rho_exactly_1",
+      "pass": true,
+      "detail": "re_mean=1.00000000 all1=True"
+    },
+    {
+      "name": "S2_noise_curve_recompute",
+      "pass": true,
+      "detail": "mismatch=0"
+    },
+    {
+      "name": "S3_negative_control_recompute_and_endpoint_lt_090",
+      "pass": true,
+      "detail": "mismatch=0 endpoint_re=0.866518 store=0.866518"
+    },
+    {
+      "name": "S4_criteria_and_verdict_selfconsistent",
+      "pass": true,
+      "detail": "verdict=True"
+    },
+    {
+      "name": "S5_prereg_alignment",
+      "pass": true,
+      "detail": "align={'sha256_match': True, 'hypotheses_match': True}"
+    }
+  ],
+  "tamper": [
+    {
+      "name": "R1 篡改 theorem mean_rho → S1 必报",
+      "caught": true,
+      "detail": "期望捕获 ['S1']"
+    },
+    {
+      "name": "R2 篡改噪声曲线上一点 → S2 必报",
+      "caught": true,
+      "detail": "期望捕获 ['S2']"
+    },
+    {
+      "name": "R3 篡改负控端点 → S3 必报",
+      "caught": true,
+      "detail": "期望捕获 ['S3']"
+    },
+    {
+      "name": "R4 篡改 verdict_pass → S4 必报",
+      "caught": true,
+      "detail": "期望捕获 ['S4']"
+    }
+  ],
+  "n_pass": 6,
+  "n_total": 6,
+  "n_tamper_pass": 4,
+  "n_tamper_total": 4,
+  "strict_pass": true
+}
