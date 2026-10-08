@@ -1,0 +1,83 @@
+{
+  "experiment": "E70 严格审核(L3 独立物理)",
+  "independence_scope": "独立物理：自写 FK/IK/雅可比，不 import e70/CS/e66",
+  "checks": [
+    {
+      "name": "S1_FK_selfconsistent",
+      "pass": true,
+      "detail": "fk(0)=0.7000,0.0000 maxreach=0.7000"
+    },
+    {
+      "name": "S2_IK_roundtrip",
+      "pass": true,
+      "detail": "mismatch=0/5"
+    },
+    {
+      "name": "S3_V1_paired_ok",
+      "pass": true,
+      "detail": "coarse_only=0 resid_only=45 coarse_rate=0.000 resid_rate=0.938"
+    },
+    {
+      "name": "S4_V2_gate_invariant",
+      "pass": true,
+      "detail": "exec=0 demand=1119"
+    },
+    {
+      "name": "S5_V3_inadmissible_reject",
+      "pass": true,
+      "detail": "reach=0.000 status={'budget_exhausted': 6, 'reject': 9}"
+    },
+    {
+      "name": "S6_V4_clamp_fails_on_inadmissible",
+      "pass": true,
+      "detail": "clamp_reach=0.000"
+    },
+    {
+      "name": "S7_V5_kmax_no_improvement",
+      "pass": true,
+      "detail": "kmax16=0.938 resid8=0.938"
+    },
+    {
+      "name": "S8_residual_curve_contracts",
+      "pass": true,
+      "detail": "first=0.2550 coarse_med=0.2550 last=0.0077 tol=0.01"
+    },
+    {
+      "name": "S9_verdict_self_consistent",
+      "pass": true,
+      "detail": "verdict_pass=True"
+    }
+  ],
+  "tamper": [
+    {
+      "name": "R1 篡改 V1 ok=false → S3 必报",
+      "caught": true,
+      "detail": "期望捕获 ['S3']"
+    },
+    {
+      "name": "R2 篡改 V2 exec=5 → S4 必报",
+      "caught": true,
+      "detail": "期望捕获 ['S4']"
+    },
+    {
+      "name": "R3 篡改 SET_B resid reach=0.5 → S5 必报",
+      "caught": true,
+      "detail": "期望捕获 ['S5']"
+    },
+    {
+      "name": "R4 篡改 SET_B clamp reach=0.5 → S6 必报",
+      "caught": true,
+      "detail": "期望捕获 ['S6']"
+    },
+    {
+      "name": "R5 篡改 verdict_pass=false → S9 必报",
+      "caught": true,
+      "detail": "期望捕获 ['S9']"
+    }
+  ],
+  "n_pass": 9,
+  "n_total": 9,
+  "n_tamper_pass": 5,
+  "n_tamper_total": 5,
+  "strict_pass": true
+}
