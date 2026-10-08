@@ -1,0 +1,78 @@
+{
+  "experiment": "E66 第三方/盲复刻(L2/L4 纯数据)",
+  "independence_scope": "不 import 被审模块，只读 JSON（第三方）",
+  "checks": [
+    {
+      "name": "D1_V1_err_lt_1e8_and_flag",
+      "pass": true,
+      "detail": "8.881784197001252e-16"
+    },
+    {
+      "name": "D2_V2_gate_exec_within_lim",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "D3_V3_closure_and_resid",
+      "pass": true,
+      "detail": "closure=-1.00e-09 resid=-2.12e-10"
+    },
+    {
+      "name": "D4_C2_kd_recomputed",
+      "pass": true,
+      "detail": "re=0.488191 stored=0.488190"
+    },
+    {
+      "name": "D5_C2_budget_table_self_consistent",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "D6_disturbance_mp_formula",
+      "pass": true,
+      "detail": "feas=0.258 infeas=0.429 limit*0.65=0.258 limit*1.08=0.429"
+    },
+    {
+      "name": "D7_PD_G_ss_err_lt_P_PD",
+      "pass": true,
+      "detail": "PD_G=9.20e-05 P=1.44e+00 PD=1.19e+00"
+    },
+    {
+      "name": "D8_verdict_self_consistent",
+      "pass": true,
+      "detail": ""
+    }
+  ],
+  "tamper": [
+    {
+      "name": "R1 篡改 V1 flag=false → D1 必报",
+      "caught": true,
+      "detail": "期望捕获 ['D1']"
+    },
+    {
+      "name": "R2 篡改 gate tau_max=99 → D2 必报",
+      "caught": true,
+      "detail": "期望捕获 ['D2']"
+    },
+    {
+      "name": "R3 篡改 energy residual=5 → D3 必报",
+      "caught": true,
+      "detail": "期望捕获 ['D3']"
+    },
+    {
+      "name": "R4 篡改 feasible mp=5 → D6 必报",
+      "caught": true,
+      "detail": "期望捕获 ['D6']"
+    },
+    {
+      "name": "R5 篡改 verdict=false → D8 必报",
+      "caught": true,
+      "detail": "期望捕获 ['D8']"
+    }
+  ],
+  "n_pass": 8,
+  "n_total": 8,
+  "n_tamper_pass": 5,
+  "n_tamper_total": 5,
+  "replicator_pass": true
+}
