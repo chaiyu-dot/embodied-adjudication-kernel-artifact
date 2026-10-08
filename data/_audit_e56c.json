@@ -1,0 +1,38 @@
+{
+  "experiment": "E56c channel leave-one-out ablation audit (underlying verdict_pass=false, audited)",
+  "audit_role": "failure-audit",
+  "audit_date": "2026-09-23",
+  "audited_by": "blind-audit gap-fill (user directive: 补进去)",
+  "underlying_reports": ["e56c_ablation_report.json"],
+  "data_dir": "期刊投稿_TMLR_2026-09-06/data",
+  "prereg_file": "e56c_ablation_prereg.json",
+  "source_experiment": "e56b_scenarios_report.json",
+  "underlying_verdict_pass": false,
+  "audit_integrity_pass": true,
+  "verdict_pass": false,
+  "checks": [
+    {"name": "report_file_present", "pass": true, "detail": "e56c_ablation_report.json present in data_dir"},
+    {"name": "json_valid", "pass": true, "detail": "parsed without error (28 KB)"},
+    {"name": "verdict_field_present", "pass": true, "detail": "verdict_pass field present"},
+    {"name": "verdict_self_consistent", "pass": true, "detail": "verdict_pass=false matches preregistered_verdict false entries (H56c-1, H56c-3, H56c-5) and posthoc false (H56c-6, H56c-7)"},
+    {"name": "honest_notes_present", "pass": true, "detail": "honest_notes + primary_vs_amended_note + redundancy_note + containment present"},
+    {"name": "failure_not_suppressed", "pass": true, "detail": "verdict_pass + verdict_pass_amended both retained false"},
+    {"name": "prereg_linked", "pass": true, "detail": "prereg_file + source (e56b) referenced; nature=POST-HOC secondary analysis declared"}
+  ],
+  "tamper": [
+    {"name": "no_posthoc_verdict_flip", "pass": true, "detail": "verdict_pass=false unchanged; posthoc_verdict also reported"},
+    {"name": "no_internal_contradiction", "pass": true, "detail": "closed_form_selfcheck residual=0 (algebraic identity, not physical validation); n_pass consistent with class sizes"}
+  ],
+  "findings": [
+    {"id": "E56c-H56c-1", "pass": false, "severity": "FAIL", "detail": "H56c-1_removing_dyn_adds_miss_ge_0.50 FALSE: magnitude mismatch with amendment_1"},
+    {"id": "E56c-H56c-3", "pass": false, "severity": "FAIL", "detail": "H56c-3_danger_class_disjointness FALSE: chan_static signature (0,0,0) on this bench; disjointness carried only by kin+dyn"},
+    {"id": "E56c-H56c-5", "pass": false, "severity": "FAIL", "detail": "H56c-5_dyn_only_miss_le_0.02_over_sweep FALSE: dyn-only miss 0.1961 over sweep"},
+    {"id": "E56c-H56c-6", "pass": false, "severity": "posthoc-FAIL", "detail": "H56c-6_removing_dyn_drops_torque_only_recall_by_ge_0.80 FALSE: measured drop 1.0000->0.2591 = 0.7409 (threshold 0.80 too steep post-bugfix)"},
+    {"id": "E56c-H56c-7", "pass": false, "severity": "posthoc-FAIL", "detail": "H56c-7_D_only_dominates_K_plus_S_at_matched_false_alarm FALSE"},
+    {"id": "E56c-F-structural", "pass": false, "severity": "F", "detail": "chan_static ⊆ chan_dyn is structural (definitionally entailed); static channel role = zero-false-alarm cheap sound early-exit filter, NOT an independent detector. Retained as honest limitation."}
+  ],
+  "failure_summary": "POST-HOC 二级分析（未入 E56b 预注册）。PRIMARY H56c-1/H56c-5 量级失配；H56c-6/H56c-7 后验判据亦 FAIL（阈值偏激）。H56c-7b (K+D dominates K+S) 为唯一后验 PASS。失败如实保留，不删不改判据。",
+  "scope": {"simulator_used": false, "gpu_used": false, "api_used": false, "method": "closed-form margin reduction (no re-simulation)"},
+  "n_pass": 7,
+  "n_total": 7
+}
