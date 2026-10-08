@@ -1,0 +1,102 @@
+{
+  "experiment": "E71 严格审核（审前提）",
+  "checks": [
+    {
+      "n": 1,
+      "name": "S1_α≤1_and_ratio_after≤1",
+      "pass": true,
+      "detail": "α=0.397236 ratio_after=1.00000"
+    },
+    {
+      "n": 2,
+      "name": "S2_after_per_joint_within_FRAC_tau_lim",
+      "pass": true,
+      "detail": "after逐关节[4.5, 1.0733] ≤ 预算[4.5, 1.62]"
+    },
+    {
+      "n": 3,
+      "name": "S3_after_demand_violation_zero",
+      "pass": true,
+      "detail": "越限步=0"
+    },
+    {
+      "n": 4,
+      "name": "S4_after_endpoint_precision_kept",
+      "pass": true,
+      "detail": "errL=0.00024 errR=0.00012"
+    },
+    {
+      "n": 5,
+      "name": "S5_before_genuinely_fails_motivates_budget",
+      "pass": true,
+      "detail": "before 越限=82 τmax=6.6766 > 预算max=4.5000"
+    },
+    {
+      "n": 6,
+      "name": "S6_wn_cost_closed_form",
+      "pass": true,
+      "detail": "√α·ωn_b=2.65292 vs ωn_a=2.65290"
+    },
+    {
+      "n": 7,
+      "name": "S7_B_grid_monotonicity",
+      "pass": true,
+      "detail": "rms非增=True sat非减=True"
+    },
+    {
+      "n": 8,
+      "name": "S8_unsaturated_boundary_None_honest",
+      "pass": true,
+      "detail": "within_tol∧unsaturated 格数=0 边界=None"
+    },
+    {
+      "n": 9,
+      "name": "S9_verdict_self_consistent",
+      "pass": true,
+      "detail": "verdict=True C1∧C2∧C3=True"
+    },
+    {
+      "n": 10,
+      "name": "S10_boundary_any_hz_recomputed_from_within_tol",
+      "pass": true,
+      "detail": "重算=2.0000 存储=2.0000"
+    }
+  ],
+  "tamper": [
+    {
+      "n": 21,
+      "name": "R1 篡改 after 逐关节峰值 > 预算 → S2 必报",
+      "caught": true,
+      "detail": "期望捕获 ['S2']"
+    },
+    {
+      "n": 32,
+      "name": "R2 篡改 before 越限步 = 0 → S5 必报",
+      "caught": true,
+      "detail": "期望捕获 ['S5']"
+    },
+    {
+      "n": 43,
+      "name": "R3 篡改 α = 1.1 > 1 → S1 必报",
+      "caught": true,
+      "detail": "期望捕获 ['S1']"
+    },
+    {
+      "n": 54,
+      "name": "R4 篡改 unsaturated 边界 = 2.0 → S8 必报",
+      "caught": true,
+      "detail": "期望捕获 ['S8']"
+    },
+    {
+      "n": 65,
+      "name": "R5 翻转绑定边界的 within_tol 格 → S10 必报",
+      "caught": true,
+      "detail": "期望捕获 ['S10']"
+    }
+  ],
+  "n_pass": 10,
+  "n_total": 10,
+  "n_tamper_pass": 5,
+  "n_tamper_total": 5,
+  "strict_pass": true
+}
