@@ -1,0 +1,919 @@
+{
+  "scope": "协议外 *_report.json（L6 只读反向）",
+  "n_registered": 31,
+  "n_all": 99,
+  "n_outside": 68,
+  "n_clean": 68,
+  "n_with_problems": 0,
+  "rows": [
+    {
+      "report": "e18_report.json",
+      "checks": {
+        "parse": true,
+        "verdict_keys": [
+          "verdict"
+        ],
+        "abs_path_hits": 0,
+        "abs_path_samples": [],
+        "null_top_keys": []
+      },
+      "problems": []
+    },
+    {
+      "report": "e1_6_real_report.json",
+      "checks": {
+        "parse": true,
+        "verdict_keys": [
+          "verdict"
+        ],
+        "abs_path_hits": 0,
+        "abs_path_samples": [],
+        "null_top_keys": []
+      },
+      "problems": []
+    },
+    {
+      "report": "e1_6_soft_contact_report.json",
+      "checks": {
+        "parse": true,
+        "verdict_keys": [
+          "verdict"
+        ],
+        "abs_path_hits": 0,
+        "abs_path_samples": [],
+        "null_top_keys": []
+      },
+      "problems": []
+    },
+    {
+      "report": "e20_edege_report.json",
+      "checks": {
+        "parse": true,
+        "verdict_keys": [
+          "verdict"
+        ],
+        "abs_path_hits": 0,
+        "abs_path_samples": [],
+        "null_top_keys": []
+      },
+      "problems": []
+    },
+    {
+      "report": "e21_edege_e2e_report.json",
+      "checks": {
+        "parse": true,
+        "verdict_keys": [
+          "verdict"
+        ],
+        "abs_path_hits": 0,
+        "abs_path_samples": [],
+        "null_top_keys": []
+      },
+      "problems": []
+    },
+    {
+      "report": "e22_kmem_report.json",
+      "checks": {
+        "parse": true,
+        "verdict_keys": [
+          "verdict"
+        ],
+        "abs_path_hits": 0,
+        "abs_path_samples": [],
+        "null_top_keys": []
+      },
+      "problems": []
+    },
+    {
+      "report": "e23_r678_report.json",
+      "checks": {
+        "parse": true,
+        "verdict_keys": [
+          "verdicts"
+        ],
+        "abs_path_hits": 0,
+        "abs_path_samples": [],
+        "null_top_keys": []
+      },
+      "problems": []
+    },
+    {
+      "report": "e25_gphys_1B_report.json",
+      "checks": {
+        "parse": true,
+        "verdict_keys": [
+          "verdict"
+        ],
+        "abs_path_hits": 0,
+        "abs_path_samples": [],
+        "null_top_keys": []
+      },
+      "problems": []
+    },
+    {
+      "report": "e25_gphys_3B_report.json",
+      "checks": {
+        "parse": true,
+        "verdict_keys": [
+          "verdict"
+        ],
+        "abs_path_hits": 0,
+        "abs_path_samples": [],
+        "null_top_keys": []
+      },
+      "problems": []
+    },
+    {
+      "report": "e25_gphys_4B_report.json",
+      "checks": {
+        "parse": true,
+        "verdict_keys": [
+          "verdict"
+        ],
+        "abs_path_hits": 0,
+        "abs_path_samples": [],
+        "null_top_keys": []
+      },
+      "problems": []
+    },
+    {
+      "report": "e25_gphys_deep_report.json",
+      "checks": {
+        "parse": true,
+        "verdict_keys": [
+          "verdict"
+        ],
+        "abs_path_hits": 0,
+        "abs_path_samples": [],
+        "null_top_keys": []
+      },
+      "problems": []
+    },
+    {
+      "report": "e25_gphys_report.json",
+      "checks": {
+        "parse": true,
+        "verdict_keys": [
+          "verdict"
+        ],
+        "abs_path_hits": 0,
+        "abs_path_samples": [],
+        "null_top_keys": []
+      },
+      "problems": []
+    },
+    {
+      "report": "e26_adv_report.json",
+      "checks": {
+        "parse": true,
+        "verdict_keys": [
+          "verdict",
+          "verdict_pass"
+        ],
+        "abs_path_hits": 0,
+        "abs_path_samples": [],
+        "null_top_keys": []
+      },
+      "problems": []
+    },
+    {
+      "report": "e27_sgi_report.json",
+      "checks": {
+        "parse": true,
+        "verdict_keys": [
+          "verdict",
+          "verdict_pass"
+        ],
+        "abs_path_hits": 0,
+        "abs_path_samples": [],
+        "null_top_keys": []
+      },
+      "problems": []
+    },
+    {
+      "report": "e36_gate_economics_report.json",
+      "checks": {
+        "parse": true,
+        "verdict_keys": [
+          "verdicts"
+        ],
+        "abs_path_hits": 0,
+        "abs_path_samples": [],
+        "null_top_keys": []
+      },
+      "problems": []
+    },
+    {
+      "report": "e36b_gate_economics_e2e_report.json",
+      "checks": {
+        "parse": true,
+        "verdict_keys": [
+          "verdicts"
+        ],
+        "abs_path_hits": 0,
+        "abs_path_samples": [],
+        "null_top_keys": []
+      },
+      "problems": []
+    },
+    {
+      "report": "e36c_real_vlm_spotcheck_report.json",
+      "checks": {
+        "parse": true,
+        "verdict_keys": [
+          "verdict"
+        ],
+        "abs_path_hits": 0,
+        "abs_path_samples": [],
+        "null_top_keys": []
+      },
+      "problems": []
+    },
+    {
+      "report": "e37_urfd_extrapolation_report.json",
+      "checks": {
+        "parse": true,
+        "verdict_keys": [
+          "verdict"
+        ],
+        "abs_path_hits": 0,
+        "abs_path_samples": [],
+        "null_top_keys": []
+      },
+      "problems": []
+    },
+    {
+      "report": "e38_generalization_report.json",
+      "checks": {
+        "parse": true,
+        "verdict_keys": [
+          "verdicts"
+        ],
+        "abs_path_hits": 0,
+        "abs_path_samples": [],
+        "null_top_keys": []
+      },
+      "problems": []
+    },
+    {
+      "report": "e39_multiview_occlusion_report.json",
+      "checks": {
+        "parse": true,
+        "verdict_keys": [
+          "verdict"
+        ],
+        "abs_path_hits": 0,
+        "abs_path_samples": [],
+        "null_top_keys": []
+      },
+      "problems": []
+    },
+    {
+      "report": "e39_real_video_occlusion_report.json",
+      "checks": {
+        "parse": true,
+        "verdict_keys": [
+          "verdict"
+        ],
+        "abs_path_hits": 0,
+        "abs_path_samples": [],
+        "null_top_keys": []
+      },
+      "problems": []
+    },
+    {
+      "report": "e39_vlm_arbitration_report.json",
+      "checks": {
+        "parse": true,
+        "verdict_keys": [
+          "verdict"
+        ],
+        "abs_path_hits": 0,
+        "abs_path_samples": [],
+        "null_top_keys": []
+      },
+      "problems": []
+    },
+    {
+      "report": "e39_yolo_occlusion_calibration_report.json",
+      "checks": {
+        "parse": true,
+        "verdict_keys": [
+          "verdict"
+        ],
+        "abs_path_hits": 0,
+        "abs_path_samples": [],
+        "null_top_keys": []
+      },
+      "problems": []
+    },
+    {
+      "report": "e39_yolo_person_occlusion_calibration_report.json",
+      "checks": {
+        "parse": true,
+        "verdict_keys": [
+          "verdict"
+        ],
+        "abs_path_hits": 0,
+        "abs_path_samples": [],
+        "null_top_keys": []
+      },
+      "problems": []
+    },
+    {
+      "report": "e40_w1abcd_four_channel_report.json",
+      "checks": {
+        "parse": true,
+        "verdict_keys": [
+          "verdict"
+        ],
+        "abs_path_hits": 0,
+        "abs_path_samples": [],
+        "null_top_keys": []
+      },
+      "problems": []
+    },
+    {
+      "report": "e41_part_abstraction_real_report.json",
+      "checks": {
+        "parse": true,
+        "verdict_keys": [
+          "verdict"
+        ],
+        "abs_path_hits": 0,
+        "abs_path_samples": [],
+        "null_top_keys": []
+      },
+      "problems": []
+    },
+    {
+      "report": "e42_memory_drift_arbitration_report.json",
+      "checks": {
+        "parse": true,
+        "verdict_keys": [
+          "verdict"
+        ],
+        "abs_path_hits": 0,
+        "abs_path_samples": [],
+        "null_top_keys": []
+      },
+      "problems": []
+    },
+    {
+      "report": "e43_mer_vlm_coupling_report.json",
+      "checks": {
+        "parse": true,
+        "verdict_keys": [
+          "verdict"
+        ],
+        "abs_path_hits": 0,
+        "abs_path_samples": [],
+        "null_top_keys": []
+      },
+      "problems": []
+    },
+    {
+      "report": "e44_jepa_ac_channels_report.json",
+      "checks": {
+        "parse": true,
+        "verdict_keys": [
+          "verdict"
+        ],
+        "abs_path_hits": 0,
+        "abs_path_samples": [],
+        "null_top_keys": []
+      },
+      "problems": []
+    },
+    {
+      "report": "e45_idas_ablation_report.json",
+      "checks": {
+        "parse": true,
+        "verdict_keys": [
+          "verdict"
+        ],
+        "abs_path_hits": 0,
+        "abs_path_samples": [],
+        "null_top_keys": []
+      },
+      "problems": []
+    },
+    {
+      "report": "e46_scene_memory_ablation_report.json",
+      "checks": {
+        "parse": true,
+        "verdict_keys": [
+          "verdict"
+        ],
+        "abs_path_hits": 0,
+        "abs_path_samples": [],
+        "null_top_keys": []
+      },
+      "problems": []
+    },
+    {
+      "report": "e47_interface_coverage_report.json",
+      "checks": {
+        "parse": true,
+        "verdict_keys": [
+          "verdict"
+        ],
+        "abs_path_hits": 0,
+        "abs_path_samples": [],
+        "null_top_keys": []
+      },
+      "problems": []
+    },
+    {
+      "report": "e47_source_side_report.json",
+      "checks": {
+        "parse": true,
+        "verdict_keys": [
+          "verdict"
+        ],
+        "abs_path_hits": 0,
+        "abs_path_samples": [],
+        "null_top_keys": []
+      },
+      "problems": []
+    },
+    {
+      "report": "e48_vehicle_domain_report.json",
+      "checks": {
+        "parse": true,
+        "verdict_keys": [
+          "preregistered_verdict"
+        ],
+        "abs_path_hits": 0,
+        "abs_path_samples": [],
+        "null_top_keys": []
+      },
+      "problems": []
+    },
+    {
+      "report": "e49a_point_vs_interval_report.json",
+      "checks": {
+        "parse": true,
+        "verdict_keys": [
+          "preregistered_verdict"
+        ],
+        "abs_path_hits": 0,
+        "abs_path_samples": [],
+        "null_top_keys": []
+      },
+      "problems": []
+    },
+    {
+      "report": "e49b_measurement_break_report.json",
+      "checks": {
+        "parse": true,
+        "verdict_keys": [
+          "preregistered_verdict"
+        ],
+        "abs_path_hits": 0,
+        "abs_path_samples": [],
+        "null_top_keys": []
+      },
+      "problems": []
+    },
+    {
+      "report": "e51_external_baselines_report.json",
+      "checks": {
+        "parse": true,
+        "verdict_keys": [
+          "preregistered_verdict"
+        ],
+        "abs_path_hits": 0,
+        "abs_path_samples": [],
+        "null_top_keys": []
+      },
+      "problems": []
+    },
+    {
+      "report": "e51_sign_test_report.json",
+      "checks": {
+        "parse": true,
+        "verdict_keys": [
+          "verdict"
+        ],
+        "abs_path_hits": 0,
+        "abs_path_samples": [],
+        "null_top_keys": []
+      },
+      "problems": []
+    },
+    {
+      "report": "e52_tost_formal_report.json",
+      "checks": {
+        "parse": true,
+        "verdict_keys": [
+          "verdict"
+        ],
+        "abs_path_hits": 0,
+        "abs_path_samples": [],
+        "null_top_keys": []
+      },
+      "problems": []
+    },
+    {
+      "report": "e53_experience_arbitration_report.json",
+      "checks": {
+        "parse": true,
+        "verdict_keys": [
+          "verdict"
+        ],
+        "abs_path_hits": 0,
+        "abs_path_samples": [],
+        "null_top_keys": []
+      },
+      "problems": []
+    },
+    {
+      "report": "e54_prior_interval_audit_report.json",
+      "checks": {
+        "parse": true,
+        "verdict_keys": [
+          "verdicts"
+        ],
+        "abs_path_hits": 0,
+        "abs_path_samples": [],
+        "null_top_keys": []
+      },
+      "problems": []
+    },
+    {
+      "report": "e55_primitive_abstraction_error_report.json",
+      "checks": {
+        "parse": true,
+        "verdict_keys": [
+          "verdicts"
+        ],
+        "abs_path_hits": 0,
+        "abs_path_samples": [],
+        "null_top_keys": []
+      },
+      "problems": []
+    },
+    {
+      "report": "e56_judgement_order_report.json",
+      "checks": {
+        "parse": true,
+        "verdict_keys": [
+          "verdict_pass",
+          "preregistered_verdict",
+          "posthoc_verdict",
+          "posthoc_verdict_effective"
+        ],
+        "abs_path_hits": 0,
+        "abs_path_samples": [],
+        "null_top_keys": []
+      },
+      "problems": []
+    },
+    {
+      "report": "e56b_scenarios_report.json",
+      "checks": {
+        "parse": true,
+        "verdict_keys": [
+          "verdict_pass",
+          "preregistered_verdict",
+          "posthoc_verdict"
+        ],
+        "abs_path_hits": 0,
+        "abs_path_samples": [],
+        "null_top_keys": []
+      },
+      "problems": []
+    },
+    {
+      "report": "e56c_ablation_report.json",
+      "checks": {
+        "parse": true,
+        "verdict_keys": [
+          "verdict_pass",
+          "preregistered_verdict",
+          "posthoc_verdict"
+        ],
+        "abs_path_hits": 0,
+        "abs_path_samples": [],
+        "null_top_keys": []
+      },
+      "problems": []
+    },
+    {
+      "report": "e56e_channel_indispensability_report.json",
+      "checks": {
+        "parse": true,
+        "verdict_keys": [
+          "verdict",
+          "verdict_pass"
+        ],
+        "abs_path_hits": 0,
+        "abs_path_samples": [],
+        "null_top_keys": []
+      },
+      "problems": []
+    },
+    {
+      "report": "e57_repair_report.json",
+      "checks": {
+        "parse": true,
+        "verdict_keys": [
+          "verdict_pass",
+          "preregistered_verdict"
+        ],
+        "abs_path_hits": 0,
+        "abs_path_samples": [],
+        "null_top_keys": []
+      },
+      "problems": []
+    },
+    {
+      "report": "e57c_iso_deepseek_v4_1_flash_report.json",
+      "checks": {
+        "parse": true,
+        "verdict_keys": [
+          "verdict",
+          "verdict_pass"
+        ],
+        "abs_path_hits": 0,
+        "abs_path_samples": [],
+        "null_top_keys": []
+      },
+      "problems": []
+    },
+    {
+      "report": "e57c_iso_deepseek_v4_flash_0731_report.json",
+      "checks": {
+        "parse": true,
+        "verdict_keys": [
+          "verdict",
+          "verdict_pass"
+        ],
+        "abs_path_hits": 0,
+        "abs_path_samples": [],
+        "null_top_keys": []
+      },
+      "problems": []
+    },
+    {
+      "report": "e57c_iso_deepseek_v4_pro_0813_report.json",
+      "checks": {
+        "parse": true,
+        "verdict_keys": [
+          "verdict",
+          "verdict_pass"
+        ],
+        "abs_path_hits": 0,
+        "abs_path_samples": [],
+        "null_top_keys": []
+      },
+      "problems": []
+    },
+    {
+      "report": "e57c_iso_kimi_k3_report.json",
+      "checks": {
+        "parse": true,
+        "verdict_keys": [
+          "verdict",
+          "verdict_pass"
+        ],
+        "abs_path_hits": 0,
+        "abs_path_samples": [],
+        "null_top_keys": []
+      },
+      "problems": []
+    },
+    {
+      "report": "e57c_iso_local_qwen3vl_8b_report.json",
+      "checks": {
+        "parse": true,
+        "verdict_keys": [
+          "verdict",
+          "verdict_pass"
+        ],
+        "abs_path_hits": 0,
+        "abs_path_samples": [],
+        "null_top_keys": []
+      },
+      "problems": []
+    },
+    {
+      "report": "e57c_iso_qwen3_7_flash_2026_07_15_report.json",
+      "checks": {
+        "parse": true,
+        "verdict_keys": [
+          "verdict",
+          "verdict_pass"
+        ],
+        "abs_path_hits": 0,
+        "abs_path_samples": [],
+        "null_top_keys": []
+      },
+      "problems": []
+    },
+    {
+      "report": "e57c_iso_qwen3_7_flash_2026_07_15_tolerant_report.json",
+      "checks": {
+        "parse": true,
+        "verdict_keys": [
+          "verdict",
+          "verdict_pass"
+        ],
+        "abs_path_hits": 0,
+        "abs_path_samples": [],
+        "null_top_keys": []
+      },
+      "problems": []
+    },
+    {
+      "report": "e57c_iso_qwen3_8_27b_report.json",
+      "checks": {
+        "parse": true,
+        "verdict_keys": [
+          "verdict",
+          "verdict_pass"
+        ],
+        "abs_path_hits": 0,
+        "abs_path_samples": [],
+        "null_top_keys": []
+      },
+      "problems": []
+    },
+    {
+      "report": "e57c_iso_qwen3_8_max_0902_report.json",
+      "checks": {
+        "parse": true,
+        "verdict_keys": [
+          "verdict",
+          "verdict_pass"
+        ],
+        "abs_path_hits": 0,
+        "abs_path_samples": [],
+        "null_top_keys": []
+      },
+      "problems": []
+    },
+    {
+      "report": "e57c_isolated_multimodel_report.json",
+      "checks": {
+        "parse": true,
+        "verdict_keys": [
+          "verdict"
+        ],
+        "abs_path_hits": 0,
+        "abs_path_samples": [],
+        "null_top_keys": []
+      },
+      "problems": []
+    },
+    {
+      "report": "e57c_multimodel_report.json",
+      "checks": {
+        "parse": true,
+        "verdict_keys": [
+          "verdict_pass",
+          "preregistered_verdict"
+        ],
+        "abs_path_hits": 0,
+        "abs_path_samples": [],
+        "null_top_keys": []
+      },
+      "problems": []
+    },
+    {
+      "report": "e57d_deepseek_complete_report.json",
+      "checks": {
+        "parse": true,
+        "verdict_keys": [
+          "verdict_pass",
+          "preregistered_verdict"
+        ],
+        "abs_path_hits": 0,
+        "abs_path_samples": [],
+        "null_top_keys": []
+      },
+      "problems": []
+    },
+    {
+      "report": "e57e_placebo_fixedT_report.json",
+      "checks": {
+        "parse": true,
+        "verdict_keys": [
+          "verdict",
+          "verdict_pass"
+        ],
+        "abs_path_hits": 0,
+        "abs_path_samples": [],
+        "null_top_keys": []
+      },
+      "problems": []
+    },
+    {
+      "report": "e57f_yolo_only_report.json",
+      "checks": {
+        "parse": true,
+        "verdict_keys": [
+          "verdict"
+        ],
+        "abs_path_hits": 0,
+        "abs_path_samples": [],
+        "null_top_keys": []
+      },
+      "problems": []
+    },
+    {
+      "report": "e99_integrated_loadbearing_report.json",
+      "checks": {
+        "parse": true,
+        "verdict_keys": [
+          "verdict"
+        ],
+        "abs_path_hits": 0,
+        "abs_path_samples": [],
+        "null_top_keys": []
+      },
+      "problems": []
+    },
+    {
+      "report": "e99_real_report.json",
+      "checks": {
+        "parse": true,
+        "verdict_keys": [
+          "verdict",
+          "verdict_corrected"
+        ],
+        "abs_path_hits": 0,
+        "abs_path_samples": [],
+        "null_top_keys": []
+      },
+      "problems": []
+    },
+    {
+      "report": "e99_real_vlm_report.json",
+      "checks": {
+        "parse": true,
+        "verdict_keys": [
+          "verdict"
+        ],
+        "abs_path_hits": 0,
+        "abs_path_samples": [],
+        "null_top_keys": []
+      },
+      "problems": []
+    },
+    {
+      "report": "eval_report.json",
+      "checks": {
+        "parse": true,
+        "verdict_keys": [
+          "verdict"
+        ],
+        "abs_path_hits": 0,
+        "abs_path_samples": [],
+        "null_top_keys": []
+      },
+      "problems": []
+    },
+    {
+      "report": "phase1_rdt_smoke_report.json",
+      "checks": {
+        "parse": true,
+        "verdict_keys": [
+          "verdict"
+        ],
+        "abs_path_hits": 0,
+        "abs_path_samples": [],
+        "null_top_keys": []
+      },
+      "problems": []
+    },
+    {
+      "report": "phase2_closed_loop_report.json",
+      "checks": {
+        "parse": true,
+        "verdict_keys": [
+          "verdict"
+        ],
+        "abs_path_hits": 0,
+        "abs_path_samples": [],
+        "null_top_keys": []
+      },
+      "problems": []
+    },
+    {
+      "report": "phase3_ablation_report.json",
+      "checks": {
+        "parse": true,
+        "verdict_keys": [
+          "verdict"
+        ],
+        "abs_path_hits": 0,
+        "abs_path_samples": [],
+        "null_top_keys": []
+      },
+      "problems": []
+    }
+  ],
+  "pass": true
+}
