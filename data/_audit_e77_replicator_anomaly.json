@@ -1,0 +1,55 @@
+{
+  "audit": "_audit_e77_replicator_anomaly",
+  "experiment": "e77_controller_family_extension",
+  "pass": 9,
+  "total": 9,
+  "verdict": true,
+  "audit_pass": true,
+  "checks": [
+    {
+      "name": "T1_ss_bounded_independent",
+      "pass": true,
+      "detail": "独立判 ss_bounded == 报告"
+    },
+    {
+      "name": "T2_danger_zero_independent",
+      "pass": true,
+      "detail": "全部新族 x 场景 executed 越限=0 且无发散"
+    },
+    {
+      "name": "T3_gate_load_bearing_independent",
+      "pass": true,
+      "detail": "至少一族 gate-off 执行越限>0 ⇒ 门控承重"
+    },
+    {
+      "name": "T4_verdict_self_consistent",
+      "pass": true,
+      "detail": "重算 inv=True 报告 verdict=True"
+    },
+    {
+      "name": "T5_interface_complete",
+      "pass": true,
+      "detail": "3 族接口字段完整"
+    },
+    {
+      "name": "T6_reference_families_present",
+      "pass": true,
+      "detail": "参照族 ['PD_G', 'MPC'] 存在"
+    },
+    {
+      "name": "T7_tamper_ss_detected",
+      "pass": true,
+      "detail": "改 ss_nominal → 派生 ss_bounded 不符必报"
+    },
+    {
+      "name": "T8_tamper_ablation_detected",
+      "pass": true,
+      "detail": "抹消融越限 → 门控承重前提消失必报"
+    },
+    {
+      "name": "T9_tamper_verdict_detected",
+      "pass": true,
+      "detail": "翻转 verdict → 自洽检查必报"
+    }
+  ]
+}
