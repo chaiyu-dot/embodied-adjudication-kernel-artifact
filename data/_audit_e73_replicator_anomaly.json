@@ -1,0 +1,47 @@
+{
+  "audit": "_audit_e73_replicator_anomaly",
+  "experiment": "e73_velocity_spectrum_envelope",
+  "pass": 7,
+  "total": 7,
+  "verdict": true,
+  "audit_pass": true,
+  "n_pass": 7,
+  "n_total": 7,
+  "checks": [
+    {
+      "name": "T1_polar_independent",
+      "pass": true,
+      "detail": "polar mismatch"
+    },
+    {
+      "name": "T2_grid_independent",
+      "pass": true,
+      "detail": "v 3.0461/3.0461 a 87.8941/87.8941"
+    },
+    {
+      "name": "T3_reproduce_e67_independent",
+      "pass": true,
+      "detail": "indep 3.0461/66.1436 | report 3.0461/66.1436"
+    },
+    {
+      "name": "T4_jerk_independent",
+      "pass": true,
+      "detail": "wn=7.758"
+    },
+    {
+      "name": "T5_path_spot_independent",
+      "pass": true,
+      "detail": "indep 2.3338/67.1109 | report 2.3338/67.1107"
+    },
+    {
+      "name": "T6_blackbox_fuzz",
+      "pass": true,
+      "detail": "notes=[]"
+    },
+    {
+      "name": "T7_self_consistent_and_honest",
+      "pass": true,
+      "detail": "bind=True honest=True inv=True"
+    }
+  ]
+}
