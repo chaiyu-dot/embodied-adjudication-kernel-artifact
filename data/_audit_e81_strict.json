@@ -1,0 +1,63 @@
+{
+  "experiment": "E81 严格审核(L3 独立物理)",
+  "independence_scope": "独立物理：审计者自写雅可比 + rne_dynamics(参考)，不 import e81；E73/E79 作外部数据交叉",
+  "checks": [
+    {
+      "name": "S1_kinematic_matches_E73",
+      "pass": true,
+      "detail": "stored=2.9573 e73=2.9573"
+    },
+    {
+      "name": "S2_impulse_recomputed_and_matches_E79",
+      "pass": true,
+      "detail": "recomp=1.875000 stored=1.875000 e79=1.875000"
+    },
+    {
+      "name": "S3_coriolis_recomputed_and_saturation_signature",
+      "pass": true,
+      "detail": "recomp=2.1330 stored=2.1330 nvalid=1040 sat_tau2=1.800 tl1=1.80"
+    },
+    {
+      "name": "S4_dynamic_cap_and_binding",
+      "pass": true,
+      "detail": "recomp=1.8750 stored=1.8750 bind=impulse"
+    },
+    {
+      "name": "S5_verdict_self_consistent",
+      "pass": true,
+      "detail": ""
+    }
+  ],
+  "tamper": [
+    {
+      "name": "R1 篡改 A v_kinematic=9.9 → S1 必报",
+      "caught": true,
+      "detail": "期望捕获 ['S1']"
+    },
+    {
+      "name": "R2 篡改 B v_impulse=9.9 → S2 必报",
+      "caught": true,
+      "detail": "期望捕获 ['S2']"
+    },
+    {
+      "name": "R3 篡改 C v_coriolis=9.9 → S3 必报",
+      "caught": true,
+      "detail": "期望捕获 ['S3']"
+    },
+    {
+      "name": "R4 篡改 v_dynamic_cap=9.9 → S4 必报",
+      "caught": true,
+      "detail": "期望捕获 ['S4']"
+    },
+    {
+      "name": "R5 篡改 verdict_pass=False → S5 必报",
+      "caught": true,
+      "detail": "期望捕获 ['S5']"
+    }
+  ],
+  "n_pass": 5,
+  "n_total": 5,
+  "n_tamper_pass": 5,
+  "n_tamper_total": 5,
+  "strict_pass": true
+}
