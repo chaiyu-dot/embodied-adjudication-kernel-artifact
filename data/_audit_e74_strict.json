@@ -1,0 +1,326 @@
+{
+  "audit": "_audit_e74_strict",
+  "experiment": "e74_tracking_bandwidth_curve",
+  "pass": 31,
+  "total": 31,
+  "verdict": true,
+  "audit_pass": true,
+  "n_pass": 31,
+  "n_total": 31,
+  "forward": [
+    {
+      "name": "S1a_structure",
+      "pass": true,
+      "detail": "missing=[]"
+    },
+    {
+      "name": "S1b_no_inf_nan",
+      "pass": true,
+      "detail": "非有限=[]"
+    },
+    {
+      "name": "S1c_verdict_matches_criteria",
+      "pass": true,
+      "detail": "verdict=True"
+    },
+    {
+      "name": "S2_stored_precision_sufficient",
+      "pass": true,
+      "detail": "最大绝对偏差 4.90e-06（限 6e-6）反例=0 []"
+    },
+    {
+      "name": "S2b_precision_defect_regression",
+      "pass": true,
+      "detail": "4 位舍入后 e69_min@0.5Hz 相对偏差 1.85e-03（应≥1e-3）"
+    },
+    {
+      "name": "S3_bracket_adjacent",
+      "pass": true,
+      "detail": "反例=0 []"
+    },
+    {
+      "name": "S4_passset_prefix_or_documented",
+      "pass": true,
+      "detail": "非前缀例=0 [] | 已文档化=True"
+    },
+    {
+      "name": "S5_ratio_stable_and_fft_flag",
+      "pass": true,
+      "detail": "trusted=['e69_median', 'e66_budget', 'e69_max'] limited=['e69_min', 'e71_derated'] spread=0.002"
+    },
+    {
+      "name": "S6_per_cell_interpolation",
+      "pass": true,
+      "detail": "反例=[]"
+    },
+    {
+      "name": "S7_alpha_derate_exact",
+      "pass": true,
+      "detail": "sqrt(alpha)=0.630238 vs 0.630200"
+    },
+    {
+      "name": "S8_e67c_anchor",
+      "pass": true,
+      "detail": "0.2(1cm)=True 0.5(1cm)=False"
+    },
+    {
+      "name": "S9_spec_self_contained",
+      "pass": true,
+      "detail": "missing=[]"
+    },
+    {
+      "name": "S10_determinism",
+      "pass": true,
+      "detail": "non-deterministic"
+    },
+    {
+      "name": "S11_E_joint1_constraint_activated",
+      "pass": true,
+      "detail": "关节1上限=1.8；探针(峰值,越限步)=[('p1', 3.6481, 2637), ('p2', 3.305, 2434), ('p3', 3.5004, 2152)]"
+    },
+    {
+      "name": "S12_E_sim_identity_recheck",
+      "pass": true,
+      "detail": "E段仿真器 rms=0.04032 vs E67._track_arm rms=0.04032（逐位相等=True）"
+    },
+    {
+      "name": "S13_E_per_cell_derived",
+      "pass": true,
+      "detail": "反例=[]"
+    },
+    {
+      "name": "S14_amplitude_calibration_premise",
+      "pass": true,
+      "detail": "反例=[]"
+    },
+    {
+      "name": "S15_controller_family_premise_and_honesty",
+      "pass": true,
+      "detail": "反例=[]"
+    }
+  ],
+  "reverse": [
+    {
+      "name": "R1_tamper_bracket_detected",
+      "pass": true,
+      "detail": "改边界括号→S3 必报"
+    },
+    {
+      "name": "R2_tamper_measured_detected",
+      "pass": true,
+      "detail": "改 measured→S6 必报"
+    },
+    {
+      "name": "R3_tamper_trusted_detected",
+      "pass": true,
+      "detail": "改 trusted→S5 必报"
+    },
+    {
+      "name": "R4_inject_inf_detected",
+      "pass": true,
+      "detail": "注入 inf→S1b 必报"
+    },
+    {
+      "name": "R5_flip_verdict_detected",
+      "pass": true,
+      "detail": "翻转 verdict→S1c 必报"
+    },
+    {
+      "name": "R6_missing_spec_detected",
+      "pass": true,
+      "detail": "删 scenario→S9 必报"
+    },
+    {
+      "name": "R7_clean_passes",
+      "pass": true,
+      "detail": "clean=18/18"
+    },
+    {
+      "name": "R8_nonfinite_to_none",
+      "pass": true,
+      "detail": "nonfinite not capped"
+    },
+    {
+      "name": "R9_tamper_E_nsteps_detected",
+      "pass": true,
+      "detail": "改 n_steps→S13 必报"
+    },
+    {
+      "name": "R10_tamper_E_exercised_detected",
+      "pass": true,
+      "detail": "抹掉关节1承重→S11 必报"
+    },
+    {
+      "name": "R11_S12_immune_to_selfcheck_field",
+      "pass": true,
+      "detail": "S12 为硬重算：篡改报告自述的 match 字段**不影响**其结论"
+    },
+    {
+      "name": "R12_tamper_F_crosssection_detected",
+      "pass": true,
+      "detail": "改 F 段边界使其与 B 段不符→S14 必报"
+    },
+    {
+      "name": "R13_tamper_G_spread_detected",
+      "pass": true,
+      "detail": "抹平 CT 带宽→S15 必报"
+    }
+  ],
+  "checks": [
+    {
+      "name": "S1a_structure",
+      "pass": true,
+      "detail": "missing=[]"
+    },
+    {
+      "name": "S1b_no_inf_nan",
+      "pass": true,
+      "detail": "非有限=[]"
+    },
+    {
+      "name": "S1c_verdict_matches_criteria",
+      "pass": true,
+      "detail": "verdict=True"
+    },
+    {
+      "name": "S2_stored_precision_sufficient",
+      "pass": true,
+      "detail": "最大绝对偏差 4.90e-06（限 6e-6）反例=0 []"
+    },
+    {
+      "name": "S2b_precision_defect_regression",
+      "pass": true,
+      "detail": "4 位舍入后 e69_min@0.5Hz 相对偏差 1.85e-03（应≥1e-3）"
+    },
+    {
+      "name": "S3_bracket_adjacent",
+      "pass": true,
+      "detail": "反例=0 []"
+    },
+    {
+      "name": "S4_passset_prefix_or_documented",
+      "pass": true,
+      "detail": "非前缀例=0 [] | 已文档化=True"
+    },
+    {
+      "name": "S5_ratio_stable_and_fft_flag",
+      "pass": true,
+      "detail": "trusted=['e69_median', 'e66_budget', 'e69_max'] limited=['e69_min', 'e71_derated'] spread=0.002"
+    },
+    {
+      "name": "S6_per_cell_interpolation",
+      "pass": true,
+      "detail": "反例=[]"
+    },
+    {
+      "name": "S7_alpha_derate_exact",
+      "pass": true,
+      "detail": "sqrt(alpha)=0.630238 vs 0.630200"
+    },
+    {
+      "name": "S8_e67c_anchor",
+      "pass": true,
+      "detail": "0.2(1cm)=True 0.5(1cm)=False"
+    },
+    {
+      "name": "S9_spec_self_contained",
+      "pass": true,
+      "detail": "missing=[]"
+    },
+    {
+      "name": "S10_determinism",
+      "pass": true,
+      "detail": "non-deterministic"
+    },
+    {
+      "name": "S11_E_joint1_constraint_activated",
+      "pass": true,
+      "detail": "关节1上限=1.8；探针(峰值,越限步)=[('p1', 3.6481, 2637), ('p2', 3.305, 2434), ('p3', 3.5004, 2152)]"
+    },
+    {
+      "name": "S12_E_sim_identity_recheck",
+      "pass": true,
+      "detail": "E段仿真器 rms=0.04032 vs E67._track_arm rms=0.04032（逐位相等=True）"
+    },
+    {
+      "name": "S13_E_per_cell_derived",
+      "pass": true,
+      "detail": "反例=[]"
+    },
+    {
+      "name": "S14_amplitude_calibration_premise",
+      "pass": true,
+      "detail": "反例=[]"
+    },
+    {
+      "name": "S15_controller_family_premise_and_honesty",
+      "pass": true,
+      "detail": "反例=[]"
+    },
+    {
+      "name": "R1_tamper_bracket_detected",
+      "pass": true,
+      "detail": "改边界括号→S3 必报"
+    },
+    {
+      "name": "R2_tamper_measured_detected",
+      "pass": true,
+      "detail": "改 measured→S6 必报"
+    },
+    {
+      "name": "R3_tamper_trusted_detected",
+      "pass": true,
+      "detail": "改 trusted→S5 必报"
+    },
+    {
+      "name": "R4_inject_inf_detected",
+      "pass": true,
+      "detail": "注入 inf→S1b 必报"
+    },
+    {
+      "name": "R5_flip_verdict_detected",
+      "pass": true,
+      "detail": "翻转 verdict→S1c 必报"
+    },
+    {
+      "name": "R6_missing_spec_detected",
+      "pass": true,
+      "detail": "删 scenario→S9 必报"
+    },
+    {
+      "name": "R7_clean_passes",
+      "pass": true,
+      "detail": "clean=18/18"
+    },
+    {
+      "name": "R8_nonfinite_to_none",
+      "pass": true,
+      "detail": "nonfinite not capped"
+    },
+    {
+      "name": "R9_tamper_E_nsteps_detected",
+      "pass": true,
+      "detail": "改 n_steps→S13 必报"
+    },
+    {
+      "name": "R10_tamper_E_exercised_detected",
+      "pass": true,
+      "detail": "抹掉关节1承重→S11 必报"
+    },
+    {
+      "name": "R11_S12_immune_to_selfcheck_field",
+      "pass": true,
+      "detail": "S12 为硬重算：篡改报告自述的 match 字段**不影响**其结论"
+    },
+    {
+      "name": "R12_tamper_F_crosssection_detected",
+      "pass": true,
+      "detail": "改 F 段边界使其与 B 段不符→S14 必报"
+    },
+    {
+      "name": "R13_tamper_G_spread_detected",
+      "pass": true,
+      "detail": "抹平 CT 带宽→S15 必报"
+    }
+  ]
+}
