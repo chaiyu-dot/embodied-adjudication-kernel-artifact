@@ -1,0 +1,97 @@
+{
+  "audit": "_audit_e72_friction_cone",
+  "experiment": "e72_friction_cone_verdict",
+  "pass": 17,
+  "total": 17,
+  "verdict": true,
+  "audit_pass": true,
+  "forward": [
+    {
+      "name": "F1_structure",
+      "pass": true,
+      "detail": "missing=[]"
+    },
+    {
+      "name": "F2_envelope_recompute",
+      "pass": true,
+      "detail": "module vs report envelope mismatch"
+    },
+    {
+      "name": "F3_tau_class_recompute",
+      "pass": true,
+      "detail": "tau classification mismatch"
+    },
+    {
+      "name": "F4_slip_flip_recompute",
+      "pass": true,
+      "detail": "lo=UNSAFE hi=SAFE"
+    },
+    {
+      "name": "F5_combination_recompute",
+      "pass": true,
+      "detail": "{'NA_x_SAFE': ('SAFE', 'SAFE'), 'NA_x_UNSAFE': ('UNSAFE', 'UNSAFE'), 'UNSAFE_x_SAFE': ('UNSAFE', 'UNSAFE'), 'SAFE_x_UNSAFE': ('UNSAFE', 'UNSAFE'), 'SAFE_x_SAFE': ('SAFE', 'SAFE')}"
+    },
+    {
+      "name": "F6_invariants_self_consistent",
+      "pass": true,
+      "detail": "inv=True rep=True"
+    },
+    {
+      "name": "F7_source_doc_present",
+      "pass": true,
+      "detail": "missing source_doc"
+    },
+    {
+      "name": "F8_determinism",
+      "pass": true,
+      "detail": "non-deterministic"
+    },
+    {
+      "name": "F9_nonfinite_capped",
+      "pass": true,
+      "detail": "rho=None"
+    }
+  ],
+  "reverse": [
+    {
+      "name": "R1_tamper_envelope_detected",
+      "pass": true,
+      "detail": "audit blind to envelope tamper"
+    },
+    {
+      "name": "R2_clean_report_passes",
+      "pass": true,
+      "detail": "clean forward=9/9"
+    },
+    {
+      "name": "R3_tamper_verdict_detected",
+      "pass": true,
+      "detail": "audit blind to verdict tamper"
+    },
+    {
+      "name": "R4_boundary_rho_eq_1_safe",
+      "pass": true,
+      "detail": "rho=1.0 value=SAFE"
+    },
+    {
+      "name": "R5_mu_zero_unsafe",
+      "pass": true,
+      "detail": "mu=0 not unsafe"
+    },
+    {
+      "name": "R6_tamper_combo_detected",
+      "pass": true,
+      "detail": "audit blind to combo tamper"
+    },
+    {
+      "name": "R7_NA_honest_short",
+      "pass": true,
+      "detail": "NA not honestly shorted"
+    },
+    {
+      "name": "R8_coverage",
+      "pass": true,
+      "detail": "audit coverage gap"
+    }
+  ]
+}
