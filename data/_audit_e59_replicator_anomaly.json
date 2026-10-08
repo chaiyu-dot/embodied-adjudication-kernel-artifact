@@ -1,0 +1,73 @@
+{
+  "experiment": "E59 第三方/盲复刻(L2/L4 纯数据)",
+  "independence_scope": "不 import 被审模块，只读 JSON（d 重跑终止规则 + 聚合自洽）",
+  "checks": [
+    {
+      "name": "D1_design_sane",
+      "pass": true,
+      "detail": "shrink=0.35 floor=0.012"
+    },
+    {
+      "name": "D2_rows_shape",
+      "pass": true,
+      "detail": "n=240"
+    },
+    {
+      "name": "D3_per_eps_coverage",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "D4_recompute_per_eps_from_stored_d",
+      "pass": true,
+      "detail": "mismatch=0"
+    },
+    {
+      "name": "D5_p95_recompute",
+      "pass": true,
+      "detail": "re=3.0000 store=3.0000"
+    },
+    {
+      "name": "D6_nonterminated_conserved",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "D7_criteria_and_verdict_selfconsistent",
+      "pass": true,
+      "detail": "verdict=True"
+    },
+    {
+      "name": "D8_self_consistency",
+      "pass": true,
+      "detail": ""
+    }
+  ],
+  "tamper": [
+    {
+      "name": "R1 篡改某行 d → D4 必报",
+      "caught": true,
+      "detail": "期望捕获 ['D4']"
+    },
+    {
+      "name": "R2 篡改 n_decided → D4 必报",
+      "caught": true,
+      "detail": "期望捕获 ['D4']"
+    },
+    {
+      "name": "R3 篡改 nonterminated → D6 必报",
+      "caught": true,
+      "detail": "期望捕获 ['D6']"
+    },
+    {
+      "name": "R4 篡改 verdict_pass → D7 必报",
+      "caught": true,
+      "detail": "期望捕获 ['D7']"
+    }
+  ],
+  "n_pass": 8,
+  "n_total": 8,
+  "n_tamper_pass": 4,
+  "n_tamper_total": 4,
+  "replicator_pass": true
+}
