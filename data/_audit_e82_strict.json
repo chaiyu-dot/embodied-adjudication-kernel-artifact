@@ -1,0 +1,88 @@
+{
+  "experiment": "E82 严格审核(L3 独立物理)",
+  "independence_scope": "独立物理：审计者自写闭式 + 真实 friction_cone 参考，不 import e82",
+  "checks": [
+    {
+      "name": "S1_ontology_bands_sane",
+      "pass": true,
+      "detail": "categories=8"
+    },
+    {
+      "name": "S2_conservative_point_recomputed",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "S3_nominal_point_recomputed",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "S4_E72_friction_cone_conservative_tighter",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "S5_E79_impulse_conservative_tighter",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "S6_E76_multiarm_conservative_tighter",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "S7_E73_impact_cap_conservative_tighter_and_le_kinematic",
+      "pass": true,
+      "detail": "v_kin=2.9573"
+    },
+    {
+      "name": "S8_monotonicity_flags_selfconsistent",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "S9_zero_api_classifier_runnable",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "S10_criteria_and_verdict_selfconsistent",
+      "pass": true,
+      "detail": ""
+    }
+  ],
+  "tamper": [
+    {
+      "name": "R1 篡改 steel 保守 μ 上界（乐观 1.5）→ S2 必报",
+      "caught": true,
+      "detail": "期望捕获 ['S2']"
+    },
+    {
+      "name": "R2 篡改 steel E72 保守值虚高（乐观 9.9）→ S4 必报",
+      "caught": true,
+      "detail": "期望捕获 ['S4']"
+    },
+    {
+      "name": "R3 篡改 row[1] monotone 标 False（数据实单调）→ S8 必报",
+      "caught": true,
+      "detail": "期望捕获 ['S8']"
+    },
+    {
+      "name": "R4 篡改 verdict_pass=False → S10 必报",
+      "caught": true,
+      "detail": "期望捕获 ['S10']"
+    },
+    {
+      "name": "R5 篡改 steel E73 冲击界虚高（乐观 9.9）→ S7 必报",
+      "caught": true,
+      "detail": "期望捕获 ['S7']"
+    }
+  ],
+  "n_pass": 10,
+  "n_total": 10,
+  "n_tamper_pass": 5,
+  "n_tamper_total": 5,
+  "strict_pass": true
+}
