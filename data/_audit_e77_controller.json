@@ -1,0 +1,110 @@
+{
+  "audit": "_audit_e77_controller",
+  "checks": [
+    {
+      "n": 1,
+      "name": "F1_structure",
+      "pass": true,
+      "detail": "missing=[]"
+    },
+    {
+      "n": 2,
+      "name": "F2_A_metrics_recompute",
+      "pass": true,
+      "detail": "全一致"
+    },
+    {
+      "n": 3,
+      "name": "F3_interface_recompute",
+      "pass": true,
+      "detail": "重算 True 报告 True"
+    },
+    {
+      "n": 4,
+      "name": "F3b_interface_rows_recompute",
+      "pass": true,
+      "detail": "逐族接口字段 == 重算"
+    },
+    {
+      "n": 5,
+      "name": "F4_capability_recompute",
+      "pass": true,
+      "detail": "标称 ss 重算"
+    },
+    {
+      "n": 6,
+      "name": "F5_ablation_recompute",
+      "pass": true,
+      "detail": "重算 {'FLC': 9, 'IMP': 0, 'LRN': 10} 报告 {'FLC': 9, 'IMP': 0, 'LRN': 10}"
+    },
+    {
+      "n": 7,
+      "name": "F6_invariants_self_consistent",
+      "pass": true,
+      "detail": "inv=True rep=True"
+    },
+    {
+      "n": 8,
+      "name": "F7_reference_families_present",
+      "pass": true,
+      "detail": "ref=['PD_G', 'MPC']"
+    },
+    {
+      "n": 9,
+      "name": "F8_gate_load_bearing_premise",
+      "pass": true,
+      "detail": "ablation={'FLC': 9, 'IMP': 0, 'LRN': 10}"
+    },
+    {
+      "n": 10,
+      "name": "F9_LRN_self_contained_cold_construction",
+      "pass": true,
+      "detail": "冷启动 max|LRN−PD_G|=3.034e-12 ⇒ 顺序无关"
+    }
+  ],
+  "tamper": [
+    {
+      "n": 21,
+      "name": "R1 改 A 段 FLC nominal ss → F2 必报",
+      "caught": true
+    },
+    {
+      "n": 32,
+      "name": "R2 改 C 段 FLC ss_nominal → F4 必报",
+      "caught": true
+    },
+    {
+      "n": 43,
+      "name": "R3 改 D 段门控消融 → F5 必报",
+      "caught": true
+    },
+    {
+      "n": 54,
+      "name": "R4 抹掉 B 段单行接口字段 → F3b 必报",
+      "caught": true
+    },
+    {
+      "n": 65,
+      "name": "R5 翻转 verdict_pass → F6 必报",
+      "caught": true
+    },
+    {
+      "n": 76,
+      "name": "R6 抹掉参照族 → F7 必报",
+      "caught": true
+    },
+    {
+      "n": 87,
+      "name": "R7 删掉 criteria_scope 自述字段 → F1 必报",
+      "caught": true
+    }
+  ],
+  "findings": [
+    "★ 作者双向审核：正向 10/10 + 篡改 7/7。"
+  ],
+  "n_pass": 10,
+  "n_total": 10,
+  "n_tamper_pass": 7,
+  "n_tamper_total": 7,
+  "audit_pass": true
+}
